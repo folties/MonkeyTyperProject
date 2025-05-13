@@ -1,0 +1,3 @@
+D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/MonkeyTyperProject.dir
+D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/rebuild_cache.dir
