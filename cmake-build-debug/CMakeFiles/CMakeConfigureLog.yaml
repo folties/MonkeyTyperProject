@@ -452,3 +452,1223 @@ events:
       Running the CXX compiler's linker: "D:/CLion/CLion 2024.3.4/bin/mingw/bin/ld.exe" "-v"
       GNU ld (GNU Binutils) 2.40
 ...
+
+---
+events:
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/CLion/CLion 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "D:/CLion/CLion 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckCSourceCompiles.cmake:52 (cmake_check_source_compiles)"
+      - "D:/CLion/CLion 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/FindThreads.cmake:97 (CHECK_C_SOURCE_COMPILES)"
+      - "D:/CLion/CLion 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/FindThreads.cmake:163 (_threads_check_libc)"
+      - "cmake-build-debug/_deps/sfml-src/src/SFML/System/CMakeLists.txt:69 (find_package)"
+    checks:
+      - "Performing Test CMAKE_HAVE_LIBC_PTHREAD"
+    directories:
+      source: "D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-brsk6v"
+      binary: "D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-brsk6v"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/MonkeyTyperProject/cmake-build-debug/_deps/sfml-src/cmake/Modules/"
+      CMAKE_OSX_DEPLOYMENT_TARGET: "13.0"
+    buildResult:
+      variable: "CMAKE_HAVE_LIBC_PTHREAD"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-brsk6v'
+        
+        Run Build Command(s): "D:/CLion/CLion 2024.3.4/bin/ninja/win/x64/ninja.exe" -v cmTC_ce4e6
+        [1/2] "D:\\CLion\\CLion 2024.3.4\\bin\\mingw\\bin\\gcc.exe" -DCMAKE_HAVE_LIBC_PTHREAD  -fdiagnostics-color=always -o CMakeFiles/cmTC_ce4e6.dir/src.c.obj -c D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-brsk6v/src.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "D:\\CLion\\CLion 2024.3.4\\bin\\mingw\\bin\\gcc.exe"   CMakeFiles/cmTC_ce4e6.dir/src.c.obj -o cmTC_ce4e6.exe -Wl,--out-implib,libcmTC_ce4e6.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/CLion/CLion 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckIncludeFileCXX.cmake:89 (try_compile)"
+      - "cmake-build-debug/_deps/sfml-src/src/SFML/Window/CMakeLists.txt:317 (check_include_file_cxx)"
+    checks:
+      - "Looking for C++ include dinput.h"
+    directories:
+      source: "D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-72cmmt"
+      binary: "D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-72cmmt"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/MonkeyTyperProject/cmake-build-debug/_deps/sfml-src/cmake/Modules/"
+      CMAKE_OSX_DEPLOYMENT_TARGET: "13.0"
+    buildResult:
+      variable: "DINPUT_H_FOUND"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-72cmmt'
+        
+        Run Build Command(s): "D:/CLion/CLion 2024.3.4/bin/ninja/win/x64/ninja.exe" -v cmTC_a1f4e
+        [1/2] "D:\\CLion\\CLion 2024.3.4\\bin\\mingw\\bin\\g++.exe"   -std=gnu++20 -fdiagnostics-color=always -o CMakeFiles/cmTC_a1f4e.dir/CheckIncludeFile.cxx.obj -c D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-72cmmt/CheckIncludeFile.cxx
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "D:\\CLion\\CLion 2024.3.4\\bin\\mingw\\bin\\g++.exe"   CMakeFiles/cmTC_a1f4e.dir/CheckIncludeFile.cxx.obj -o cmTC_a1f4e.exe -Wl,--out-implib,libcmTC_a1f4e.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/CLion/CLion 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "D:/CLion/CLion 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckCXXSourceCompiles.cmake:52 (cmake_check_source_compiles)"
+      - "cmake-build-debug/_deps/sfml-src/src/SFML/Window/CMakeLists.txt:342 (check_cxx_source_compiles)"
+    checks:
+      - "Performing Test ATOMIC_TEST"
+    directories:
+      source: "D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-5lb582"
+      binary: "D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-5lb582"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/MonkeyTyperProject/cmake-build-debug/_deps/sfml-src/cmake/Modules/"
+      CMAKE_OSX_DEPLOYMENT_TARGET: "13.0"
+    buildResult:
+      variable: "ATOMIC_TEST"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-5lb582'
+        
+        Run Build Command(s): "D:/CLion/CLion 2024.3.4/bin/ninja/win/x64/ninja.exe" -v cmTC_b0282
+        [1/2] "D:\\CLion\\CLion 2024.3.4\\bin\\mingw\\bin\\g++.exe" -DATOMIC_TEST  -std=gnu++20 -fdiagnostics-color=always -o CMakeFiles/cmTC_b0282.dir/src.cxx.obj -c D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-5lb582/src.cxx
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "D:\\CLion\\CLion 2024.3.4\\bin\\mingw\\bin\\g++.exe"   CMakeFiles/cmTC_b0282.dir/src.cxx.obj -o cmTC_b0282.exe -Wl,--out-implib,libcmTC_b0282.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/CLion/CLion 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckIncludeFiles.cmake:132 (try_compile)"
+      - "cmake-build-debug/_deps/ogg-src/CMakeLists.txt:57 (check_include_files)"
+    checks:
+      - "Looking for include file inttypes.h"
+    directories:
+      source: "D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-pz4jr8"
+      binary: "D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-pz4jr8"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/MonkeyTyperProject/cmake-build-debug/_deps/sfml-src/cmake/Modules/"
+      CMAKE_OSX_DEPLOYMENT_TARGET: "13.0"
+    buildResult:
+      variable: "INCLUDE_INTTYPES_H"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-pz4jr8'
+        
+        Run Build Command(s): "D:/CLion/CLion 2024.3.4/bin/ninja/win/x64/ninja.exe" -v cmTC_c3f77
+        [1/2] "D:\\CLion\\CLion 2024.3.4\\bin\\mingw\\bin\\gcc.exe"   -fdiagnostics-color=always -o CMakeFiles/cmTC_c3f77.dir/INCLUDE_INTTYPES_H.c.obj -c D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-pz4jr8/INCLUDE_INTTYPES_H.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "D:\\CLion\\CLion 2024.3.4\\bin\\mingw\\bin\\gcc.exe"   CMakeFiles/cmTC_c3f77.dir/INCLUDE_INTTYPES_H.c.obj -o cmTC_c3f77.exe -Wl,--out-implib,libcmTC_c3f77.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/CLion/CLion 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckIncludeFiles.cmake:132 (try_compile)"
+      - "cmake-build-debug/_deps/ogg-src/CMakeLists.txt:58 (check_include_files)"
+    checks:
+      - "Looking for include file stdint.h"
+    directories:
+      source: "D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-kwtvzt"
+      binary: "D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-kwtvzt"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/MonkeyTyperProject/cmake-build-debug/_deps/sfml-src/cmake/Modules/"
+      CMAKE_OSX_DEPLOYMENT_TARGET: "13.0"
+    buildResult:
+      variable: "INCLUDE_STDINT_H"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-kwtvzt'
+        
+        Run Build Command(s): "D:/CLion/CLion 2024.3.4/bin/ninja/win/x64/ninja.exe" -v cmTC_b58c0
+        [1/2] "D:\\CLion\\CLion 2024.3.4\\bin\\mingw\\bin\\gcc.exe"   -fdiagnostics-color=always -o CMakeFiles/cmTC_b58c0.dir/INCLUDE_STDINT_H.c.obj -c D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-kwtvzt/INCLUDE_STDINT_H.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "D:\\CLion\\CLion 2024.3.4\\bin\\mingw\\bin\\gcc.exe"   CMakeFiles/cmTC_b58c0.dir/INCLUDE_STDINT_H.c.obj -o cmTC_b58c0.exe -Wl,--out-implib,libcmTC_b58c0.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/CLion/CLion 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckIncludeFiles.cmake:132 (try_compile)"
+      - "cmake-build-debug/_deps/ogg-src/CMakeLists.txt:59 (check_include_files)"
+    checks:
+      - "Looking for include file sys/types.h"
+    directories:
+      source: "D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-fz4s70"
+      binary: "D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-fz4s70"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/MonkeyTyperProject/cmake-build-debug/_deps/sfml-src/cmake/Modules/"
+      CMAKE_OSX_DEPLOYMENT_TARGET: "13.0"
+    buildResult:
+      variable: "INCLUDE_SYS_TYPES_H"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-fz4s70'
+        
+        Run Build Command(s): "D:/CLion/CLion 2024.3.4/bin/ninja/win/x64/ninja.exe" -v cmTC_f7a43
+        [1/2] "D:\\CLion\\CLion 2024.3.4\\bin\\mingw\\bin\\gcc.exe"   -fdiagnostics-color=always -o CMakeFiles/cmTC_f7a43.dir/INCLUDE_SYS_TYPES_H.c.obj -c D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-fz4s70/INCLUDE_SYS_TYPES_H.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "D:\\CLion\\CLion 2024.3.4\\bin\\mingw\\bin\\gcc.exe"   CMakeFiles/cmTC_f7a43.dir/INCLUDE_SYS_TYPES_H.c.obj -o cmTC_f7a43.exe -Wl,--out-implib,libcmTC_f7a43.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/CLion/CLion 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckIncludeFile.cmake:90 (try_compile)"
+      - "D:/CLion/CLion 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckTypeSize.cmake:251 (check_include_file)"
+      - "cmake-build-debug/_deps/ogg-src/cmake/CheckSizes.cmake:3 (check_type_size)"
+      - "cmake-build-debug/_deps/ogg-src/CMakeLists.txt:69 (include)"
+    checks:
+      - "Looking for sys/types.h"
+    directories:
+      source: "D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-6rgc09"
+      binary: "D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-6rgc09"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/MonkeyTyperProject/cmake-build-debug/_deps/sfml-src/cmake/Modules/;D:/MonkeyTyperProject/cmake-build-debug/_deps/ogg-src/cmake"
+      CMAKE_OSX_DEPLOYMENT_TARGET: "13.0"
+    buildResult:
+      variable: "HAVE_SYS_TYPES_H"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-6rgc09'
+        
+        Run Build Command(s): "D:/CLion/CLion 2024.3.4/bin/ninja/win/x64/ninja.exe" -v cmTC_4c0ae
+        [1/2] "D:\\CLion\\CLion 2024.3.4\\bin\\mingw\\bin\\gcc.exe"   -fdiagnostics-color=always -o CMakeFiles/cmTC_4c0ae.dir/CheckIncludeFile.c.obj -c D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-6rgc09/CheckIncludeFile.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "D:\\CLion\\CLion 2024.3.4\\bin\\mingw\\bin\\gcc.exe"   CMakeFiles/cmTC_4c0ae.dir/CheckIncludeFile.c.obj -o cmTC_4c0ae.exe -Wl,--out-implib,libcmTC_4c0ae.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/CLion/CLion 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckIncludeFile.cmake:90 (try_compile)"
+      - "D:/CLion/CLion 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckTypeSize.cmake:252 (check_include_file)"
+      - "cmake-build-debug/_deps/ogg-src/cmake/CheckSizes.cmake:3 (check_type_size)"
+      - "cmake-build-debug/_deps/ogg-src/CMakeLists.txt:69 (include)"
+    checks:
+      - "Looking for stdint.h"
+    directories:
+      source: "D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-oftkjr"
+      binary: "D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-oftkjr"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/MonkeyTyperProject/cmake-build-debug/_deps/sfml-src/cmake/Modules/;D:/MonkeyTyperProject/cmake-build-debug/_deps/ogg-src/cmake"
+      CMAKE_OSX_DEPLOYMENT_TARGET: "13.0"
+    buildResult:
+      variable: "HAVE_STDINT_H"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-oftkjr'
+        
+        Run Build Command(s): "D:/CLion/CLion 2024.3.4/bin/ninja/win/x64/ninja.exe" -v cmTC_4968d
+        [1/2] "D:\\CLion\\CLion 2024.3.4\\bin\\mingw\\bin\\gcc.exe"   -fdiagnostics-color=always -o CMakeFiles/cmTC_4968d.dir/CheckIncludeFile.c.obj -c D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-oftkjr/CheckIncludeFile.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "D:\\CLion\\CLion 2024.3.4\\bin\\mingw\\bin\\gcc.exe"   CMakeFiles/cmTC_4968d.dir/CheckIncludeFile.c.obj -o cmTC_4968d.exe -Wl,--out-implib,libcmTC_4968d.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/CLion/CLion 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckIncludeFile.cmake:90 (try_compile)"
+      - "D:/CLion/CLion 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckTypeSize.cmake:253 (check_include_file)"
+      - "cmake-build-debug/_deps/ogg-src/cmake/CheckSizes.cmake:3 (check_type_size)"
+      - "cmake-build-debug/_deps/ogg-src/CMakeLists.txt:69 (include)"
+    checks:
+      - "Looking for stddef.h"
+    directories:
+      source: "D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-gbflwl"
+      binary: "D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-gbflwl"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/MonkeyTyperProject/cmake-build-debug/_deps/sfml-src/cmake/Modules/;D:/MonkeyTyperProject/cmake-build-debug/_deps/ogg-src/cmake"
+      CMAKE_OSX_DEPLOYMENT_TARGET: "13.0"
+    buildResult:
+      variable: "HAVE_STDDEF_H"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-gbflwl'
+        
+        Run Build Command(s): "D:/CLion/CLion 2024.3.4/bin/ninja/win/x64/ninja.exe" -v cmTC_25b5b
+        [1/2] "D:\\CLion\\CLion 2024.3.4\\bin\\mingw\\bin\\gcc.exe"   -fdiagnostics-color=always -o CMakeFiles/cmTC_25b5b.dir/CheckIncludeFile.c.obj -c D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-gbflwl/CheckIncludeFile.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "D:\\CLion\\CLion 2024.3.4\\bin\\mingw\\bin\\gcc.exe"   CMakeFiles/cmTC_25b5b.dir/CheckIncludeFile.c.obj -o cmTC_25b5b.exe -Wl,--out-implib,libcmTC_25b5b.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/CLion/CLion 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckTypeSize.cmake:147 (try_compile)"
+      - "D:/CLion/CLion 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckTypeSize.cmake:272 (__check_type_size_impl)"
+      - "cmake-build-debug/_deps/ogg-src/cmake/CheckSizes.cmake:3 (check_type_size)"
+      - "cmake-build-debug/_deps/ogg-src/CMakeLists.txt:69 (include)"
+    checks:
+      - "Check size of int16_t"
+    directories:
+      source: "D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-dr0omu"
+      binary: "D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-dr0omu"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/MonkeyTyperProject/cmake-build-debug/_deps/sfml-src/cmake/Modules/;D:/MonkeyTyperProject/cmake-build-debug/_deps/ogg-src/cmake"
+      CMAKE_OSX_DEPLOYMENT_TARGET: "13.0"
+    buildResult:
+      variable: "HAVE_INT16_SIZE"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-dr0omu'
+        
+        Run Build Command(s): "D:/CLion/CLion 2024.3.4/bin/ninja/win/x64/ninja.exe" -v cmTC_0a919
+        [1/2] "D:\\CLion\\CLion 2024.3.4\\bin\\mingw\\bin\\gcc.exe"   -fdiagnostics-color=always -o CMakeFiles/cmTC_0a919.dir/INT16_SIZE.c.obj -c D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-dr0omu/INT16_SIZE.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "D:\\CLion\\CLion 2024.3.4\\bin\\mingw\\bin\\gcc.exe"   CMakeFiles/cmTC_0a919.dir/INT16_SIZE.c.obj -o cmTC_0a919.exe -Wl,--out-implib,libcmTC_0a919.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/CLion/CLion 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckTypeSize.cmake:147 (try_compile)"
+      - "D:/CLion/CLion 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckTypeSize.cmake:272 (__check_type_size_impl)"
+      - "cmake-build-debug/_deps/ogg-src/cmake/CheckSizes.cmake:4 (check_type_size)"
+      - "cmake-build-debug/_deps/ogg-src/CMakeLists.txt:69 (include)"
+    checks:
+      - "Check size of uint16_t"
+    directories:
+      source: "D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-2unqoi"
+      binary: "D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-2unqoi"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/MonkeyTyperProject/cmake-build-debug/_deps/sfml-src/cmake/Modules/;D:/MonkeyTyperProject/cmake-build-debug/_deps/ogg-src/cmake"
+      CMAKE_OSX_DEPLOYMENT_TARGET: "13.0"
+    buildResult:
+      variable: "HAVE_UINT16_SIZE"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-2unqoi'
+        
+        Run Build Command(s): "D:/CLion/CLion 2024.3.4/bin/ninja/win/x64/ninja.exe" -v cmTC_73526
+        [1/2] "D:\\CLion\\CLion 2024.3.4\\bin\\mingw\\bin\\gcc.exe"   -fdiagnostics-color=always -o CMakeFiles/cmTC_73526.dir/UINT16_SIZE.c.obj -c D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-2unqoi/UINT16_SIZE.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "D:\\CLion\\CLion 2024.3.4\\bin\\mingw\\bin\\gcc.exe"   CMakeFiles/cmTC_73526.dir/UINT16_SIZE.c.obj -o cmTC_73526.exe -Wl,--out-implib,libcmTC_73526.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/CLion/CLion 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckTypeSize.cmake:147 (try_compile)"
+      - "D:/CLion/CLion 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckTypeSize.cmake:272 (__check_type_size_impl)"
+      - "cmake-build-debug/_deps/ogg-src/cmake/CheckSizes.cmake:5 (check_type_size)"
+      - "cmake-build-debug/_deps/ogg-src/CMakeLists.txt:69 (include)"
+    checks:
+      - "Check size of u_int16_t"
+    directories:
+      source: "D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-37d0qx"
+      binary: "D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-37d0qx"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/MonkeyTyperProject/cmake-build-debug/_deps/sfml-src/cmake/Modules/;D:/MonkeyTyperProject/cmake-build-debug/_deps/ogg-src/cmake"
+      CMAKE_OSX_DEPLOYMENT_TARGET: "13.0"
+    buildResult:
+      variable: "HAVE_U_INT16_SIZE"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-37d0qx'
+        
+        Run Build Command(s): "D:/CLion/CLion 2024.3.4/bin/ninja/win/x64/ninja.exe" -v cmTC_723ec
+        [1/2] "D:\\CLion\\CLion 2024.3.4\\bin\\mingw\\bin\\gcc.exe"   -fdiagnostics-color=always -o CMakeFiles/cmTC_723ec.dir/U_INT16_SIZE.c.obj -c D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-37d0qx/U_INT16_SIZE.c
+        FAILED: CMakeFiles/cmTC_723ec.dir/U_INT16_SIZE.c.obj 
+        "D:\\CLion\\CLion 2024.3.4\\bin\\mingw\\bin\\gcc.exe"   -fdiagnostics-color=always -o CMakeFiles/cmTC_723ec.dir/U_INT16_SIZE.c.obj -c D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-37d0qx/U_INT16_SIZE.c
+        D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-37d0qx/U_INT16_SIZE.c:27:22: error: 'u_int16_t' undeclared here (not in a function); did you mean 'uint16_t'?
+           27 | #define SIZE (sizeof(u_int16_t))
+              |                      ^~~~~~~~~
+        D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-37d0qx/U_INT16_SIZE.c:29:12: note: in expansion of macro 'SIZE'
+           29 |   ('0' + ((SIZE / 10000)%10)),
+              |            ^~~~
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/CLion/CLion 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckTypeSize.cmake:147 (try_compile)"
+      - "D:/CLion/CLion 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckTypeSize.cmake:272 (__check_type_size_impl)"
+      - "cmake-build-debug/_deps/ogg-src/cmake/CheckSizes.cmake:6 (check_type_size)"
+      - "cmake-build-debug/_deps/ogg-src/CMakeLists.txt:69 (include)"
+    checks:
+      - "Check size of int32_t"
+    directories:
+      source: "D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-o1txgp"
+      binary: "D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-o1txgp"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/MonkeyTyperProject/cmake-build-debug/_deps/sfml-src/cmake/Modules/;D:/MonkeyTyperProject/cmake-build-debug/_deps/ogg-src/cmake"
+      CMAKE_OSX_DEPLOYMENT_TARGET: "13.0"
+    buildResult:
+      variable: "HAVE_INT32_SIZE"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-o1txgp'
+        
+        Run Build Command(s): "D:/CLion/CLion 2024.3.4/bin/ninja/win/x64/ninja.exe" -v cmTC_abdf8
+        [1/2] "D:\\CLion\\CLion 2024.3.4\\bin\\mingw\\bin\\gcc.exe"   -fdiagnostics-color=always -o CMakeFiles/cmTC_abdf8.dir/INT32_SIZE.c.obj -c D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-o1txgp/INT32_SIZE.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "D:\\CLion\\CLion 2024.3.4\\bin\\mingw\\bin\\gcc.exe"   CMakeFiles/cmTC_abdf8.dir/INT32_SIZE.c.obj -o cmTC_abdf8.exe -Wl,--out-implib,libcmTC_abdf8.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/CLion/CLion 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckTypeSize.cmake:147 (try_compile)"
+      - "D:/CLion/CLion 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckTypeSize.cmake:272 (__check_type_size_impl)"
+      - "cmake-build-debug/_deps/ogg-src/cmake/CheckSizes.cmake:7 (check_type_size)"
+      - "cmake-build-debug/_deps/ogg-src/CMakeLists.txt:69 (include)"
+    checks:
+      - "Check size of uint32_t"
+    directories:
+      source: "D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-lu4gva"
+      binary: "D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-lu4gva"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/MonkeyTyperProject/cmake-build-debug/_deps/sfml-src/cmake/Modules/;D:/MonkeyTyperProject/cmake-build-debug/_deps/ogg-src/cmake"
+      CMAKE_OSX_DEPLOYMENT_TARGET: "13.0"
+    buildResult:
+      variable: "HAVE_UINT32_SIZE"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-lu4gva'
+        
+        Run Build Command(s): "D:/CLion/CLion 2024.3.4/bin/ninja/win/x64/ninja.exe" -v cmTC_06712
+        [1/2] "D:\\CLion\\CLion 2024.3.4\\bin\\mingw\\bin\\gcc.exe"   -fdiagnostics-color=always -o CMakeFiles/cmTC_06712.dir/UINT32_SIZE.c.obj -c D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-lu4gva/UINT32_SIZE.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "D:\\CLion\\CLion 2024.3.4\\bin\\mingw\\bin\\gcc.exe"   CMakeFiles/cmTC_06712.dir/UINT32_SIZE.c.obj -o cmTC_06712.exe -Wl,--out-implib,libcmTC_06712.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/CLion/CLion 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckTypeSize.cmake:147 (try_compile)"
+      - "D:/CLion/CLion 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckTypeSize.cmake:272 (__check_type_size_impl)"
+      - "cmake-build-debug/_deps/ogg-src/cmake/CheckSizes.cmake:8 (check_type_size)"
+      - "cmake-build-debug/_deps/ogg-src/CMakeLists.txt:69 (include)"
+    checks:
+      - "Check size of u_int32_t"
+    directories:
+      source: "D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-7741qa"
+      binary: "D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-7741qa"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/MonkeyTyperProject/cmake-build-debug/_deps/sfml-src/cmake/Modules/;D:/MonkeyTyperProject/cmake-build-debug/_deps/ogg-src/cmake"
+      CMAKE_OSX_DEPLOYMENT_TARGET: "13.0"
+    buildResult:
+      variable: "HAVE_U_INT32_SIZE"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-7741qa'
+        
+        Run Build Command(s): "D:/CLion/CLion 2024.3.4/bin/ninja/win/x64/ninja.exe" -v cmTC_9c546
+        [1/2] "D:\\CLion\\CLion 2024.3.4\\bin\\mingw\\bin\\gcc.exe"   -fdiagnostics-color=always -o CMakeFiles/cmTC_9c546.dir/U_INT32_SIZE.c.obj -c D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-7741qa/U_INT32_SIZE.c
+        FAILED: CMakeFiles/cmTC_9c546.dir/U_INT32_SIZE.c.obj 
+        "D:\\CLion\\CLion 2024.3.4\\bin\\mingw\\bin\\gcc.exe"   -fdiagnostics-color=always -o CMakeFiles/cmTC_9c546.dir/U_INT32_SIZE.c.obj -c D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-7741qa/U_INT32_SIZE.c
+        D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-7741qa/U_INT32_SIZE.c:27:22: error: 'u_int32_t' undeclared here (not in a function); did you mean 'uint32_t'?
+           27 | #define SIZE (sizeof(u_int32_t))
+              |                      ^~~~~~~~~
+        D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-7741qa/U_INT32_SIZE.c:29:12: note: in expansion of macro 'SIZE'
+           29 |   ('0' + ((SIZE / 10000)%10)),
+              |            ^~~~
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/CLion/CLion 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckTypeSize.cmake:147 (try_compile)"
+      - "D:/CLion/CLion 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckTypeSize.cmake:272 (__check_type_size_impl)"
+      - "cmake-build-debug/_deps/ogg-src/cmake/CheckSizes.cmake:9 (check_type_size)"
+      - "cmake-build-debug/_deps/ogg-src/CMakeLists.txt:69 (include)"
+    checks:
+      - "Check size of int64_t"
+    directories:
+      source: "D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-eqn3wv"
+      binary: "D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-eqn3wv"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/MonkeyTyperProject/cmake-build-debug/_deps/sfml-src/cmake/Modules/;D:/MonkeyTyperProject/cmake-build-debug/_deps/ogg-src/cmake"
+      CMAKE_OSX_DEPLOYMENT_TARGET: "13.0"
+    buildResult:
+      variable: "HAVE_INT64_SIZE"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-eqn3wv'
+        
+        Run Build Command(s): "D:/CLion/CLion 2024.3.4/bin/ninja/win/x64/ninja.exe" -v cmTC_87343
+        [1/2] "D:\\CLion\\CLion 2024.3.4\\bin\\mingw\\bin\\gcc.exe"   -fdiagnostics-color=always -o CMakeFiles/cmTC_87343.dir/INT64_SIZE.c.obj -c D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-eqn3wv/INT64_SIZE.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "D:\\CLion\\CLion 2024.3.4\\bin\\mingw\\bin\\gcc.exe"   CMakeFiles/cmTC_87343.dir/INT64_SIZE.c.obj -o cmTC_87343.exe -Wl,--out-implib,libcmTC_87343.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/CLion/CLion 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckTypeSize.cmake:147 (try_compile)"
+      - "D:/CLion/CLion 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckTypeSize.cmake:272 (__check_type_size_impl)"
+      - "cmake-build-debug/_deps/ogg-src/cmake/CheckSizes.cmake:10 (check_type_size)"
+      - "cmake-build-debug/_deps/ogg-src/CMakeLists.txt:69 (include)"
+    checks:
+      - "Check size of short"
+    directories:
+      source: "D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-sq158m"
+      binary: "D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-sq158m"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/MonkeyTyperProject/cmake-build-debug/_deps/sfml-src/cmake/Modules/;D:/MonkeyTyperProject/cmake-build-debug/_deps/ogg-src/cmake"
+      CMAKE_OSX_DEPLOYMENT_TARGET: "13.0"
+    buildResult:
+      variable: "HAVE_SHORT_SIZE"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-sq158m'
+        
+        Run Build Command(s): "D:/CLion/CLion 2024.3.4/bin/ninja/win/x64/ninja.exe" -v cmTC_bdabb
+        [1/2] "D:\\CLion\\CLion 2024.3.4\\bin\\mingw\\bin\\gcc.exe"   -fdiagnostics-color=always -o CMakeFiles/cmTC_bdabb.dir/SHORT_SIZE.c.obj -c D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-sq158m/SHORT_SIZE.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "D:\\CLion\\CLion 2024.3.4\\bin\\mingw\\bin\\gcc.exe"   CMakeFiles/cmTC_bdabb.dir/SHORT_SIZE.c.obj -o cmTC_bdabb.exe -Wl,--out-implib,libcmTC_bdabb.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/CLion/CLion 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckTypeSize.cmake:147 (try_compile)"
+      - "D:/CLion/CLion 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckTypeSize.cmake:272 (__check_type_size_impl)"
+      - "cmake-build-debug/_deps/ogg-src/cmake/CheckSizes.cmake:11 (check_type_size)"
+      - "cmake-build-debug/_deps/ogg-src/CMakeLists.txt:69 (include)"
+    checks:
+      - "Check size of int"
+    directories:
+      source: "D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-iaesuf"
+      binary: "D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-iaesuf"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/MonkeyTyperProject/cmake-build-debug/_deps/sfml-src/cmake/Modules/;D:/MonkeyTyperProject/cmake-build-debug/_deps/ogg-src/cmake"
+      CMAKE_OSX_DEPLOYMENT_TARGET: "13.0"
+    buildResult:
+      variable: "HAVE_INT_SIZE"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-iaesuf'
+        
+        Run Build Command(s): "D:/CLion/CLion 2024.3.4/bin/ninja/win/x64/ninja.exe" -v cmTC_94bd6
+        [1/2] "D:\\CLion\\CLion 2024.3.4\\bin\\mingw\\bin\\gcc.exe"   -fdiagnostics-color=always -o CMakeFiles/cmTC_94bd6.dir/INT_SIZE.c.obj -c D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-iaesuf/INT_SIZE.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "D:\\CLion\\CLion 2024.3.4\\bin\\mingw\\bin\\gcc.exe"   CMakeFiles/cmTC_94bd6.dir/INT_SIZE.c.obj -o cmTC_94bd6.exe -Wl,--out-implib,libcmTC_94bd6.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/CLion/CLion 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckTypeSize.cmake:147 (try_compile)"
+      - "D:/CLion/CLion 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckTypeSize.cmake:272 (__check_type_size_impl)"
+      - "cmake-build-debug/_deps/ogg-src/cmake/CheckSizes.cmake:12 (check_type_size)"
+      - "cmake-build-debug/_deps/ogg-src/CMakeLists.txt:69 (include)"
+    checks:
+      - "Check size of long"
+    directories:
+      source: "D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-eatb96"
+      binary: "D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-eatb96"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/MonkeyTyperProject/cmake-build-debug/_deps/sfml-src/cmake/Modules/;D:/MonkeyTyperProject/cmake-build-debug/_deps/ogg-src/cmake"
+      CMAKE_OSX_DEPLOYMENT_TARGET: "13.0"
+    buildResult:
+      variable: "HAVE_LONG_SIZE"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-eatb96'
+        
+        Run Build Command(s): "D:/CLion/CLion 2024.3.4/bin/ninja/win/x64/ninja.exe" -v cmTC_82ad9
+        [1/2] "D:\\CLion\\CLion 2024.3.4\\bin\\mingw\\bin\\gcc.exe"   -fdiagnostics-color=always -o CMakeFiles/cmTC_82ad9.dir/LONG_SIZE.c.obj -c D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-eatb96/LONG_SIZE.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "D:\\CLion\\CLion 2024.3.4\\bin\\mingw\\bin\\gcc.exe"   CMakeFiles/cmTC_82ad9.dir/LONG_SIZE.c.obj -o cmTC_82ad9.exe -Wl,--out-implib,libcmTC_82ad9.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/CLion/CLion 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckTypeSize.cmake:147 (try_compile)"
+      - "D:/CLion/CLion 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckTypeSize.cmake:272 (__check_type_size_impl)"
+      - "cmake-build-debug/_deps/ogg-src/cmake/CheckSizes.cmake:13 (check_type_size)"
+      - "cmake-build-debug/_deps/ogg-src/CMakeLists.txt:69 (include)"
+    checks:
+      - "Check size of long long"
+    directories:
+      source: "D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-9sdkwt"
+      binary: "D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-9sdkwt"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/MonkeyTyperProject/cmake-build-debug/_deps/sfml-src/cmake/Modules/;D:/MonkeyTyperProject/cmake-build-debug/_deps/ogg-src/cmake"
+      CMAKE_OSX_DEPLOYMENT_TARGET: "13.0"
+    buildResult:
+      variable: "HAVE_LONG_LONG_SIZE"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-9sdkwt'
+        
+        Run Build Command(s): "D:/CLion/CLion 2024.3.4/bin/ninja/win/x64/ninja.exe" -v cmTC_d108b
+        [1/2] "D:\\CLion\\CLion 2024.3.4\\bin\\mingw\\bin\\gcc.exe"   -fdiagnostics-color=always -o CMakeFiles/cmTC_d108b.dir/LONG_LONG_SIZE.c.obj -c D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-9sdkwt/LONG_LONG_SIZE.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "D:\\CLion\\CLion 2024.3.4\\bin\\mingw\\bin\\gcc.exe"   CMakeFiles/cmTC_d108b.dir/LONG_LONG_SIZE.c.obj -o cmTC_d108b.exe -Wl,--out-implib,libcmTC_d108b.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/CLion/CLion 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "D:/CLion/CLion 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckCSourceCompiles.cmake:52 (cmake_check_source_compiles)"
+      - "cmake-build-debug/_deps/flac-src/cmake/UseSystemExtensions.cmake:3 (check_c_source_compiles)"
+      - "cmake-build-debug/_deps/flac-src/CMakeLists.txt:107 (include)"
+    checks:
+      - "Performing Test HAVE_MBSTATE"
+    directories:
+      source: "D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-ptf79t"
+      binary: "D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-ptf79t"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-Wall -Wextra -Wstrict-prototypes -Wmissing-prototypes -Waggregate-return -Wcast-align -Wnested-externs -Wshadow -Wundef -Wmissing-declarations -Winline "
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/MonkeyTyperProject/cmake-build-debug/_deps/sfml-src/cmake/Modules/;D:/MonkeyTyperProject/cmake-build-debug/_deps/flac-src/cmake"
+      CMAKE_OSX_DEPLOYMENT_TARGET: "13.0"
+    buildResult:
+      variable: "HAVE_MBSTATE"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-ptf79t'
+        
+        Run Build Command(s): "D:/CLion/CLion 2024.3.4/bin/ninja/win/x64/ninja.exe" -v cmTC_30553
+        [1/2] "D:\\CLion\\CLion 2024.3.4\\bin\\mingw\\bin\\gcc.exe" -DHAVE_MBSTATE  -Wall -Wextra -Wstrict-prototypes -Wmissing-prototypes -Waggregate-return -Wcast-align -Wnested-externs -Wshadow -Wundef -Wmissing-declarations -Winline   -fdiagnostics-color=always -o CMakeFiles/cmTC_30553.dir/src.c.obj -c D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-ptf79t/src.c
+        D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-ptf79t/src.c:4:9: warning: function declaration isn't a prototype [-Wstrict-prototypes]
+            4 |     int main() { return 0; }
+              |         ^~~~
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "D:\\CLion\\CLion 2024.3.4\\bin\\mingw\\bin\\gcc.exe" -Wall -Wextra -Wstrict-prototypes -Wmissing-prototypes -Waggregate-return -Wcast-align -Wnested-externs -Wshadow -Wundef -Wmissing-declarations -Winline  CMakeFiles/cmTC_30553.dir/src.c.obj -o cmTC_30553.exe -Wl,--out-implib,libcmTC_30553.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/CLion/CLion 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "D:/CLion/CLion 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckCSourceCompiles.cmake:52 (cmake_check_source_compiles)"
+      - "cmake-build-debug/_deps/flac-src/cmake/UseSystemExtensions.cmake:16 (check_c_source_compiles)"
+      - "cmake-build-debug/_deps/flac-src/CMakeLists.txt:107 (include)"
+    checks:
+      - "Performing Test DODEFINE_EXTENSIONS"
+    directories:
+      source: "D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-gja6e7"
+      binary: "D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-gja6e7"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-Wall -Wextra -Wstrict-prototypes -Wmissing-prototypes -Waggregate-return -Wcast-align -Wnested-externs -Wshadow -Wundef -Wmissing-declarations -Winline "
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/MonkeyTyperProject/cmake-build-debug/_deps/sfml-src/cmake/Modules/;D:/MonkeyTyperProject/cmake-build-debug/_deps/flac-src/cmake"
+      CMAKE_OSX_DEPLOYMENT_TARGET: "13.0"
+    buildResult:
+      variable: "DODEFINE_EXTENSIONS"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-gja6e7'
+        
+        Run Build Command(s): "D:/CLion/CLion 2024.3.4/bin/ninja/win/x64/ninja.exe" -v cmTC_6bf57
+        [1/2] "D:\\CLion\\CLion 2024.3.4\\bin\\mingw\\bin\\gcc.exe" -DDODEFINE_EXTENSIONS  -Wall -Wextra -Wstrict-prototypes -Wmissing-prototypes -Waggregate-return -Wcast-align -Wnested-externs -Wshadow -Wundef -Wmissing-declarations -Winline   -fdiagnostics-color=always -o CMakeFiles/cmTC_6bf57.dir/src.c.obj -c D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-gja6e7/src.c
+        D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-gja6e7/src.c:36:9: warning: function declaration isn't a prototype [-Wstrict-prototypes]
+           36 |     int main() { return 0; }
+              |         ^~~~
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "D:\\CLion\\CLion 2024.3.4\\bin\\mingw\\bin\\gcc.exe" -Wall -Wextra -Wstrict-prototypes -Wmissing-prototypes -Waggregate-return -Wcast-align -Wnested-externs -Wshadow -Wundef -Wmissing-declarations -Winline  CMakeFiles/cmTC_6bf57.dir/src.c.obj -o cmTC_6bf57.exe -Wl,--out-implib,libcmTC_6bf57.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/CLion/CLion 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckIncludeFile.cmake:90 (try_compile)"
+      - "cmake-build-debug/_deps/flac-src/CMakeLists.txt:111 (check_include_file)"
+    checks:
+      - "Looking for byteswap.h"
+    directories:
+      source: "D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-gy3j09"
+      binary: "D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-gy3j09"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-Wall -Wextra -Wstrict-prototypes -Wmissing-prototypes -Waggregate-return -Wcast-align -Wnested-externs -Wshadow -Wundef -Wmissing-declarations -Winline "
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/MonkeyTyperProject/cmake-build-debug/_deps/sfml-src/cmake/Modules/;D:/MonkeyTyperProject/cmake-build-debug/_deps/flac-src/cmake"
+      CMAKE_OSX_DEPLOYMENT_TARGET: "13.0"
+    buildResult:
+      variable: "HAVE_BYTESWAP_H"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-gy3j09'
+        
+        Run Build Command(s): "D:/CLion/CLion 2024.3.4/bin/ninja/win/x64/ninja.exe" -v cmTC_29f9d
+        [1/2] "D:\\CLion\\CLion 2024.3.4\\bin\\mingw\\bin\\gcc.exe"   -Wall -Wextra -Wstrict-prototypes -Wmissing-prototypes -Waggregate-return -Wcast-align -Wnested-externs -Wshadow -Wundef -Wmissing-declarations -Winline   -fdiagnostics-color=always -o CMakeFiles/cmTC_29f9d.dir/CheckIncludeFile.c.obj -c D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-gy3j09/CheckIncludeFile.c
+        FAILED: CMakeFiles/cmTC_29f9d.dir/CheckIncludeFile.c.obj 
+        "D:\\CLion\\CLion 2024.3.4\\bin\\mingw\\bin\\gcc.exe"   -Wall -Wextra -Wstrict-prototypes -Wmissing-prototypes -Waggregate-return -Wcast-align -Wnested-externs -Wshadow -Wundef -Wmissing-declarations -Winline   -fdiagnostics-color=always -o CMakeFiles/cmTC_29f9d.dir/CheckIncludeFile.c.obj -c D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-gy3j09/CheckIncludeFile.c
+        D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-gy3j09/CheckIncludeFile.c:1:10: fatal error: byteswap.h: No such file or directory
+            1 | #include <byteswap.h>
+              |          ^~~~~~~~~~~~
+        compilation terminated.\x0d
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/CLion/CLion 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckIncludeFile.cmake:90 (try_compile)"
+      - "cmake-build-debug/_deps/flac-src/CMakeLists.txt:112 (check_include_file)"
+    checks:
+      - "Looking for inttypes.h"
+    directories:
+      source: "D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-ukoyib"
+      binary: "D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-ukoyib"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-Wall -Wextra -Wstrict-prototypes -Wmissing-prototypes -Waggregate-return -Wcast-align -Wnested-externs -Wshadow -Wundef -Wmissing-declarations -Winline "
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/MonkeyTyperProject/cmake-build-debug/_deps/sfml-src/cmake/Modules/;D:/MonkeyTyperProject/cmake-build-debug/_deps/flac-src/cmake"
+      CMAKE_OSX_DEPLOYMENT_TARGET: "13.0"
+    buildResult:
+      variable: "HAVE_INTTYPES_H"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-ukoyib'
+        
+        Run Build Command(s): "D:/CLion/CLion 2024.3.4/bin/ninja/win/x64/ninja.exe" -v cmTC_f419e
+        [1/2] "D:\\CLion\\CLion 2024.3.4\\bin\\mingw\\bin\\gcc.exe"   -Wall -Wextra -Wstrict-prototypes -Wmissing-prototypes -Waggregate-return -Wcast-align -Wnested-externs -Wshadow -Wundef -Wmissing-declarations -Winline   -fdiagnostics-color=always -o CMakeFiles/cmTC_f419e.dir/CheckIncludeFile.c.obj -c D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-ukoyib/CheckIncludeFile.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "D:\\CLion\\CLion 2024.3.4\\bin\\mingw\\bin\\gcc.exe" -Wall -Wextra -Wstrict-prototypes -Wmissing-prototypes -Waggregate-return -Wcast-align -Wnested-externs -Wshadow -Wundef -Wmissing-declarations -Winline  CMakeFiles/cmTC_f419e.dir/CheckIncludeFile.c.obj -o cmTC_f419e.exe -Wl,--out-implib,libcmTC_f419e.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/CLion/CLion 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckIncludeFile.cmake:90 (try_compile)"
+      - "cmake-build-debug/_deps/flac-src/CMakeLists.txt:114 (check_include_file)"
+    checks:
+      - "Looking for stdbool.h"
+    directories:
+      source: "D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-k6i5su"
+      binary: "D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-k6i5su"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-Wall -Wextra -Wstrict-prototypes -Wmissing-prototypes -Waggregate-return -Wcast-align -Wnested-externs -Wshadow -Wundef -Wmissing-declarations -Winline "
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/MonkeyTyperProject/cmake-build-debug/_deps/sfml-src/cmake/Modules/;D:/MonkeyTyperProject/cmake-build-debug/_deps/flac-src/cmake"
+      CMAKE_OSX_DEPLOYMENT_TARGET: "13.0"
+    buildResult:
+      variable: "HAVE_STDBOOL_H"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-k6i5su'
+        
+        Run Build Command(s): "D:/CLion/CLion 2024.3.4/bin/ninja/win/x64/ninja.exe" -v cmTC_3de54
+        [1/2] "D:\\CLion\\CLion 2024.3.4\\bin\\mingw\\bin\\gcc.exe"   -Wall -Wextra -Wstrict-prototypes -Wmissing-prototypes -Waggregate-return -Wcast-align -Wnested-externs -Wshadow -Wundef -Wmissing-declarations -Winline   -fdiagnostics-color=always -o CMakeFiles/cmTC_3de54.dir/CheckIncludeFile.c.obj -c D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-k6i5su/CheckIncludeFile.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "D:\\CLion\\CLion 2024.3.4\\bin\\mingw\\bin\\gcc.exe" -Wall -Wextra -Wstrict-prototypes -Wmissing-prototypes -Waggregate-return -Wcast-align -Wnested-externs -Wshadow -Wundef -Wmissing-declarations -Winline  CMakeFiles/cmTC_3de54.dir/CheckIncludeFile.c.obj -o cmTC_3de54.exe -Wl,--out-implib,libcmTC_3de54.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/CLion/CLion 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckIncludeFile.cmake:90 (try_compile)"
+      - "cmake-build-debug/_deps/flac-src/CMakeLists.txt:115 (check_include_file)"
+    checks:
+      - "Looking for arm_neon.h"
+    directories:
+      source: "D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-x0seho"
+      binary: "D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-x0seho"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-Wall -Wextra -Wstrict-prototypes -Wmissing-prototypes -Waggregate-return -Wcast-align -Wnested-externs -Wshadow -Wundef -Wmissing-declarations -Winline "
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/MonkeyTyperProject/cmake-build-debug/_deps/sfml-src/cmake/Modules/;D:/MonkeyTyperProject/cmake-build-debug/_deps/flac-src/cmake"
+      CMAKE_OSX_DEPLOYMENT_TARGET: "13.0"
+    buildResult:
+      variable: "FLAC__HAS_NEONINTRIN"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-x0seho'
+        
+        Run Build Command(s): "D:/CLion/CLion 2024.3.4/bin/ninja/win/x64/ninja.exe" -v cmTC_6a024
+        [1/2] "D:\\CLion\\CLion 2024.3.4\\bin\\mingw\\bin\\gcc.exe"   -Wall -Wextra -Wstrict-prototypes -Wmissing-prototypes -Waggregate-return -Wcast-align -Wnested-externs -Wshadow -Wundef -Wmissing-declarations -Winline   -fdiagnostics-color=always -o CMakeFiles/cmTC_6a024.dir/CheckIncludeFile.c.obj -c D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-x0seho/CheckIncludeFile.c
+        FAILED: CMakeFiles/cmTC_6a024.dir/CheckIncludeFile.c.obj 
+        "D:\\CLion\\CLion 2024.3.4\\bin\\mingw\\bin\\gcc.exe"   -Wall -Wextra -Wstrict-prototypes -Wmissing-prototypes -Waggregate-return -Wcast-align -Wnested-externs -Wshadow -Wundef -Wmissing-declarations -Winline   -fdiagnostics-color=always -o CMakeFiles/cmTC_6a024.dir/CheckIncludeFile.c.obj -c D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-x0seho/CheckIncludeFile.c
+        D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-x0seho/CheckIncludeFile.c:1:10: fatal error: arm_neon.h: No such file or directory
+            1 | #include <arm_neon.h>
+              |          ^~~~~~~~~~~~
+        compilation terminated.\x0d
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/CLion/CLion 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckIncludeFile.cmake:90 (try_compile)"
+      - "cmake-build-debug/_deps/flac-src/CMakeLists.txt:124 (check_include_file)"
+    checks:
+      - "Looking for x86intrin.h"
+    directories:
+      source: "D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-wvuquz"
+      binary: "D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-wvuquz"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-Wall -Wextra -Wstrict-prototypes -Wmissing-prototypes -Waggregate-return -Wcast-align -Wnested-externs -Wshadow -Wundef -Wmissing-declarations -Winline "
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/MonkeyTyperProject/cmake-build-debug/_deps/sfml-src/cmake/Modules/;D:/MonkeyTyperProject/cmake-build-debug/_deps/flac-src/cmake"
+      CMAKE_OSX_DEPLOYMENT_TARGET: "13.0"
+    buildResult:
+      variable: "FLAC__HAS_X86INTRIN"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-wvuquz'
+        
+        Run Build Command(s): "D:/CLion/CLion 2024.3.4/bin/ninja/win/x64/ninja.exe" -v cmTC_e552c
+        [1/2] "D:\\CLion\\CLion 2024.3.4\\bin\\mingw\\bin\\gcc.exe"   -Wall -Wextra -Wstrict-prototypes -Wmissing-prototypes -Waggregate-return -Wcast-align -Wnested-externs -Wshadow -Wundef -Wmissing-declarations -Winline   -fdiagnostics-color=always -o CMakeFiles/cmTC_e552c.dir/CheckIncludeFile.c.obj -c D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-wvuquz/CheckIncludeFile.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "D:\\CLion\\CLion 2024.3.4\\bin\\mingw\\bin\\gcc.exe" -Wall -Wextra -Wstrict-prototypes -Wmissing-prototypes -Waggregate-return -Wcast-align -Wnested-externs -Wshadow -Wundef -Wmissing-declarations -Winline  CMakeFiles/cmTC_e552c.dir/CheckIncludeFile.c.obj -o cmTC_e552c.exe -Wl,--out-implib,libcmTC_e552c.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/CLion/CLion 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckFunctionExists.cmake:86 (try_compile)"
+      - "cmake-build-debug/_deps/flac-src/CMakeLists.txt:127 (check_function_exists)"
+    checks:
+      - "Looking for fseeko"
+    directories:
+      source: "D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-xf3z4r"
+      binary: "D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-xf3z4r"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-Wall -Wextra -Wstrict-prototypes -Wmissing-prototypes -Waggregate-return -Wcast-align -Wnested-externs -Wshadow -Wundef -Wmissing-declarations -Winline "
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/MonkeyTyperProject/cmake-build-debug/_deps/sfml-src/cmake/Modules/;D:/MonkeyTyperProject/cmake-build-debug/_deps/flac-src/cmake"
+      CMAKE_OSX_DEPLOYMENT_TARGET: "13.0"
+    buildResult:
+      variable: "HAVE_FSEEKO"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-xf3z4r'
+        
+        Run Build Command(s): "D:/CLion/CLion 2024.3.4/bin/ninja/win/x64/ninja.exe" -v cmTC_b5c93
+        [1/2] "D:\\CLion\\CLion 2024.3.4\\bin\\mingw\\bin\\gcc.exe"   -Wall -Wextra -Wstrict-prototypes -Wmissing-prototypes -Waggregate-return -Wcast-align -Wnested-externs -Wshadow -Wundef -Wmissing-declarations -Winline  -DCHECK_FUNCTION_EXISTS=fseeko -fdiagnostics-color=always -o CMakeFiles/cmTC_b5c93.dir/CheckFunctionExists.c.obj -c D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-xf3z4r/CheckFunctionExists.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "D:\\CLion\\CLion 2024.3.4\\bin\\mingw\\bin\\gcc.exe" -Wall -Wextra -Wstrict-prototypes -Wmissing-prototypes -Waggregate-return -Wcast-align -Wnested-externs -Wshadow -Wundef -Wmissing-declarations -Winline  -DCHECK_FUNCTION_EXISTS=fseeko  CMakeFiles/cmTC_b5c93.dir/CheckFunctionExists.c.obj -o cmTC_b5c93.exe -Wl,--out-implib,libcmTC_b5c93.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/CLion/CLion 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "D:/CLion/CLion 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckCSourceCompiles.cmake:52 (cmake_check_source_compiles)"
+      - "cmake-build-debug/_deps/flac-src/CMakeLists.txt:129 (check_c_source_compiles)"
+    checks:
+      - "Performing Test HAVE_BSWAP16"
+    directories:
+      source: "D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-kekjns"
+      binary: "D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-kekjns"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-Wall -Wextra -Wstrict-prototypes -Wmissing-prototypes -Waggregate-return -Wcast-align -Wnested-externs -Wshadow -Wundef -Wmissing-declarations -Winline "
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/MonkeyTyperProject/cmake-build-debug/_deps/sfml-src/cmake/Modules/;D:/MonkeyTyperProject/cmake-build-debug/_deps/flac-src/cmake"
+      CMAKE_OSX_DEPLOYMENT_TARGET: "13.0"
+    buildResult:
+      variable: "HAVE_BSWAP16"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-kekjns'
+        
+        Run Build Command(s): "D:/CLion/CLion 2024.3.4/bin/ninja/win/x64/ninja.exe" -v cmTC_585de
+        [1/2] "D:\\CLion\\CLion 2024.3.4\\bin\\mingw\\bin\\gcc.exe" -DHAVE_BSWAP16  -Wall -Wextra -Wstrict-prototypes -Wmissing-prototypes -Waggregate-return -Wcast-align -Wnested-externs -Wshadow -Wundef -Wmissing-declarations -Winline   -fdiagnostics-color=always -o CMakeFiles/cmTC_585de.dir/src.c.obj -c D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-kekjns/src.c
+        D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-kekjns/src.c:1:5: warning: function declaration isn't a prototype [-Wstrict-prototypes]
+            1 | int main() { return __builtin_bswap16 (0) ; }
+              |     ^~~~
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "D:\\CLion\\CLion 2024.3.4\\bin\\mingw\\bin\\gcc.exe" -Wall -Wextra -Wstrict-prototypes -Wmissing-prototypes -Waggregate-return -Wcast-align -Wnested-externs -Wshadow -Wundef -Wmissing-declarations -Winline  CMakeFiles/cmTC_585de.dir/src.c.obj -o cmTC_585de.exe -Wl,--out-implib,libcmTC_585de.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/CLion/CLion 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "D:/CLion/CLion 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckCSourceCompiles.cmake:52 (cmake_check_source_compiles)"
+      - "cmake-build-debug/_deps/flac-src/CMakeLists.txt:130 (check_c_source_compiles)"
+    checks:
+      - "Performing Test HAVE_BSWAP32"
+    directories:
+      source: "D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-kr71r6"
+      binary: "D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-kr71r6"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-Wall -Wextra -Wstrict-prototypes -Wmissing-prototypes -Waggregate-return -Wcast-align -Wnested-externs -Wshadow -Wundef -Wmissing-declarations -Winline "
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/MonkeyTyperProject/cmake-build-debug/_deps/sfml-src/cmake/Modules/;D:/MonkeyTyperProject/cmake-build-debug/_deps/flac-src/cmake"
+      CMAKE_OSX_DEPLOYMENT_TARGET: "13.0"
+    buildResult:
+      variable: "HAVE_BSWAP32"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-kr71r6'
+        
+        Run Build Command(s): "D:/CLion/CLion 2024.3.4/bin/ninja/win/x64/ninja.exe" -v cmTC_5b74c
+        [1/2] "D:\\CLion\\CLion 2024.3.4\\bin\\mingw\\bin\\gcc.exe" -DHAVE_BSWAP32  -Wall -Wextra -Wstrict-prototypes -Wmissing-prototypes -Waggregate-return -Wcast-align -Wnested-externs -Wshadow -Wundef -Wmissing-declarations -Winline   -fdiagnostics-color=always -o CMakeFiles/cmTC_5b74c.dir/src.c.obj -c D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-kr71r6/src.c
+        D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-kr71r6/src.c:1:5: warning: function declaration isn't a prototype [-Wstrict-prototypes]
+            1 | int main() { return __builtin_bswap32 (0) ; }
+              |     ^~~~
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "D:\\CLion\\CLion 2024.3.4\\bin\\mingw\\bin\\gcc.exe" -Wall -Wextra -Wstrict-prototypes -Wmissing-prototypes -Waggregate-return -Wcast-align -Wnested-externs -Wshadow -Wundef -Wmissing-declarations -Winline  CMakeFiles/cmTC_5b74c.dir/src.c.obj -o cmTC_5b74c.exe -Wl,--out-implib,libcmTC_5b74c.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/CLion/CLion 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "D:/CLion/CLion 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckCSourceCompiles.cmake:52 (cmake_check_source_compiles)"
+      - "cmake-build-debug/_deps/flac-src/CMakeLists.txt:131 (check_c_source_compiles)"
+    checks:
+      - "Performing Test HAVE_LANGINFO_CODESET"
+    directories:
+      source: "D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-7l37rz"
+      binary: "D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-7l37rz"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-Wall -Wextra -Wstrict-prototypes -Wmissing-prototypes -Waggregate-return -Wcast-align -Wnested-externs -Wshadow -Wundef -Wmissing-declarations -Winline "
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/MonkeyTyperProject/cmake-build-debug/_deps/sfml-src/cmake/Modules/;D:/MonkeyTyperProject/cmake-build-debug/_deps/flac-src/cmake"
+      CMAKE_OSX_DEPLOYMENT_TARGET: "13.0"
+    buildResult:
+      variable: "HAVE_LANGINFO_CODESET"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-7l37rz'
+        
+        Run Build Command(s): "D:/CLion/CLion 2024.3.4/bin/ninja/win/x64/ninja.exe" -v cmTC_5c7ba
+        [1/2] "D:\\CLion\\CLion 2024.3.4\\bin\\mingw\\bin\\gcc.exe" -DHAVE_LANGINFO_CODESET  -Wall -Wextra -Wstrict-prototypes -Wmissing-prototypes -Waggregate-return -Wcast-align -Wnested-externs -Wshadow -Wundef -Wmissing-declarations -Winline   -fdiagnostics-color=always -o CMakeFiles/cmTC_5c7ba.dir/src.c.obj -c D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-7l37rz/src.c
+        FAILED: CMakeFiles/cmTC_5c7ba.dir/src.c.obj 
+        "D:\\CLion\\CLion 2024.3.4\\bin\\mingw\\bin\\gcc.exe" -DHAVE_LANGINFO_CODESET  -Wall -Wextra -Wstrict-prototypes -Wmissing-prototypes -Waggregate-return -Wcast-align -Wnested-externs -Wshadow -Wundef -Wmissing-declarations -Winline   -fdiagnostics-color=always -o CMakeFiles/cmTC_5c7ba.dir/src.c.obj -c D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-7l37rz/src.c
+        D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-7l37rz/src.c:2:14: fatal error: langinfo.h: No such file or directory
+            2 |     #include <langinfo.h>
+              |              ^~~~~~~~~~~~
+        compilation terminated.\x0d
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/CLion/CLion 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "D:/CLion/CLion 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "D:/CLion/CLion 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckCCompilerFlag.cmake:51 (cmake_check_compiler_flag)"
+      - "cmake-build-debug/_deps/flac-src/CMakeLists.txt:142 (check_c_compiler_flag)"
+    checks:
+      - "Performing Test HAVE_WERROR_FLAG"
+    directories:
+      source: "D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-vsx1tg"
+      binary: "D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-vsx1tg"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-Wall -Wextra -Wstrict-prototypes -Wmissing-prototypes -Waggregate-return -Wcast-align -Wnested-externs -Wshadow -Wundef -Wmissing-declarations -Winline "
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/MonkeyTyperProject/cmake-build-debug/_deps/sfml-src/cmake/Modules/;D:/MonkeyTyperProject/cmake-build-debug/_deps/flac-src/cmake"
+      CMAKE_OSX_DEPLOYMENT_TARGET: "13.0"
+    buildResult:
+      variable: "HAVE_WERROR_FLAG"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-vsx1tg'
+        
+        Run Build Command(s): "D:/CLion/CLion 2024.3.4/bin/ninja/win/x64/ninja.exe" -v cmTC_1cef8
+        [1/2] "D:\\CLion\\CLion 2024.3.4\\bin\\mingw\\bin\\gcc.exe" -DHAVE_WERROR_FLAG  -Wall -Wextra -Wstrict-prototypes -Wmissing-prototypes -Waggregate-return -Wcast-align -Wnested-externs -Wshadow -Wundef -Wmissing-declarations -Winline   -fdiagnostics-color=always   -Werror -o CMakeFiles/cmTC_1cef8.dir/src.c.obj -c D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-vsx1tg/src.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "D:\\CLion\\CLion 2024.3.4\\bin\\mingw\\bin\\gcc.exe" -Wall -Wextra -Wstrict-prototypes -Wmissing-prototypes -Waggregate-return -Wcast-align -Wnested-externs -Wshadow -Wundef -Wmissing-declarations -Winline  CMakeFiles/cmTC_1cef8.dir/src.c.obj -o cmTC_1cef8.exe -Wl,--out-implib,libcmTC_1cef8.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/CLion/CLion 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "D:/CLion/CLion 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "D:/CLion/CLion 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckCCompilerFlag.cmake:51 (cmake_check_compiler_flag)"
+      - "cmake-build-debug/_deps/flac-src/CMakeLists.txt:143 (check_c_compiler_flag)"
+    checks:
+      - "Performing Test HAVE_DECL_AFTER_STMT_FLAG"
+    directories:
+      source: "D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-aexe4q"
+      binary: "D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-aexe4q"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-Wall -Wextra -Wstrict-prototypes -Wmissing-prototypes -Waggregate-return -Wcast-align -Wnested-externs -Wshadow -Wundef -Wmissing-declarations -Winline "
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/MonkeyTyperProject/cmake-build-debug/_deps/sfml-src/cmake/Modules/;D:/MonkeyTyperProject/cmake-build-debug/_deps/flac-src/cmake"
+      CMAKE_OSX_DEPLOYMENT_TARGET: "13.0"
+    buildResult:
+      variable: "HAVE_DECL_AFTER_STMT_FLAG"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-aexe4q'
+        
+        Run Build Command(s): "D:/CLion/CLion 2024.3.4/bin/ninja/win/x64/ninja.exe" -v cmTC_ef7e8
+        [1/2] "D:\\CLion\\CLion 2024.3.4\\bin\\mingw\\bin\\gcc.exe" -DHAVE_DECL_AFTER_STMT_FLAG  -Wall -Wextra -Wstrict-prototypes -Wmissing-prototypes -Waggregate-return -Wcast-align -Wnested-externs -Wshadow -Wundef -Wmissing-declarations -Winline   -fdiagnostics-color=always   -Wdeclaration-after-statement -o CMakeFiles/cmTC_ef7e8.dir/src.c.obj -c D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-aexe4q/src.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "D:\\CLion\\CLion 2024.3.4\\bin\\mingw\\bin\\gcc.exe" -Wall -Wextra -Wstrict-prototypes -Wmissing-prototypes -Waggregate-return -Wcast-align -Wnested-externs -Wshadow -Wundef -Wmissing-declarations -Winline  CMakeFiles/cmTC_ef7e8.dir/src.c.obj -o cmTC_ef7e8.exe -Wl,--out-implib,libcmTC_ef7e8.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/CLion/CLion 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "D:/CLion/CLion 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "D:/CLion/CLion 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckCCompilerFlag.cmake:51 (cmake_check_compiler_flag)"
+      - "cmake-build-debug/_deps/flac-src/CMakeLists.txt:144 (check_c_compiler_flag)"
+    checks:
+      - "Performing Test HAVE_STACKREALIGN_FLAG"
+    directories:
+      source: "D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-jvo9xz"
+      binary: "D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-jvo9xz"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-Wall -Wextra -Wstrict-prototypes -Wmissing-prototypes -Waggregate-return -Wcast-align -Wnested-externs -Wshadow -Wundef -Wmissing-declarations -Winline "
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/MonkeyTyperProject/cmake-build-debug/_deps/sfml-src/cmake/Modules/;D:/MonkeyTyperProject/cmake-build-debug/_deps/flac-src/cmake"
+      CMAKE_OSX_DEPLOYMENT_TARGET: "13.0"
+    buildResult:
+      variable: "HAVE_STACKREALIGN_FLAG"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-jvo9xz'
+        
+        Run Build Command(s): "D:/CLion/CLion 2024.3.4/bin/ninja/win/x64/ninja.exe" -v cmTC_83fc1
+        [1/2] "D:\\CLion\\CLion 2024.3.4\\bin\\mingw\\bin\\gcc.exe" -DHAVE_STACKREALIGN_FLAG  -Wall -Wextra -Wstrict-prototypes -Wmissing-prototypes -Waggregate-return -Wcast-align -Wnested-externs -Wshadow -Wundef -Wmissing-declarations -Winline   -fdiagnostics-color=always   -mstackrealign -o CMakeFiles/cmTC_83fc1.dir/src.c.obj -c D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-jvo9xz/src.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "D:\\CLion\\CLion 2024.3.4\\bin\\mingw\\bin\\gcc.exe" -Wall -Wextra -Wstrict-prototypes -Wmissing-prototypes -Waggregate-return -Wcast-align -Wnested-externs -Wshadow -Wundef -Wmissing-declarations -Winline  CMakeFiles/cmTC_83fc1.dir/src.c.obj -o cmTC_83fc1.exe -Wl,--out-implib,libcmTC_83fc1.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/CLion/CLion 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "D:/CLion/CLion 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "D:/CLion/CLion 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckCXXCompilerFlag.cmake:34 (cmake_check_compiler_flag)"
+      - "cmake-build-debug/_deps/flac-src/CMakeLists.txt:145 (check_cxx_compiler_flag)"
+    checks:
+      - "Performing Test HAVE_WEFFCXX_FLAG"
+    directories:
+      source: "D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-bkb3su"
+      binary: "D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-bkb3su"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: "-Wall -Wextra -Wcast-align -Wshadow -Wwrite-strings -Wctor-dtor-privacy -Wnon-virtual-dtor -Wreorder -Wsign-promo -Wundef "
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/MonkeyTyperProject/cmake-build-debug/_deps/sfml-src/cmake/Modules/;D:/MonkeyTyperProject/cmake-build-debug/_deps/flac-src/cmake"
+      CMAKE_OSX_DEPLOYMENT_TARGET: "13.0"
+    buildResult:
+      variable: "HAVE_WEFFCXX_FLAG"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-bkb3su'
+        
+        Run Build Command(s): "D:/CLion/CLion 2024.3.4/bin/ninja/win/x64/ninja.exe" -v cmTC_172b5
+        [1/2] "D:\\CLion\\CLion 2024.3.4\\bin\\mingw\\bin\\g++.exe" -DHAVE_WEFFCXX_FLAG  -Wall -Wextra -Wcast-align -Wshadow -Wwrite-strings -Wctor-dtor-privacy -Wnon-virtual-dtor -Wreorder -Wsign-promo -Wundef   -std=gnu++20 -fdiagnostics-color=always   -Weffc++ -o CMakeFiles/cmTC_172b5.dir/src.cxx.obj -c D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-bkb3su/src.cxx
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "D:\\CLion\\CLion 2024.3.4\\bin\\mingw\\bin\\g++.exe" -Wall -Wextra -Wcast-align -Wshadow -Wwrite-strings -Wctor-dtor-privacy -Wnon-virtual-dtor -Wreorder -Wsign-promo -Wundef  CMakeFiles/cmTC_172b5.dir/src.cxx.obj -o cmTC_172b5.exe -Wl,--out-implib,libcmTC_172b5.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/CLion/CLion 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckIncludeFile.cmake:90 (try_compile)"
+      - "cmake-build-debug/_deps/flac-src/src/libFLAC/CMakeLists.txt:3 (check_include_file)"
+    checks:
+      - "Looking for cpuid.h"
+    directories:
+      source: "D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-f7i26h"
+      binary: "D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-f7i26h"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-Wall -Wextra -Wstrict-prototypes -Wmissing-prototypes -Waggregate-return -Wcast-align -Wnested-externs -Wshadow -Wundef -Wmissing-declarations -Winline "
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/MonkeyTyperProject/cmake-build-debug/_deps/sfml-src/cmake/Modules/;D:/MonkeyTyperProject/cmake-build-debug/_deps/flac-src/cmake"
+      CMAKE_OSX_DEPLOYMENT_TARGET: "13.0"
+    buildResult:
+      variable: "HAVE_CPUID_H"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-f7i26h'
+        
+        Run Build Command(s): "D:/CLion/CLion 2024.3.4/bin/ninja/win/x64/ninja.exe" -v cmTC_d5d56
+        [1/2] "D:\\CLion\\CLion 2024.3.4\\bin\\mingw\\bin\\gcc.exe"   -Wall -Wextra -Wstrict-prototypes -Wmissing-prototypes -Waggregate-return -Wcast-align -Wnested-externs -Wshadow -Wundef -Wmissing-declarations -Winline   -fdiagnostics-color=always -o CMakeFiles/cmTC_d5d56.dir/CheckIncludeFile.c.obj -c D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-f7i26h/CheckIncludeFile.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "D:\\CLion\\CLion 2024.3.4\\bin\\mingw\\bin\\gcc.exe" -Wall -Wextra -Wstrict-prototypes -Wmissing-prototypes -Waggregate-return -Wcast-align -Wnested-externs -Wshadow -Wundef -Wmissing-declarations -Winline  CMakeFiles/cmTC_d5d56.dir/CheckIncludeFile.c.obj -o cmTC_d5d56.exe -Wl,--out-implib,libcmTC_d5d56.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/CLion/CLion 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckIncludeFile.cmake:90 (try_compile)"
+      - "cmake-build-debug/_deps/flac-src/src/libFLAC/CMakeLists.txt:4 (check_include_file)"
+    checks:
+      - "Looking for sys/param.h"
+    directories:
+      source: "D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-210tpv"
+      binary: "D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-210tpv"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-Wall -Wextra -Wstrict-prototypes -Wmissing-prototypes -Waggregate-return -Wcast-align -Wnested-externs -Wshadow -Wundef -Wmissing-declarations -Winline "
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/MonkeyTyperProject/cmake-build-debug/_deps/sfml-src/cmake/Modules/;D:/MonkeyTyperProject/cmake-build-debug/_deps/flac-src/cmake"
+      CMAKE_OSX_DEPLOYMENT_TARGET: "13.0"
+    buildResult:
+      variable: "HAVE_SYS_PARAM_H"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-210tpv'
+        
+        Run Build Command(s): "D:/CLion/CLion 2024.3.4/bin/ninja/win/x64/ninja.exe" -v cmTC_1d95f
+        [1/2] "D:\\CLion\\CLion 2024.3.4\\bin\\mingw\\bin\\gcc.exe"   -Wall -Wextra -Wstrict-prototypes -Wmissing-prototypes -Waggregate-return -Wcast-align -Wnested-externs -Wshadow -Wundef -Wmissing-declarations -Winline   -fdiagnostics-color=always -o CMakeFiles/cmTC_1d95f.dir/CheckIncludeFile.c.obj -c D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-210tpv/CheckIncludeFile.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "D:\\CLion\\CLion 2024.3.4\\bin\\mingw\\bin\\gcc.exe" -Wall -Wextra -Wstrict-prototypes -Wmissing-prototypes -Waggregate-return -Wcast-align -Wnested-externs -Wshadow -Wundef -Wmissing-declarations -Winline  CMakeFiles/cmTC_1d95f.dir/CheckIncludeFile.c.obj -o cmTC_1d95f.exe -Wl,--out-implib,libcmTC_1d95f.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/CLion/CLion 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckFunctionExists.cmake:86 (try_compile)"
+      - "cmake-build-debug/_deps/flac-src/src/libFLAC/CMakeLists.txt:7 (check_function_exists)"
+    checks:
+      - "Looking for lround"
+    directories:
+      source: "D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-qaqwim"
+      binary: "D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-qaqwim"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-Wall -Wextra -Wstrict-prototypes -Wmissing-prototypes -Waggregate-return -Wcast-align -Wnested-externs -Wshadow -Wundef -Wmissing-declarations -Winline "
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/MonkeyTyperProject/cmake-build-debug/_deps/sfml-src/cmake/Modules/;D:/MonkeyTyperProject/cmake-build-debug/_deps/flac-src/cmake"
+      CMAKE_OSX_DEPLOYMENT_TARGET: "13.0"
+    buildResult:
+      variable: "HAVE_LROUND"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-qaqwim'
+        
+        Run Build Command(s): "D:/CLion/CLion 2024.3.4/bin/ninja/win/x64/ninja.exe" -v cmTC_a6ee7
+        [1/2] "D:\\CLion\\CLion 2024.3.4\\bin\\mingw\\bin\\gcc.exe"   -Wall -Wextra -Wstrict-prototypes -Wmissing-prototypes -Waggregate-return -Wcast-align -Wnested-externs -Wshadow -Wundef -Wmissing-declarations -Winline  -DCHECK_FUNCTION_EXISTS=lround -fdiagnostics-color=always -o CMakeFiles/cmTC_a6ee7.dir/CheckFunctionExists.c.obj -c D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-qaqwim/CheckFunctionExists.c
+        <command-line>: warning: conflicting types for built-in function 'lround'; expected 'long int(double)' [-Wbuiltin-declaration-mismatch]
+        D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-qaqwim/CheckFunctionExists.c:7:3: note: in expansion of macro 'CHECK_FUNCTION_EXISTS'
+            7 |   CHECK_FUNCTION_EXISTS(void);
+              |   ^~~~~~~~~~~~~~~~~~~~~
+        D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-qaqwim/CheckFunctionExists.c:1:1: note: 'lround' is declared in header '<math.h>'
+          +++ |+#include <math.h>
+            1 | #ifdef CHECK_FUNCTION_EXISTS
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "D:\\CLion\\CLion 2024.3.4\\bin\\mingw\\bin\\gcc.exe" -Wall -Wextra -Wstrict-prototypes -Wmissing-prototypes -Waggregate-return -Wcast-align -Wnested-externs -Wshadow -Wundef -Wmissing-declarations -Winline  -DCHECK_FUNCTION_EXISTS=lround  CMakeFiles/cmTC_a6ee7.dir/CheckFunctionExists.c.obj -o cmTC_a6ee7.exe -Wl,--out-implib,libcmTC_a6ee7.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lm  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "cmake-build-debug/_deps/flac-src/cmake/CheckCPUArch.cmake:6 (try_compile)"
+      - "cmake-build-debug/_deps/flac-src/cmake/CheckCPUArch.cmake:18 (_CHECK_CPU_ARCH)"
+      - "cmake-build-debug/_deps/flac-src/src/libFLAC/CMakeLists.txt:13 (check_cpu_arch_x64)"
+    directories:
+      source: "D:/MonkeyTyperProject/cmake-build-debug/_deps/flac-build/CMakeFiles/CMakeTmp"
+      binary: "D:/MonkeyTyperProject/cmake-build-debug/_deps/flac-build/CMakeFiles/CMakeTmp"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-Wall -Wextra -Wstrict-prototypes -Wmissing-prototypes -Waggregate-return -Wcast-align -Wnested-externs -Wshadow -Wundef -Wmissing-declarations -Winline "
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/MonkeyTyperProject/cmake-build-debug/_deps/sfml-src/cmake/Modules/;D:/MonkeyTyperProject/cmake-build-debug/_deps/flac-src/cmake"
+      CMAKE_OSX_DEPLOYMENT_TARGET: "13.0"
+    buildResult:
+      variable: "HAVE_FLAC__CPU_X86_64"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/MonkeyTyperProject/cmake-build-debug/_deps/flac-build/CMakeFiles/CMakeTmp'
+        
+        Run Build Command(s): "D:/CLion/CLion 2024.3.4/bin/ninja/win/x64/ninja.exe" -v cmTC_c01c6
+        [1/2] "D:\\CLion\\CLion 2024.3.4\\bin\\mingw\\bin\\gcc.exe"   -Wall -Wextra -Wstrict-prototypes -Wmissing-prototypes -Waggregate-return -Wcast-align -Wnested-externs -Wshadow -Wundef -Wmissing-declarations -Winline   -fdiagnostics-color=always -o CMakeFiles/cmTC_c01c6.dir/CheckCPUArch.c.obj -c D:/MonkeyTyperProject/cmake-build-debug/_deps/flac-build/CMakeFiles/CMakeTmp/CheckCPUArch.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "D:\\CLion\\CLion 2024.3.4\\bin\\mingw\\bin\\gcc.exe" -Wall -Wextra -Wstrict-prototypes -Wmissing-prototypes -Waggregate-return -Wcast-align -Wnested-externs -Wshadow -Wundef -Wmissing-declarations -Winline  CMakeFiles/cmTC_c01c6.dir/CheckCPUArch.c.obj -o cmTC_c01c6.exe -Wl,--out-implib,libcmTC_c01c6.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/CLion/CLion 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "D:/CLion/CLion 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "D:/CLion/CLion 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckCCompilerFlag.cmake:51 (cmake_check_compiler_flag)"
+      - "cmake-build-debug/_deps/flac-src/src/libFLAC/CMakeLists.txt:101 (check_c_compiler_flag)"
+    checks:
+      - "Performing Test HAVE_ASSOC_MATH"
+    directories:
+      source: "D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-snbzlb"
+      binary: "D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-snbzlb"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-Wall -Wextra -Wstrict-prototypes -Wmissing-prototypes -Waggregate-return -Wcast-align -Wnested-externs -Wshadow -Wundef -Wmissing-declarations -Winline "
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/MonkeyTyperProject/cmake-build-debug/_deps/sfml-src/cmake/Modules/;D:/MonkeyTyperProject/cmake-build-debug/_deps/flac-src/cmake"
+      CMAKE_OSX_DEPLOYMENT_TARGET: "13.0"
+    buildResult:
+      variable: "HAVE_ASSOC_MATH"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-snbzlb'
+        
+        Run Build Command(s): "D:/CLion/CLion 2024.3.4/bin/ninja/win/x64/ninja.exe" -v cmTC_bd3fc
+        [1/2] "D:\\CLion\\CLion 2024.3.4\\bin\\mingw\\bin\\gcc.exe" -DHAVE_ASSOC_MATH  -Wall -Wextra -Wstrict-prototypes -Wmissing-prototypes -Waggregate-return -Wcast-align -Wnested-externs -Wshadow -Wundef -Wmissing-declarations -Winline   -fdiagnostics-color=always   -fassociative-math -fno-signed-zeros -fno-trapping-math -freciprocal-math -o CMakeFiles/cmTC_bd3fc.dir/src.c.obj -c D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-snbzlb/src.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "D:\\CLion\\CLion 2024.3.4\\bin\\mingw\\bin\\gcc.exe" -Wall -Wextra -Wstrict-prototypes -Wmissing-prototypes -Waggregate-return -Wcast-align -Wnested-externs -Wshadow -Wundef -Wmissing-declarations -Winline  CMakeFiles/cmTC_bd3fc.dir/src.c.obj -o cmTC_bd3fc.exe -Wl,--out-implib,libcmTC_bd3fc.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lm  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/CLion/CLion 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckFunctionExists.cmake:86 (try_compile)"
+      - "cmake-build-debug/_deps/flac-src/microbench/CMakeLists.txt:6 (check_function_exists)"
+    checks:
+      - "Looking for clock_gettime"
+    directories:
+      source: "D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-svq21k"
+      binary: "D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-svq21k"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-Wall -Wextra -Wstrict-prototypes -Wmissing-prototypes -Waggregate-return -Wcast-align -Wnested-externs -Wshadow -Wundef -Wmissing-declarations -Winline "
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/MonkeyTyperProject/cmake-build-debug/_deps/sfml-src/cmake/Modules/;D:/MonkeyTyperProject/cmake-build-debug/_deps/flac-src/cmake"
+      CMAKE_OSX_DEPLOYMENT_TARGET: "13.0"
+    buildResult:
+      variable: "HAVE_CLOCK_GETTIME"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-svq21k'
+        
+        Run Build Command(s): "D:/CLion/CLion 2024.3.4/bin/ninja/win/x64/ninja.exe" -v cmTC_d72e5
+        [1/2] "D:\\CLion\\CLion 2024.3.4\\bin\\mingw\\bin\\gcc.exe"   -Wall -Wextra -Wstrict-prototypes -Wmissing-prototypes -Waggregate-return -Wcast-align -Wnested-externs -Wshadow -Wundef -Wmissing-declarations -Winline  -DCHECK_FUNCTION_EXISTS=clock_gettime -fdiagnostics-color=always -o CMakeFiles/cmTC_d72e5.dir/CheckFunctionExists.c.obj -c D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-svq21k/CheckFunctionExists.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "D:\\CLion\\CLion 2024.3.4\\bin\\mingw\\bin\\gcc.exe" -Wall -Wextra -Wstrict-prototypes -Wmissing-prototypes -Waggregate-return -Wcast-align -Wnested-externs -Wshadow -Wundef -Wmissing-declarations -Winline  -DCHECK_FUNCTION_EXISTS=clock_gettime  CMakeFiles/cmTC_d72e5.dir/CheckFunctionExists.c.obj -o cmTC_d72e5.exe -Wl,--out-implib,libcmTC_d72e5.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lrt  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        FAILED: cmTC_d72e5.exe 
+        C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "D:\\CLion\\CLion 2024.3.4\\bin\\mingw\\bin\\gcc.exe" -Wall -Wextra -Wstrict-prototypes -Wmissing-prototypes -Waggregate-return -Wcast-align -Wnested-externs -Wshadow -Wundef -Wmissing-declarations -Winline  -DCHECK_FUNCTION_EXISTS=clock_gettime  CMakeFiles/cmTC_d72e5.dir/CheckFunctionExists.c.obj -o cmTC_d72e5.exe -Wl,--out-implib,libcmTC_d72e5.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lrt  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        D:\\CLion\\CLion 2024.3.4\\bin\\mingw\\bin/ld.exe: cannot find -lrt: No such file or directory\x0d
+        collect2.exe: error: ld returned 1 exit status
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/CLion/CLion 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckLibraryExists.cmake:69 (try_compile)"
+      - "cmake-build-debug/_deps/vorbis-src/CMakeLists.txt:62 (check_library_exists)"
+    checks:
+      - "Looking for floor in m"
+    directories:
+      source: "D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-9u0h01"
+      binary: "D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-9u0h01"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/MonkeyTyperProject/cmake-build-debug/_deps/sfml-src/cmake/Modules/;D:/MonkeyTyperProject/cmake-build-debug/_deps/vorbis-src/cmake"
+      CMAKE_OSX_DEPLOYMENT_TARGET: "13.0"
+    buildResult:
+      variable: "HAVE_LIBM"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-9u0h01'
+        
+        Run Build Command(s): "D:/CLion/CLion 2024.3.4/bin/ninja/win/x64/ninja.exe" -v cmTC_dd28c
+        [1/2] "D:\\CLion\\CLion 2024.3.4\\bin\\mingw\\bin\\gcc.exe"   -DCHECK_FUNCTION_EXISTS=floor -fdiagnostics-color=always -o CMakeFiles/cmTC_dd28c.dir/CheckFunctionExists.c.obj -c D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-9u0h01/CheckFunctionExists.c
+        <command-line>: warning: conflicting types for built-in function 'floor'; expected 'double(double)' [-Wbuiltin-declaration-mismatch]
+        D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-9u0h01/CheckFunctionExists.c:7:3: note: in expansion of macro 'CHECK_FUNCTION_EXISTS'
+            7 |   CHECK_FUNCTION_EXISTS(void);
+              |   ^~~~~~~~~~~~~~~~~~~~~
+        D:/MonkeyTyperProject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-9u0h01/CheckFunctionExists.c:1:1: note: 'floor' is declared in header '<math.h>'
+          +++ |+#include <math.h>
+            1 | #ifdef CHECK_FUNCTION_EXISTS
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "D:\\CLion\\CLion 2024.3.4\\bin\\mingw\\bin\\gcc.exe" -DCHECK_FUNCTION_EXISTS=floor  CMakeFiles/cmTC_dd28c.dir/CheckFunctionExists.c.obj -o cmTC_dd28c.exe -Wl,--out-implib,libcmTC_dd28c.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lm  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        
+      exitCode: 0
+...

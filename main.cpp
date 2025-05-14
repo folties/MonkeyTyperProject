@@ -1,6 +1,7 @@
-#include <iostream>
+#include "Logic.h"
+
 
 int main() {
-    std::cout << "test" << std::endl;
-    return 0;
+    Logic game;
+    game.run();
 }
