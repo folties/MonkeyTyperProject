@@ -33,6 +33,22 @@ add_executable(MonkeyTyperProject
         Preview.cpp
         Preview.h
         Resources.cpp
-        Resources.h)
+        Resources.h
+        GameEnd.cpp
+        GameEnd.h
+        GameMenu.cpp
+        GameMenu.h
+        Instruction.cpp
+        Instruction.h
+        Panel.cpp
+        Panel.h
+        Scores.cpp
+        Scores.h
+        Shortcut.cpp
+        Shortcut.h
+        Typing.cpp
+        Typing.h
+        Word.cpp
+        Word.h)
 
 target_link_libraries(MonkeyTyperProject PRIVATE SFML::Graphics SFML::Audio fmt)

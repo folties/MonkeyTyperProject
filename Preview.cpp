@@ -21,71 +21,107 @@ Preview::Preview(const sf::Vector2u& windowSize) :
     setupElements(windowSize);
 }
 
+auto Preview::processMouseClick(const sf::Vector2f& mousePos) -> void {
+    if (fontLeftArrow.getGlobalBounds().contains(mousePos)) {
+        fontIndex = (fontIndex - 1 + fontOptions.size()) % fontOptions.size();
+        fontValueText.setString(fontOptions[fontIndex]);
+        centerText(fontValueText, sf::Vector2f(previewPanel.getPosition().x * 0.63f, previewPanel.getPosition().y * 0.63f));
+    }
+    if (fontRightArrow.getGlobalBounds().contains(mousePos)) {
+        fontIndex = (fontIndex + 1) % fontOptions.size();
+        fontValueText.setString(fontOptions[fontIndex]);
+        centerText(fontValueText, sf::Vector2f(previewPanel.getPosition().x * 0.63f, previewPanel.getPosition().y * 0.63f));
+    }
+
+    if (difficultyLeftArrow.getGlobalBounds().contains(mousePos)) {
+        difficultyIndex = (difficultyIndex - 1 + difficultyOptions.size()) % difficultyOptions.size();
+        difficultyValueText.setString(difficultyOptions[difficultyIndex]);
+        centerText(difficultyValueText, sf::Vector2f(previewPanel.getPosition().x * 0.995f, previewPanel.getPosition().y * 0.63f));
+    }
+    if (difficultyRightArrow.getGlobalBounds().contains(mousePos)) {
+        difficultyIndex = (difficultyIndex + 1) % difficultyOptions.size();
+        difficultyValueText.setString(difficultyOptions[difficultyIndex]);
+        centerText(difficultyValueText, sf::Vector2f(previewPanel.getPosition().x * 0.995f, previewPanel.getPosition().y * 0.63f));
+    }
+
+    if (topicLeftArrow.getGlobalBounds().contains(mousePos)) {
+        topicIndex = (topicIndex - 1 + topicOptions.size()) % topicOptions.size();
+        topicValueText.setString(topicOptions[topicIndex]);
+        centerText(topicValueText, sf::Vector2f(previewPanel.getPosition().x * 1.35f, previewPanel.getPosition().y * 0.63f));
+    }
+    if (topicRightArrow.getGlobalBounds().contains(mousePos)) {
+        topicIndex = (topicIndex + 1) % topicOptions.size();
+        topicValueText.setString(topicOptions[topicIndex]);
+        centerText(topicValueText, sf::Vector2f(previewPanel.getPosition().x * 1.35f, previewPanel.getPosition().y * 0.63f));
+    }
+}
+
 auto Preview::setupElements(const sf::Vector2u& windowSize) -> void {
-    previewPanel.setSize(sf::Vector2f(windowSize.x * 0.7f, windowSize.y * 0.7f));
-    previewPanel.setFillColor(sf::Color(180, 180, 180));
+    previewPanel.setSize(sf::Vector2f(windowSize.x * 0.7f , windowSize.y * 0.7f ));
+    previewPanel.setFillColor(sf::Color(120, 120, 120));
     previewPanel.setOutlineColor(sf::Color(0,0,100));
     previewPanel.setOutlineThickness(5.f);
+    previewPanel.setOrigin(previewPanel.getSize() / 2.f);
     previewPanel.setPosition(sf::Vector2f(windowSize.x / 2.f, windowSize.y / 2.f));
 
-    startButton.setSize(sf::Vector2f(280.f, 90.f));
+    startButton.setSize(sf::Vector2f(windowSize.x * 0.15f, windowSize.y * 0.06f));
     startButton.setFillColor(sf::Color(0, 0, 90));
     startButton.setOutlineColor(sf::Color::White);
     startButton.setOutlineThickness(3.f);
     startButton.setOrigin(startButton.getSize() / 2.f);
-    startButton.setPosition(sf::Vector2f(previewPanel.getPosition().x * 0.5f, previewPanel.getPosition().y * 0.5f));
+    startButton.setPosition(sf::Vector2f(previewPanel.getPosition().x , previewPanel.getPosition().y * 1.1f));
 
     // Scores button setup
-    scoresButton.setSize(sf::Vector2f(200.f, 50.f));
+    scoresButton.setSize(sf::Vector2f(windowSize.x * 0.15f, windowSize.y * 0.06f));
     scoresButton.setFillColor(sf::Color(0, 0, 60));
     scoresButton.setOutlineColor(sf::Color::White);
     scoresButton.setOutlineThickness(3.f);
     scoresButton.setOrigin(scoresButton.getSize() / 2.f);
-    scoresButton.setPosition(sf::Vector2f(previewPanel.getPosition().x * 0.3f, previewPanel.getPosition().y * 0.3f));
+    scoresButton.setPosition(sf::Vector2f(previewPanel.getPosition().x, previewPanel.getPosition().y * 1.3f));
 
-    instructionButton.setSize(sf::Vector2f(200.f, 50.f));
+    instructionButton.setSize(sf::Vector2f(windowSize.x * 0.15f, windowSize.y * 0.06f));
     instructionButton.setFillColor(sf::Color(0, 0, 60));
     instructionButton.setOutlineColor(sf::Color::White);
     instructionButton.setOutlineThickness(3.f);
-    instructionButton.setOrigin(scoresButton.getSize() / 2.f);
-    instructionButton.setPosition(sf::Vector2f(previewPanel.getPosition().x * 0.4f, previewPanel.getPosition().y * 0.4f));
+    instructionButton.setOrigin(instructionButton.getSize() / 2.f);
+    instructionButton.setPosition(sf::Vector2f(previewPanel.getPosition().x, previewPanel.getPosition().y * 1.5f));
 
     auto setupText = [&](sf::Text &text, const std::string& string, sf::Vector2f position) -> void {
         text.setString(string);
-        text.setCharacterSize(previewPanel.getSize().x * 0.3);
+        text.setCharacterSize(previewPanel.getSize().x * 0.02);
         text.setFillColor(sf::Color::White);
         text.setPosition(position);
     };
 
-    setupText(startText, "Start New Game", sf::Vector2f(previewPanel.getPosition().x * 0.5f, previewPanel.getPosition().y * 0.5f));
-    setupText(scoresText, "Best Results", sf::Vector2f(previewPanel.getPosition().x * 0.5f, previewPanel.getPosition().y * 0.5f));
-    setupText(instructionText, "Instruction", sf::Vector2f(previewPanel.getPosition().x * 0.5f, previewPanel.getPosition().y * 0.5f));
+    setupText(startText, "New Game", sf::Vector2f(previewPanel.getPosition().x * 0.945f, previewPanel.getPosition().y * 1.07f));
+    setupText(scoresText, "Best Results", sf::Vector2f(previewPanel.getPosition().x * 0.925f, previewPanel.getPosition().y * 1.27f));
+    setupText(instructionText, "Instruction", sf::Vector2f(previewPanel.getPosition().x * 0.925f, previewPanel.getPosition().y * 1.47f));
 
-    setupText(fontText, "Font", sf::Vector2f(previewPanel.getPosition().x * 0.5f, previewPanel.getPosition().y * 0.5f));
-    setupText(fontValueText, fontOptions[fontIndex], sf::Vector2f(previewPanel.getPosition().x * 0.5f, previewPanel.getPosition().y * 0.5f));
+    setupText(fontText, "Font", sf::Vector2f(previewPanel.getPosition().x * 0.6f, previewPanel.getPosition().y * 0.5f));
+    setupText(fontValueText, fontOptions[fontIndex], sf::Vector2f(previewPanel.getPosition().x * 0.6f, previewPanel.getPosition().y * 0.605f));
 
-    setupText(difficultyText, "Difficulty", sf::Vector2f(previewPanel.getPosition().x * 0.5f, previewPanel.getPosition().y * 0.5f));
-    setupText(difficultyValueText, difficultyOptions[difficultyIndex], sf::Vector2f(previewPanel.getPosition().x * 0.5f, previewPanel.getPosition().y * 0.5f));
+    setupText(difficultyText, "Difficulty", sf::Vector2f(previewPanel.getPosition().x * 0.925f, previewPanel.getPosition().y * 0.5f));
+    setupText(difficultyValueText, difficultyOptions[difficultyIndex], sf::Vector2f(previewPanel.getPosition().x * 0.97f, previewPanel.getPosition().y * 0.605f));
 
-    setupText(topicText, "Topic", sf::Vector2f(previewPanel.getPosition().x * 0.5f, previewPanel.getPosition().y * 0.5f));
-    setupText(topicValueText, topicOptions[topicIndex], sf::Vector2f(previewPanel.getPosition().x * 0.5f, previewPanel.getPosition().y * 0.5f));
+    setupText(topicText, "Topic", sf::Vector2f(previewPanel.getPosition().x * 1.31f, previewPanel.getPosition().y * 0.5f));
+    setupText(topicValueText, topicOptions[topicIndex], sf::Vector2f(previewPanel.getPosition().x * 1.3f, previewPanel.getPosition().y * 0.605f));
 
 
     auto setupArrowText = [&](sf::Text& arrow, const std::string& string, sf::Vector2f position) -> void {
         arrow.setString(string);
-        arrow.setCharacterSize(previewPanel.getSize().x * 0.2);
+        arrow.setCharacterSize(previewPanel.getSize().x * 0.025);
         arrow.setFillColor(sf::Color::Black);
         arrow.setPosition(position);
     };
 
-    setupArrowText(fontLeftArrow, "x", sf::Vector2f(previewPanel.getPosition().x * 0.5f, previewPanel.getPosition().y * 0.5f));
-    setupArrowText(fontRightArrow, "x", sf::Vector2f(previewPanel.getPosition().x * 0.5f, previewPanel.getPosition().y * 0.5f));
+    setupArrowText(fontLeftArrow, "x", sf::Vector2f(previewPanel.getPosition().x * 0.545f, previewPanel.getPosition().y * 0.6f));
+    setupArrowText(fontRightArrow, "x", sf::Vector2f(previewPanel.getPosition().x * 0.7f, previewPanel.getPosition().y * 0.6f));
 
-    setupArrowText(difficultyLeftArrow, "x", sf::Vector2f(previewPanel.getPosition().x * 0.5f, previewPanel.getPosition().y * 0.5f));
-    setupArrowText(difficultyRightArrow, "x", sf::Vector2f(previewPanel.getPosition().x * 0.5f, previewPanel.getPosition().y * 0.5f));
+    setupArrowText(difficultyLeftArrow, "x", sf::Vector2f(previewPanel.getPosition().x * 0.92f, previewPanel.getPosition().y * 0.6f));
+    setupArrowText(difficultyRightArrow, "x", sf::Vector2f(previewPanel.getPosition().x * 1.05f, previewPanel.getPosition().y * 0.6f));
 
-    setupArrowText(topicLeftArrow, "x", sf::Vector2f(previewPanel.getPosition().x * 0.5f, previewPanel.getPosition().y * 0.5f));
-    setupArrowText(topicRightArrow, "x", sf::Vector2f(previewPanel.getPosition().x * 0.5f, previewPanel.getPosition().y * 0.5f));
+    setupArrowText(topicLeftArrow, "x", sf::Vector2f(previewPanel.getPosition().x * 1.25f, previewPanel.getPosition().y * 0.6f));
+    setupArrowText(topicRightArrow, "x", sf::Vector2f(previewPanel.getPosition().x * 1.425f, previewPanel.getPosition().y * 0.6f));
 
 }
 
@@ -111,3 +147,30 @@ auto Preview::render(sf::RenderWindow& window) -> void {
     window.draw(topicRightArrow);
 }
 
+auto Preview::isStartButtonClicked(const sf::Vector2f& mousePos) -> bool  {
+    return startButton.getGlobalBounds().contains(mousePos);
+}
+
+auto Preview::isScoresButtonClicked(const sf::Vector2f& mousePos) -> bool  {
+    return scoresButton.getGlobalBounds().contains(mousePos);
+}
+
+auto Preview::isInstructionButtonClicked(const sf::Vector2f& mousePos) -> bool  {
+    return instructionButton.getGlobalBounds().contains(mousePos);
+}
+
+void Preview::centerText(sf::Text& text, sf::Vector2f center) {
+    auto bounds = text.getLocalBounds();
+    text.setOrigin(sf::Vector2f(bounds.size.x / 2.f, bounds.size.y / 2.f));
+    text.setPosition(sf::Vector2f(center.x, center.y)); // set Y explicitly
+}
+
+auto Preview::getSelectedFontName() -> std::string {
+    return fontOptions[fontIndex];
+}
+auto Preview::getSelectedDifficulty() -> std::string {
+    return difficultyOptions[difficultyIndex];
+}
+auto Preview::getSelectedTopicName() -> std::string {
+    return topicOptions[topicIndex];
+}

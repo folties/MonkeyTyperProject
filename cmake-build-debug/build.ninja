@@ -89,6 +89,70 @@ build CMakeFiles/MonkeyTyperProject.dir/Resources.cpp.obj: CXX_COMPILER__MonkeyT
   OBJECT_DIR = CMakeFiles\MonkeyTyperProject.dir
   OBJECT_FILE_DIR = CMakeFiles\MonkeyTyperProject.dir
 
+build CMakeFiles/MonkeyTyperProject.dir/GameEnd.cpp.obj: CXX_COMPILER__MonkeyTyperProject_unscanned_Debug D$:/MonkeyTyperProject/GameEnd.cpp || cmake_object_order_depends_target_MonkeyTyperProject
+  DEFINES = -DSFML_STATIC
+  DEP_FILE = CMakeFiles\MonkeyTyperProject.dir\GameEnd.cpp.obj.d
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
+  INCLUDES = -ID:/MonkeyTyperProject/cmake-build-debug/_deps/fmt-src/include -isystem D:/MonkeyTyperProject/cmake-build-debug/_deps/sfml-src/include
+  OBJECT_DIR = CMakeFiles\MonkeyTyperProject.dir
+  OBJECT_FILE_DIR = CMakeFiles\MonkeyTyperProject.dir
+
+build CMakeFiles/MonkeyTyperProject.dir/GameMenu.cpp.obj: CXX_COMPILER__MonkeyTyperProject_unscanned_Debug D$:/MonkeyTyperProject/GameMenu.cpp || cmake_object_order_depends_target_MonkeyTyperProject
+  DEFINES = -DSFML_STATIC
+  DEP_FILE = CMakeFiles\MonkeyTyperProject.dir\GameMenu.cpp.obj.d
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
+  INCLUDES = -ID:/MonkeyTyperProject/cmake-build-debug/_deps/fmt-src/include -isystem D:/MonkeyTyperProject/cmake-build-debug/_deps/sfml-src/include
+  OBJECT_DIR = CMakeFiles\MonkeyTyperProject.dir
+  OBJECT_FILE_DIR = CMakeFiles\MonkeyTyperProject.dir
+
+build CMakeFiles/MonkeyTyperProject.dir/Instruction.cpp.obj: CXX_COMPILER__MonkeyTyperProject_unscanned_Debug D$:/MonkeyTyperProject/Instruction.cpp || cmake_object_order_depends_target_MonkeyTyperProject
+  DEFINES = -DSFML_STATIC
+  DEP_FILE = CMakeFiles\MonkeyTyperProject.dir\Instruction.cpp.obj.d
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
+  INCLUDES = -ID:/MonkeyTyperProject/cmake-build-debug/_deps/fmt-src/include -isystem D:/MonkeyTyperProject/cmake-build-debug/_deps/sfml-src/include
+  OBJECT_DIR = CMakeFiles\MonkeyTyperProject.dir
+  OBJECT_FILE_DIR = CMakeFiles\MonkeyTyperProject.dir
+
+build CMakeFiles/MonkeyTyperProject.dir/Panel.cpp.obj: CXX_COMPILER__MonkeyTyperProject_unscanned_Debug D$:/MonkeyTyperProject/Panel.cpp || cmake_object_order_depends_target_MonkeyTyperProject
+  DEFINES = -DSFML_STATIC
+  DEP_FILE = CMakeFiles\MonkeyTyperProject.dir\Panel.cpp.obj.d
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
+  INCLUDES = -ID:/MonkeyTyperProject/cmake-build-debug/_deps/fmt-src/include -isystem D:/MonkeyTyperProject/cmake-build-debug/_deps/sfml-src/include
+  OBJECT_DIR = CMakeFiles\MonkeyTyperProject.dir
+  OBJECT_FILE_DIR = CMakeFiles\MonkeyTyperProject.dir
+
+build CMakeFiles/MonkeyTyperProject.dir/Scores.cpp.obj: CXX_COMPILER__MonkeyTyperProject_unscanned_Debug D$:/MonkeyTyperProject/Scores.cpp || cmake_object_order_depends_target_MonkeyTyperProject
+  DEFINES = -DSFML_STATIC
+  DEP_FILE = CMakeFiles\MonkeyTyperProject.dir\Scores.cpp.obj.d
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
+  INCLUDES = -ID:/MonkeyTyperProject/cmake-build-debug/_deps/fmt-src/include -isystem D:/MonkeyTyperProject/cmake-build-debug/_deps/sfml-src/include
+  OBJECT_DIR = CMakeFiles\MonkeyTyperProject.dir
+  OBJECT_FILE_DIR = CMakeFiles\MonkeyTyperProject.dir
+
+build CMakeFiles/MonkeyTyperProject.dir/Shortcut.cpp.obj: CXX_COMPILER__MonkeyTyperProject_unscanned_Debug D$:/MonkeyTyperProject/Shortcut.cpp || cmake_object_order_depends_target_MonkeyTyperProject
+  DEFINES = -DSFML_STATIC
+  DEP_FILE = CMakeFiles\MonkeyTyperProject.dir\Shortcut.cpp.obj.d
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
+  INCLUDES = -ID:/MonkeyTyperProject/cmake-build-debug/_deps/fmt-src/include -isystem D:/MonkeyTyperProject/cmake-build-debug/_deps/sfml-src/include
+  OBJECT_DIR = CMakeFiles\MonkeyTyperProject.dir
+  OBJECT_FILE_DIR = CMakeFiles\MonkeyTyperProject.dir
+
+build CMakeFiles/MonkeyTyperProject.dir/Typing.cpp.obj: CXX_COMPILER__MonkeyTyperProject_unscanned_Debug D$:/MonkeyTyperProject/Typing.cpp || cmake_object_order_depends_target_MonkeyTyperProject
+  DEFINES = -DSFML_STATIC
+  DEP_FILE = CMakeFiles\MonkeyTyperProject.dir\Typing.cpp.obj.d
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
+  INCLUDES = -ID:/MonkeyTyperProject/cmake-build-debug/_deps/fmt-src/include -isystem D:/MonkeyTyperProject/cmake-build-debug/_deps/sfml-src/include
+  OBJECT_DIR = CMakeFiles\MonkeyTyperProject.dir
+  OBJECT_FILE_DIR = CMakeFiles\MonkeyTyperProject.dir
+
+build CMakeFiles/MonkeyTyperProject.dir/Word.cpp.obj: CXX_COMPILER__MonkeyTyperProject_unscanned_Debug D$:/MonkeyTyperProject/Word.cpp || cmake_object_order_depends_target_MonkeyTyperProject
+  DEFINES = -DSFML_STATIC
+  DEP_FILE = CMakeFiles\MonkeyTyperProject.dir\Word.cpp.obj.d
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
+  INCLUDES = -ID:/MonkeyTyperProject/cmake-build-debug/_deps/fmt-src/include -isystem D:/MonkeyTyperProject/cmake-build-debug/_deps/sfml-src/include
+  OBJECT_DIR = CMakeFiles\MonkeyTyperProject.dir
+  OBJECT_FILE_DIR = CMakeFiles\MonkeyTyperProject.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target MonkeyTyperProject
@@ -97,7 +161,7 @@ build CMakeFiles/MonkeyTyperProject.dir/Resources.cpp.obj: CXX_COMPILER__MonkeyT
 #############################################
 # Link the executable MonkeyTyperProject.exe
 
-build MonkeyTyperProject.exe: CXX_EXECUTABLE_LINKER__MonkeyTyperProject_Debug CMakeFiles/MonkeyTyperProject.dir/main.cpp.obj CMakeFiles/MonkeyTyperProject.dir/Background.cpp.obj CMakeFiles/MonkeyTyperProject.dir/Logic.cpp.obj CMakeFiles/MonkeyTyperProject.dir/Preview.cpp.obj CMakeFiles/MonkeyTyperProject.dir/Resources.cpp.obj | _deps/sfml-build/lib/libsfml-graphics-s-d.a _deps/sfml-build/lib/libsfml-audio-s-d.a _deps/fmt-build/libfmtd.a _deps/sfml-build/lib/libsfml-window-s-d.a _deps/sfml-build/lib/libfreetyped.a _deps/sfml-build/lib/libsfml-system-s-d.a _deps/sfml-build/lib/libvorbisfiled.a _deps/sfml-build/lib/libvorbisencd.a _deps/sfml-build/lib/libvorbisd.a _deps/sfml-build/lib/libFLACd.a _deps/sfml-build/lib/liboggd.a || _deps/fmt-build/libfmtd.a _deps/sfml-build/lib/libFLACd.a _deps/sfml-build/lib/libfreetyped.a _deps/sfml-build/lib/liboggd.a _deps/sfml-build/lib/libsfml-audio-s-d.a _deps/sfml-build/lib/libsfml-graphics-s-d.a _deps/sfml-build/lib/libsfml-system-s-d.a _deps/sfml-build/lib/libsfml-window-s-d.a _deps/sfml-build/lib/libvorbisd.a _deps/sfml-build/lib/libvorbisencd.a _deps/sfml-build/lib/libvorbisfiled.a
+build MonkeyTyperProject.exe: CXX_EXECUTABLE_LINKER__MonkeyTyperProject_Debug CMakeFiles/MonkeyTyperProject.dir/main.cpp.obj CMakeFiles/MonkeyTyperProject.dir/Background.cpp.obj CMakeFiles/MonkeyTyperProject.dir/Logic.cpp.obj CMakeFiles/MonkeyTyperProject.dir/Preview.cpp.obj CMakeFiles/MonkeyTyperProject.dir/Resources.cpp.obj CMakeFiles/MonkeyTyperProject.dir/GameEnd.cpp.obj CMakeFiles/MonkeyTyperProject.dir/GameMenu.cpp.obj CMakeFiles/MonkeyTyperProject.dir/Instruction.cpp.obj CMakeFiles/MonkeyTyperProject.dir/Panel.cpp.obj CMakeFiles/MonkeyTyperProject.dir/Scores.cpp.obj CMakeFiles/MonkeyTyperProject.dir/Shortcut.cpp.obj CMakeFiles/MonkeyTyperProject.dir/Typing.cpp.obj CMakeFiles/MonkeyTyperProject.dir/Word.cpp.obj | _deps/sfml-build/lib/libsfml-graphics-s-d.a _deps/sfml-build/lib/libsfml-audio-s-d.a _deps/fmt-build/libfmtd.a _deps/sfml-build/lib/libsfml-window-s-d.a _deps/sfml-build/lib/libfreetyped.a _deps/sfml-build/lib/libsfml-system-s-d.a _deps/sfml-build/lib/libvorbisfiled.a _deps/sfml-build/lib/libvorbisencd.a _deps/sfml-build/lib/libvorbisd.a _deps/sfml-build/lib/libFLACd.a _deps/sfml-build/lib/liboggd.a || _deps/fmt-build/libfmtd.a _deps/sfml-build/lib/libFLACd.a _deps/sfml-build/lib/libfreetyped.a _deps/sfml-build/lib/liboggd.a _deps/sfml-build/lib/libsfml-audio-s-d.a _deps/sfml-build/lib/libsfml-graphics-s-d.a _deps/sfml-build/lib/libsfml-system-s-d.a _deps/sfml-build/lib/libsfml-window-s-d.a _deps/sfml-build/lib/libvorbisd.a _deps/sfml-build/lib/libvorbisencd.a _deps/sfml-build/lib/libvorbisfiled.a
   FLAGS = -g
   LINK_LIBRARIES = _deps/sfml-build/lib/libsfml-graphics-s-d.a  _deps/sfml-build/lib/libsfml-audio-s-d.a  _deps/fmt-build/libfmtd.a  _deps/sfml-build/lib/libsfml-window-s-d.a  -lopengl32  -lgdi32  _deps/sfml-build/lib/libfreetyped.a  _deps/sfml-build/lib/libsfml-system-s-d.a  -lwinmm  _deps/sfml-build/lib/libvorbisfiled.a  _deps/sfml-build/lib/libvorbisencd.a  _deps/sfml-build/lib/libvorbisd.a  _deps/sfml-build/lib/libFLACd.a  _deps/sfml-build/lib/liboggd.a  -lm  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\MonkeyTyperProject.dir

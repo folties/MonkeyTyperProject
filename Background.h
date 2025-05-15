@@ -1,31 +1,24 @@
 #ifndef BACKGROUND_H
 #define BACKGROUND_H
 
-#pragma once
+#include <SFML/Graphics.hpp>
+#include <vector>
 
-#include "SFML/Graphics.hpp"
-
-
-class Star {
-public:
-    sf::CircleShape starShape;
+struct Star {
+    sf::CircleShape shape;
     float speed;
 };
 
 class Background {
-    public:
-    Background(sf::Vector2u windowSize);
-
-    auto updateStars(float deltaTime, sf::Vector2u windowSize) -> void;
+public:
+    Background(sf::Vector2u windowSize); // updated constructor
+    auto updateStars(float dt) -> void;
     auto drawStars(sf::RenderWindow& window) -> void;
-    auto initStars(sf::Vector2u windowSize) -> void;
 
-    private:
+private:
     std::vector<Star> stars;
-
-
+    unsigned int screenWidth = 800;
+    auto initStars(sf::Vector2u windowSize) -> void; // updated
 };
 
-
-
-#endif //BACKGROUND_H
+#endif

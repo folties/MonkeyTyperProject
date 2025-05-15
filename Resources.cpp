@@ -1,99 +1,102 @@
-//
-// Created by MSI on 14.05.2025.
-//
-
 #include "Resources.h"
-
 #include <iostream>
+#include <SFML/Audio.hpp>
+#include <filesystem>
 
-Resources::Resources() : sound(soundBuffer) {
-    std::cout << "Starting resource loading..." << std::endl;
-    loadFont();
+Resources::Resources(): typeSound(typeBuffer) {
+    loadFonts();
     loadMusic();
-    loadSound();
+    loadTypeSound();
     loadIcon();
-    std::cout << "Resource loading complete" << std::endl;
 }
-
 
 auto Resources::loadIcon() -> void {
-    if (!icon.loadFromFile("../materials/images/MonkeyTyperPicture.png")) {
-        std::cerr << "ERROR: Failed to load icon from file: ../materials/images/MonkeyTyperPicture.png" << std::endl;
+    if (!icon.loadFromFile("materials/images/MonkeyTyperPicture.png")) {
+        std::cerr << "Failed to load icon.\n";
     }
 }
 
-auto Resources::loadFont() -> void {
-    std::cout << "Starting font loading..." << std::endl;
-
+auto Resources::loadFonts() -> void {
     sf::Font bloxFont;
-    if (!bloxFont.openFromFile("../materials/fonts/Blox.ttf")) {
-        std::cerr << "ERROR: Failed to load bloxFont from: ../materials/fonts/Blox.ttf" << std::endl;
-    } else {
-        std::cout << "Successfully loaded Blox.ttf" << std::endl;
+    if (!bloxFont.openFromFile("materials/fonts/Blox.ttf")) {
+        std::cerr << "Could not load bloxFont\n";
+        exit(1);
     }
-    fonts["BloxFont"] = std::move(bloxFont);
+    fonts["BloxFont"] = std::move(bloxFont); // Save into map
 
     sf::Font pixelFont;
-    if (!pixelFont.openFromFile("../materials/fonts/Pixel.ttf")) {
-        std::cerr << "ERROR: Failed to load pixelFont from: ../materials/fonts/Pixel.ttf" << std::endl;
+    if (!pixelFont.openFromFile("materials/fonts/Pixel.ttf")) {
+        std::cerr << "Could not load pixelFont\n";
+        exit(1);
     }
-    fonts["PixelFont"] = std::move(pixelFont);
+    fonts["PixelFont"] = std::move(pixelFont); // Save into map
 
     sf::Font alphbetaFont;
-    if (!alphbetaFont.openFromFile("../materials/fonts/Alphbeta.ttf")) {
-        std::cerr << "ERROR: Failed to load alphbetaFont from: ../materials/fonts/Alphbeta.ttf" << std::endl;
+    if (!alphbetaFont.openFromFile("materials/fonts/Alphbeta.ttf")) {
+        std::cerr << "Could not load alphbetaFont\n";
+        exit(1);
     }
-    fonts["AlphbetaFont"] = std::move(alphbetaFont);
+    fonts["AlphbetaFont"] = std::move(alphbetaFont); // Save into map
 
     sf::Font hevillaFont;
-    if (!hevillaFont.openFromFile("../materials/fonts/Hevilla.ttf")) {
-        std::cerr << "ERROR: Failed to load hefillaFont from: ../materials/fonts/Hevilla.ttf" << std::endl;
+    if (!hevillaFont.openFromFile("materials/fonts/Hevilla.ttf")) {
+        std::cerr << "Could not load hefillaFont\n";
+        exit(1);
     }
-    fonts["HevillaFont"] = std::move(hevillaFont);
+    fonts["HevillaFont"] = std::move(hevillaFont); // Save into map
 
     sf::Font steveFont;
-    if (!steveFont.openFromFile("../materials/fonts/Steve.ttf")) {
-        std::cerr << "ERROR: Failed to load steveFont from: ../materials/fonts/Steve.ttf" << std::endl;
+    if (!steveFont.openFromFile("materials/fonts/Steve.ttf")) {
+        std::cerr << "Could not load steveFont\n";
+        exit(1);
     }
-    fonts["SteveFont"] = std::move(steveFont);
+    fonts["SteveFont"] = std::move(steveFont); // Save into map DELETE
 
     sf::Font warworkFont;
-    if (!warworkFont.openFromFile("../materials/fonts/Warwork.ttf")) {
-        std::cerr << "ERROR: Failed to load warworkFont from: ../materials/fonts/Warwork.ttf" << std::endl;
+    if (!warworkFont.openFromFile("materials/fonts/Warwork.ttf")) {
+        std::cerr << "Could not load warworkFont\n";
+        exit(1);
     }
-    fonts["WarworkFont"] = std::move(warworkFont);
+    fonts["WarworkFont"] = std::move(warworkFont); // Save into map DELETE
 
     sf::Font grosacFont;
-    if (!grosacFont.openFromFile("../materials/fonts/Grosac.ttf")) {
-        std::cerr << "ERROR: Failed to load grosacFont from: ../materials/fonts/Grosac.ttf" << std::endl;
+    if (!grosacFont.openFromFile("materials/fonts/Grosac.ttf")) {
+        std::cerr << "Could not load grosacFont\n";
+        exit(1);
     }
-    fonts["GrosacFont"] = std::move(grosacFont);
-
-    std::cout << "Font loading complete" << std::endl;
+    fonts["GrosacFont"] = std::move(grosacFont); // Save into map
 }
 
 auto Resources::loadMusic() -> void {
-    if (!music.openFromFile("../materials/music/musicGame.mp3")) {
-        std::cerr << "ERROR: Failed to load music from: ../materials/music/musicGame.mp3" << std::endl;
+    if (!backgroundMusic.openFromFile("materials/music/musicGame.mp3")) { //
+        std::cerr << "Could not load background music\n";
+        exit(1);
     }
-    music.setLooping(true);
+    backgroundMusic.setLooping(true); // so it repeats automatically
 }
 
-auto Resources::loadSound() -> void {
-    if (!soundBuffer.loadFromFile("../materials/soundEffect/typeSoundEffect.ogg")) {
-        std::cerr << "ERROR: Failed to load typeSound from: ../materials/soundEffect/typeSoundEffect.ogg" << std::endl;
+auto Resources::loadTypeSound() -> void {
+    if (!typeBuffer.loadFromFile("../materials/soundEffect/typeSoundEffect.ogg")) {
+        std::cerr << "Could not load typeSound\n";
+        exit(1);
     }
-    sound.setBuffer(soundBuffer);
+    typeSound.setBuffer(typeBuffer);
 }
 
-auto Resources::getFont(const std::string& font) -> sf::Font& {
-    std::cout << "Attempting to get font: " << font << std::endl;
-    auto iterator = fonts.find(font);
-    if (iterator != fonts.end()) {
-        std::cout << "Successfully found font: " << font << std::endl;
-        return iterator->second;
+auto Resources::getFont(const std::string& name) ->  sf::Font&  {
+    auto it = fonts.find(name);
+    if (it != fonts.end()) {
+        return it->second;
     } else {
-        std::cerr << "ERROR: Failed to find font: " << font << std::endl;
-        throw std::runtime_error("Failed to find font");
+        std::cerr << "Font not found: " << name << "\n";
+        exit(1);
     }
+}
+
+auto Resources::getMusic() -> sf::Music&{
+    return backgroundMusic;
+}
+
+auto Resources::getTypeSound() -> sf::Sound& {
+    return typeSound;
 }

@@ -1,31 +1,34 @@
 #ifndef RESOURCES_H
 #define RESOURCES_H
 
-#pragma once
-
+#include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include <map>
-#include "SFML/Graphics.hpp"
-#include "SFML/Audio.hpp"
+#include <string>
 
 class Resources {
 public:
     Resources();
 
-    auto getFont(const std::string& font) -> sf::Font&;
-
-private:
-    auto loadFont() -> void;
-    auto loadMusic() -> void;
-    auto loadSound() -> void;
     auto loadIcon() -> void;
 
-    std::map<std::string, sf::Font> fonts;
+    auto getFont(const std::string& name) -> sf::Font&;
+    auto getMusic() -> sf::Music&;
+    auto getTypeSound() -> sf::Sound&;
+
+    sf::Music backgroundMusic;
+
+    sf::SoundBuffer typeBuffer;
+    sf::Sound typeSound;
+
     sf::Image icon;
-    sf::Music music;
-    sf::Sound sound;
-    sf::SoundBuffer soundBuffer;
+private:
+
+    auto loadFonts() -> void;
+    auto loadMusic() -> void;
+    auto loadTypeSound() -> void;
+
+    std::map<std::string, sf::Font> fonts;
 };
 
-
-
-#endif //RESOURCES_H
+#endif // RESOURCES_H

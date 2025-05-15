@@ -5,12 +5,7 @@
 #include "Resources.h"
 #include "SFML/Graphics.hpp"
 
-enum class Difficulty {
-    EASY,
-    MEDIUM,
-    HRAD,
-    INSANE
-};
+
 
 enum class Fonts {
     PIXEL,
@@ -31,13 +26,26 @@ class Preview {
 public:
     Preview(const sf::Vector2u& windowSize);
 
+    auto processMouseClick(const sf::Vector2f &mousePos) -> void;
     auto render(sf::RenderWindow& window) -> void;
-    auto setupElements(const sf::Vector2u& windowSize) -> void;
+
+    auto isStartButtonClicked(const sf::Vector2f &mousePos) -> bool;
+    auto isScoresButtonClicked(const sf::Vector2f &mousePos) -> bool;
+    auto isInstructionButtonClicked(const sf::Vector2f &mousePos) -> bool;
+
+
+    auto getSelectedFontName() -> std::string;
+    auto getSelectedDifficulty() -> std::string;
+    auto getSelectedTopicName() -> std::string;
+
+
 
 private:
+    void centerText(sf::Text &text, sf::Vector2f center);
+    auto setupElements(const sf::Vector2u& windowSize) -> void;
+
     Resources resource;
     sf::Font previewFont;
-
     sf::RectangleShape previewPanel;
 
     sf::RectangleShape startButton;
