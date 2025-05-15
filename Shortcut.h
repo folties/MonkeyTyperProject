@@ -9,6 +9,8 @@
 #include "Typing.h"
 #include "Word.h"
 
+#pragma once
+
 
 class Shortcut {
 public:
@@ -21,7 +23,7 @@ public:
 
 private:
     bool isGameMenu = false;
-    bool typeSoundEnabled = true;  // Track type sound state
+    bool typeSoundEnabled = true;
 };
 
 

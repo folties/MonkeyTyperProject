@@ -4,9 +4,13 @@
 #include <SFML/Graphics.hpp>
 #include <string>
 
+#pragma once
+
 class Panel {
 public:
     Panel(const sf::Font& font, const sf::Vector2u& windowSize);
+
+    auto setupElements(const sf::Vector2u &windowSize) -> void;
 
     auto setTypedText(const std::string& text) -> void;
     auto draw(sf::RenderWindow& window) -> void;

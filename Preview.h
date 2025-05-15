@@ -6,7 +6,6 @@
 #include "SFML/Graphics.hpp"
 
 
-
 enum class Fonts {
     PIXEL,
     ALPHBETA,

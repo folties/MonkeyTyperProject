@@ -4,6 +4,8 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 
+#pragma once
+
 struct Star {
     sf::CircleShape shape;
     float speed;
@@ -11,14 +13,13 @@ struct Star {
 
 class Background {
 public:
-    Background(sf::Vector2u windowSize); // updated constructor
-    auto updateStars(float dt) -> void;
+    Background(sf::Vector2u windowSize);
+    auto updateStars(float dt, const sf::Vector2u& windowSize) -> void;
     auto drawStars(sf::RenderWindow& window) -> void;
 
 private:
     std::vector<Star> stars;
-    unsigned int screenWidth = 800;
-    auto initStars(sf::Vector2u windowSize) -> void; // updated
+    auto initStars(sf::Vector2u windowSize) -> void;
 };
 
 #endif

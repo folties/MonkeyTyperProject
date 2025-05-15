@@ -5,20 +5,21 @@ GameMenu::GameMenu(const sf::Font& font, const sf::Vector2u& windowSize) :
       resumeText(font, "resume"),
       leaveText(font, "quit")
 {
-    // Panel
+   setupElements(windowSize);
+}
+
+auto GameMenu::setupElements(const sf::Vector2u &windowSize) -> void {
     panel.setSize(sf::Vector2f(windowSize.x, windowSize.y));
     panel.setFillColor(sf::Color(30, 30, 40));
-    panel.setOutlineColor(sf::Color::White);
-    panel.setOutlineThickness(10.f);
     panel.setOrigin(panel.getSize() / 2.f);
     panel.setPosition(sf::Vector2f(windowSize.x / 2.f, windowSize.y / 2.f));
 
-    // Title
+
     titleText.setFillColor(sf::Color(200, 200, 200));
     titleText.setPosition(sf::Vector2f(panel.getPosition().x * 0.73f, panel.getPosition().y * 0.5f));
     titleText.setCharacterSize(windowSize.y * 0.1f);
 
-    // Resume Button
+
     resumeButton.setSize(sf::Vector2f(windowSize.x * 0.17f, windowSize.y * 0.05f));
     resumeButton.setFillColor(sf::Color(90, 120, 180));
     resumeButton.setOutlineColor(sf::Color::White);
@@ -29,7 +30,6 @@ GameMenu::GameMenu(const sf::Font& font, const sf::Vector2u& windowSize) :
     resumeText.setFillColor(sf::Color::White);
     resumeText.setPosition(sf::Vector2f(resumeButton.getPosition().x * 0.955f , resumeButton.getPosition().y * 0.965f ));
 
-    // Leave Button
     leaveButton.setSize(sf::Vector2f(windowSize.x * 0.17f, windowSize.y * 0.05f));
     leaveButton.setFillColor(sf::Color(90, 60, 90));
     leaveButton.setOutlineColor(sf::Color::White);
@@ -40,6 +40,7 @@ GameMenu::GameMenu(const sf::Font& font, const sf::Vector2u& windowSize) :
     leaveText.setFillColor(sf::Color::White);
     leaveText.setPosition(sf::Vector2f(leaveButton.getPosition().x * 0.97f, leaveButton.getPosition().y * 0.975f ));
 }
+
 
 auto GameMenu::render(sf::RenderWindow& window) -> void {
     window.draw(panel);

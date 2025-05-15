@@ -6,44 +6,72 @@
 #include <cstdint>
 #include <algorithm>
 
-GameEnd::GameEnd(const sf::Font& font)
-    : gameOverText(font, "GAME OVER", 60),
-      wpmText(font, "", 30),
-      timeText(font, "", 30),
-      missedText(font, "", 30),
-      returnButtonText(font, "return to menu", 30),
-      labelPromptText(font, "label your run", 28),
-      labelText(font, "", 28),
-      saveButtonText(font, "save result", 30),
-      confirmationText(font, "", 28)
+GameEnd::GameEnd(const sf::Font& font, const sf::Vector2u& windowSize)
+    : gameOverText(font),
+      wpmText(font),
+      timeText(font),
+      missedText(font),
+      returnButtonText(font),
+      labelPromptText(font),
+      labelText(font),
+      saveButtonText(font),
+      confirmationText(font)
 {
+    setupElements(windowSize);
+}
+
+auto GameEnd::setupElements(const sf::Vector2u &windowSize) -> void {
+
+    gameOverText.setString("GAME OVER");
     gameOverText.setFillColor(sf::Color::White);
-    wpmText.setFillColor(sf::Color::White);
-    timeText.setFillColor(sf::Color::White);
-    missedText.setFillColor(sf::Color::White);
-    returnButtonText.setFillColor(sf::Color::White);
-    saveButtonText.setFillColor(sf::Color::White);
+    gameOverText.setCharacterSize(windowSize.y * 0.1f);
+    gameOverText.setPosition(sf::Vector2f(windowSize.x * 0.37f, windowSize.y * 0.2f));
+
+    auto setupText = [&](sf::Text &text, const std::string& string, sf::Vector2f position) -> void {
+        text.setString(string);
+        text.setCharacterSize(windowSize.y * 0.03);
+        text.setFillColor(sf::Color::White);
+        text.setPosition(position);
+    };
+
+    setupText(wpmText, "", sf::Vector2f(windowSize.x * 0.35, windowSize.y * 0.35f));
+    setupText(timeText, "", sf::Vector2f(windowSize.x * 0.47, windowSize.y * 0.35f));
+    setupText(missedText, "", sf::Vector2f(windowSize.x * 0.59, windowSize.y * 0.35f));
+    setupText(returnButtonText, "return to menu", sf::Vector2f(windowSize.x * 0.443f, windowSize.y * 0.87f));
+    setupText(saveButtonText, "save result", sf::Vector2f(windowSize.x * 0.455f, windowSize.y * 0.685));
+    setupText(labelPromptText, "label your run", sf::Vector2f(windowSize.x * 0.444f, windowSize.y * 0.55f));
 
     returnButton.setSize(sf::Vector2f(400.f, 100.f));
     returnButton.setFillColor(sf::Color(90, 60, 90));
     returnButton.setOutlineColor(sf::Color::White);
     returnButton.setOutlineThickness(6.f);
+    returnButton.setOrigin(sf::Vector2f(returnButton.getSize().x / 2.f, returnButton.getSize().y / 2.f));
+    returnButton.setPosition(sf::Vector2f(windowSize.x * 0.5f, windowSize.y * 0.88f));
 
-    // Label box
     labelBox.setSize(sf::Vector2f(400.f, 50.f));
     labelBox.setFillColor(sf::Color(220, 220, 220));
     labelBox.setOutlineColor(sf::Color::Black);
     labelBox.setOutlineThickness(3.f);
+    labelBox.setOrigin(sf::Vector2f(labelBox.getSize().x/2.f, labelBox.getSize().y/2.f));
+    labelBox.setPosition(sf::Vector2f(windowSize.x* 0.5f, windowSize.y * 0.62f));
 
-    labelPromptText.setFillColor(sf::Color::White);
-    labelText.setFillColor(sf::Color::Black);
-
-    // Save button
     saveButton.setSize(sf::Vector2f(220.f, 60.f));
     saveButton.setFillColor(sf::Color(90, 120, 180));
     saveButton.setOutlineColor(sf::Color::White);
     saveButton.setOutlineThickness(5.f);
+    saveButton.setOrigin(sf::Vector2f(saveButton.getSize().x/2.f, saveButton.getSize().y/2.f));
+    saveButton.setPosition(sf::Vector2f(windowSize.x * 0.5, windowSize.y*0.70f));
 
+    labelText.setPosition(sf::Vector2f(windowSize.x * 0.405f, windowSize.y * 0.605f));
+    labelText.setFillColor(sf::Color::Black);
+
+    if (resultSaved) {
+        saveButton.setFillColor(sf::Color(100, 100, 100));
+        saveButtonText.setString("saved");
+    } else {
+        saveButton.setFillColor(sf::Color(90, 120, 180));
+        saveButtonText.setString("save result");
+    }
     confirmationText.setFillColor(sf::Color::Yellow);
 }
 
@@ -54,12 +82,12 @@ void GameEnd::setMissedWords(int count) {
 
 void GameEnd::setWPM(float wpmValue) {
     wpm = wpmValue;
-    wpmText.setString("wpm " + std::to_string(wpm));
+    wpmText.setString("wpm " + std::to_string(static_cast<int>(wpm)));
 }
 
 void GameEnd::setTime(float timeValue) {
     time = timeValue;
-    timeText.setString("time " + std::to_string(time) + "s");
+    timeText.setString("time " + std::to_string(static_cast<int>(time)) + "s");
 }
 
 void GameEnd::setTypedText(const std::string& text) {
@@ -90,92 +118,36 @@ bool GameEnd::isSaveButtonClicked(const sf::Vector2f& mousePos)  {
 }
 
 bool GameEnd::saveResultToFile() {
-    if (resultSaved) return false;  // Don't save if already saved
-    
+    if (resultSaved) {
+        return false;
+    }
     std::string filename = "../materials/history/bestResults.txt";
     std::ofstream file(filename, std::ios::app);
-    if (!file.is_open()) return false;
+    if (!file.is_open()) {
+        return false;
+    }
     std::string safeLabel = labelInput;
     std::replace(safeLabel.begin(), safeLabel.end(), ' ', '_');
     file << safeLabel << " " << difficulty << " " << topic << " " << static_cast<int>(wpm) << " " << missedWords << " " << static_cast<int>(time) << "\n";
     file.close();
     resultSaved = true;  // Mark as saved
-    return true;
+    return resultSaved;
 }
 
 void GameEnd::showConfirmation(bool success) {
     showConfirmationMsg = true;
     saveSuccess = success;
-    if (success) confirmationText.setString("result saved");
+    if (success) {
+        confirmationText.setString("result saved");
+    }
     else confirmationText.setString("failed to save result");
 }
 
-void GameEnd::show(sf::RenderWindow& window) {
+
+
+void GameEnd::render(sf::RenderWindow& window) {
     window.clear(sf::Color::Black);
-
-    sf::Vector2u size = window.getSize();
-
-    // Title text
-    gameOverText.setCharacterSize(static_cast<unsigned int>(size.y * 0.1f));
-    sf::FloatRect gameOverBounds = gameOverText.getLocalBounds();
-    gameOverText.setOrigin(sf::Vector2f(gameOverBounds.size.x / 2.f, gameOverBounds.size.y / 2.f));
-    gameOverText.setPosition(sf::Vector2f(static_cast<float>(size.x) / 2.f, size.y * 0.25f));
-
-
-    // WPM text
-    wpmText.setCharacterSize(static_cast<unsigned int>(size.y * 0.03f));
-    sf::FloatRect wpmBounds = wpmText.getLocalBounds();
-    wpmText.setOrigin(sf::Vector2f(wpmBounds.size.x / 2.f, wpmBounds.size.y / 2.f));
-    wpmText.setPosition(sf::Vector2f(static_cast<float>(size.x) / 1.7f, size.y * 0.35f));
-
-    // Time text
-    timeText.setCharacterSize(static_cast<unsigned int>(size.y * 0.03f));
-    sf::FloatRect timeBounds = timeText.getLocalBounds();
-    timeText.setOrigin(sf::Vector2f(timeBounds.size.x / 2.f, timeBounds.size.y / 2.f));
-    timeText.setPosition(sf::Vector2f(static_cast<float>(size.x) / 2.5f, size.y * 0.35f));
-
-    missedText.setCharacterSize(static_cast<unsigned int>(size.y * 0.03f));
-    sf::FloatRect missedBounds = missedText.getLocalBounds();
-    missedText.setOrigin(sf::Vector2f(missedBounds.size.x / 2.f, missedBounds.size.y / 2.f));
-    missedText.setPosition(sf::Vector2f(static_cast<float>(size.x) / 2.f, size.y * 0.35f));
-
-    // Position label box and prompt (higher up)
-    sf::FloatRect promptBounds = labelPromptText.getLocalBounds();
-    labelPromptText.setOrigin(sf::Vector2f(promptBounds.size.x/2.f, promptBounds.size.y/2.f));
-    labelPromptText.setPosition(sf::Vector2f(window.getSize().x/2.f, window.getSize().y*0.55f));
-
-    labelBox.setOrigin(sf::Vector2f(labelBox.getSize().x/2.f, labelBox.getSize().y/2.f));
-    labelBox.setPosition(sf::Vector2f(window.getSize().x/2.f, window.getSize().y*0.62f));
-
-    sf::FloatRect labelBounds = labelText.getLocalBounds();
-    labelText.setOrigin(sf::Vector2f(labelBounds.size.x/2.f, labelBounds.size.y/2.f));
-    labelText.setPosition(labelBox.getPosition());
-
-    // Save button (just below label box)
-    saveButton.setOrigin(sf::Vector2f(saveButton.getSize().x/2.f, saveButton.getSize().y/2.f));
-    saveButton.setPosition(sf::Vector2f(window.getSize().x/2.f, window.getSize().y*0.70f));
-    sf::FloatRect saveBtnBounds = saveButtonText.getLocalBounds();
-    saveButtonText.setOrigin(sf::Vector2f(saveBtnBounds.size.x/2.f, saveBtnBounds.size.y/2.f));
-    saveButtonText.setPosition(saveButton.getPosition());
-
-    // Change save button appearance if result is already saved
-    if (resultSaved) {
-        saveButton.setFillColor(sf::Color(100, 100, 100));  // Gray out the button
-        saveButtonText.setString("saved");  // Change text
-    } else {
-        saveButton.setFillColor(sf::Color(90, 120, 180));  // Normal color
-        saveButtonText.setString("save result");  // Normal text
-    }
-
-    // Return button at the bottom
-    returnButton.setOrigin(sf::Vector2f(returnButton.getSize().x / 2.f, returnButton.getSize().y / 2.f));
-    returnButton.setPosition(sf::Vector2f(static_cast<float>(window.getSize().x) / 2.f, window.getSize().y * 0.88f));
-    sf::FloatRect buttonTextBounds = returnButtonText.getLocalBounds();
-    returnButtonText.setOrigin(sf::Vector2f(buttonTextBounds.size.x / 2.f, buttonTextBounds.size.y / 2.f));
-    returnButtonText.setPosition(returnButton.getPosition());
-
     window.draw(gameOverText);
-
     window.draw(wpmText);
     window.draw(timeText);
     window.draw(missedText);
@@ -194,7 +166,7 @@ void GameEnd::clearLabelAndConfirmation() {
     labelText.setString("");
     showConfirmationMsg = false;
     confirmationText.setString("");
-    resultSaved = false;  // Reset save state
+    resultSaved = false;
 }
 
 void GameEnd::setDifficulty(const std::string& diff) {

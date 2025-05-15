@@ -4,11 +4,14 @@
 #include <algorithm>
 #include <iostream>
 
-Scores::Scores(const sf::Font& font, const sf::Vector2u& windowSize)
-    :
+Scores::Scores(const sf::Font& font, const sf::Vector2u& windowSize) :
       titleText(font),
       closeButton(font)
 {
+    setupElements(windowSize);
+}
+
+auto Scores::setupElements(const sf::Vector2u &windowSize) -> void {
     panel.setSize(sf::Vector2f(windowSize.x * 0.7f, windowSize.y * 0.7f));
     panel.setFillColor(sf::Color(40, 40, 60, 250));
     panel.setOutlineColor(sf::Color::White);
@@ -63,7 +66,9 @@ auto Scores::tryAddScore(const ScoreEntry& entry) -> void {
 }
 
 auto Scores::render(sf::RenderWindow& window) -> void {
-    if (!visible) return;
+    if (!visible) {
+        return;
+    }
     window.draw(panel);
     window.draw(titleText);
     window.draw(closeButton);

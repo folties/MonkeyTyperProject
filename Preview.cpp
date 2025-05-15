@@ -21,41 +21,6 @@ Preview::Preview(const sf::Vector2u& windowSize) :
     setupElements(windowSize);
 }
 
-auto Preview::processMouseClick(const sf::Vector2f& mousePos) -> void {
-    if (fontLeftArrow.getGlobalBounds().contains(mousePos)) {
-        fontIndex = (fontIndex - 1 + fontOptions.size()) % fontOptions.size();
-        fontValueText.setString(fontOptions[fontIndex]);
-        centerText(fontValueText, sf::Vector2f(previewPanel.getPosition().x * 0.63f, previewPanel.getPosition().y * 0.63f));
-    }
-    if (fontRightArrow.getGlobalBounds().contains(mousePos)) {
-        fontIndex = (fontIndex + 1) % fontOptions.size();
-        fontValueText.setString(fontOptions[fontIndex]);
-        centerText(fontValueText, sf::Vector2f(previewPanel.getPosition().x * 0.63f, previewPanel.getPosition().y * 0.63f));
-    }
-
-    if (difficultyLeftArrow.getGlobalBounds().contains(mousePos)) {
-        difficultyIndex = (difficultyIndex - 1 + difficultyOptions.size()) % difficultyOptions.size();
-        difficultyValueText.setString(difficultyOptions[difficultyIndex]);
-        centerText(difficultyValueText, sf::Vector2f(previewPanel.getPosition().x * 0.995f, previewPanel.getPosition().y * 0.63f));
-    }
-    if (difficultyRightArrow.getGlobalBounds().contains(mousePos)) {
-        difficultyIndex = (difficultyIndex + 1) % difficultyOptions.size();
-        difficultyValueText.setString(difficultyOptions[difficultyIndex]);
-        centerText(difficultyValueText, sf::Vector2f(previewPanel.getPosition().x * 0.995f, previewPanel.getPosition().y * 0.63f));
-    }
-
-    if (topicLeftArrow.getGlobalBounds().contains(mousePos)) {
-        topicIndex = (topicIndex - 1 + topicOptions.size()) % topicOptions.size();
-        topicValueText.setString(topicOptions[topicIndex]);
-        centerText(topicValueText, sf::Vector2f(previewPanel.getPosition().x * 1.35f, previewPanel.getPosition().y * 0.63f));
-    }
-    if (topicRightArrow.getGlobalBounds().contains(mousePos)) {
-        topicIndex = (topicIndex + 1) % topicOptions.size();
-        topicValueText.setString(topicOptions[topicIndex]);
-        centerText(topicValueText, sf::Vector2f(previewPanel.getPosition().x * 1.35f, previewPanel.getPosition().y * 0.63f));
-    }
-}
-
 auto Preview::setupElements(const sf::Vector2u& windowSize) -> void {
     previewPanel.setSize(sf::Vector2f(windowSize.x * 0.7f , windowSize.y * 0.7f ));
     previewPanel.setFillColor(sf::Color(120, 120, 120));
@@ -71,7 +36,6 @@ auto Preview::setupElements(const sf::Vector2u& windowSize) -> void {
     startButton.setOrigin(startButton.getSize() / 2.f);
     startButton.setPosition(sf::Vector2f(previewPanel.getPosition().x , previewPanel.getPosition().y * 1.1f));
 
-    // Scores button setup
     scoresButton.setSize(sf::Vector2f(windowSize.x * 0.15f, windowSize.y * 0.06f));
     scoresButton.setFillColor(sf::Color(0, 0, 60));
     scoresButton.setOutlineColor(sf::Color::White);
@@ -125,6 +89,47 @@ auto Preview::setupElements(const sf::Vector2u& windowSize) -> void {
 
 }
 
+auto Preview::processMouseClick(const sf::Vector2f& mousePos) -> void {
+    if (fontLeftArrow.getGlobalBounds().contains(mousePos)) {
+        fontIndex = (fontIndex - 1 + fontOptions.size()) % fontOptions.size();
+        fontValueText.setString(fontOptions[fontIndex]);
+        centerText(fontValueText, sf::Vector2f(previewPanel.getPosition().x * 0.63f, previewPanel.getPosition().y * 0.63f));
+    }
+    if (fontRightArrow.getGlobalBounds().contains(mousePos)) {
+        fontIndex = (fontIndex + 1) % fontOptions.size();
+        fontValueText.setString(fontOptions[fontIndex]);
+        centerText(fontValueText, sf::Vector2f(previewPanel.getPosition().x * 0.63f, previewPanel.getPosition().y * 0.63f));
+    }
+
+    if (difficultyLeftArrow.getGlobalBounds().contains(mousePos)) {
+        difficultyIndex = (difficultyIndex - 1 + difficultyOptions.size()) % difficultyOptions.size();
+        difficultyValueText.setString(difficultyOptions[difficultyIndex]);
+        centerText(difficultyValueText, sf::Vector2f(previewPanel.getPosition().x * 0.995f, previewPanel.getPosition().y * 0.63f));
+    }
+    if (difficultyRightArrow.getGlobalBounds().contains(mousePos)) {
+        difficultyIndex = (difficultyIndex + 1) % difficultyOptions.size();
+        difficultyValueText.setString(difficultyOptions[difficultyIndex]);
+        centerText(difficultyValueText, sf::Vector2f(previewPanel.getPosition().x * 0.995f, previewPanel.getPosition().y * 0.63f));
+    }
+
+    if (topicLeftArrow.getGlobalBounds().contains(mousePos)) {
+        topicIndex = (topicIndex - 1 + topicOptions.size()) % topicOptions.size();
+        topicValueText.setString(topicOptions[topicIndex]);
+        centerText(topicValueText, sf::Vector2f(previewPanel.getPosition().x * 1.35f, previewPanel.getPosition().y * 0.63f));
+    }
+    if (topicRightArrow.getGlobalBounds().contains(mousePos)) {
+        topicIndex = (topicIndex + 1) % topicOptions.size();
+        topicValueText.setString(topicOptions[topicIndex]);
+        centerText(topicValueText, sf::Vector2f(previewPanel.getPosition().x * 1.35f, previewPanel.getPosition().y * 0.63f));
+    }
+}
+
+void Preview::centerText(sf::Text& text, sf::Vector2f center) {
+    auto bounds = text.getLocalBounds();
+    text.setOrigin(sf::Vector2f(bounds.size.x / 2.f, bounds.size.y / 2.f));
+    text.setPosition(sf::Vector2f(center.x, center.y));
+}
+
 auto Preview::render(sf::RenderWindow& window) -> void {
     window.draw(previewPanel);
     window.draw(startButton);
@@ -157,12 +162,6 @@ auto Preview::isScoresButtonClicked(const sf::Vector2f& mousePos) -> bool  {
 
 auto Preview::isInstructionButtonClicked(const sf::Vector2f& mousePos) -> bool  {
     return instructionButton.getGlobalBounds().contains(mousePos);
-}
-
-void Preview::centerText(sf::Text& text, sf::Vector2f center) {
-    auto bounds = text.getLocalBounds();
-    text.setOrigin(sf::Vector2f(bounds.size.x / 2.f, bounds.size.y / 2.f));
-    text.setPosition(sf::Vector2f(center.x, center.y)); // set Y explicitly
 }
 
 auto Preview::getSelectedFontName() -> std::string {

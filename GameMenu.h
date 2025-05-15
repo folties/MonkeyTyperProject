@@ -2,11 +2,15 @@
 #define GAME_MENU_H
 
 #include <SFML/Graphics.hpp>
-#include <string>
+
+#pragma once
 
 class GameMenu {
 public:
     GameMenu(const sf::Font& font, const sf::Vector2u& windowSize);
+
+    auto setupElements(const sf::Vector2u &windowSize) -> void;
+
     auto render(sf::RenderWindow& window) -> void;
     auto isResumeClicked(const sf::Vector2f& mousePos) -> bool;
     auto isLeaveClicked(const sf::Vector2f& mousePos) -> bool;

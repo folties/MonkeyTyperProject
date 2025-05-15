@@ -25,15 +25,13 @@ auto Background::initStars(sf::Vector2u windowSize) -> void {
         star.speed = speedDist(random);
         stars.push_back(star);
     }
-
-    screenWidth = windowSize.x; // store for wraparound logic
 }
 
-auto Background::updateStars(float dt) -> void {
+auto Background::updateStars(float dt, const sf::Vector2u& windowSize) -> void {
     for (auto& star : stars) {
         sf::Vector2f pos = star.shape.getPosition();
         pos.x += star.speed * dt;
-        if (pos.x > screenWidth) pos.x = 0; // wraparound using current screen width
+        if (pos.x > windowSize.x) pos.x = 0;
         star.shape.setPosition(pos);
     }
 }

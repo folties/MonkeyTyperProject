@@ -1,46 +1,43 @@
 #include "Panel.h"
 #include "fmt/compile.h"
 
-Panel::Panel(const sf::Font& font, const sf::Vector2u& windowSize)
-    : typedDisplay(font), wordCounterText(font), timerText(font), wpmText(font), trafficText(font), missedWordsText(font) {
-    
+Panel::Panel(const sf::Font& font, const sf::Vector2u& windowSize) :
+    typedDisplay(font),
+    wordCounterText(font),
+    timerText(font),
+    wpmText(font),
+    trafficText(font),
+    missedWordsText(font)
+{
+    setupElements(windowSize);
+}
+
+auto Panel::setupElements(const sf::Vector2u &windowSize) -> void {
     panelBackground.setSize(sf::Vector2f(windowSize.x, windowSize.y * 0.08f)); // 8% of height
     panelBackground.setPosition(sf::Vector2f(0, windowSize.y - panelBackground.getSize().y));
     panelBackground.setFillColor(sf::Color(0, 0, 100)); // light blue
 
-    // Typed text center-ish
-    typedDisplay.setFont(font);
-    typedDisplay.setCharacterSize(static_cast<unsigned int>(windowSize.y * 0.03f));
+    typedDisplay.setCharacterSize(windowSize.y * 0.03f);
     typedDisplay.setFillColor(sf::Color::White);
     typedDisplay.setPosition(sf::Vector2f(windowSize.x * 0.44f, windowSize.y * 0.927f));
 
-    // Word Counter (bottom right)
-    wordCounterText.setFont(font);
-    wordCounterText.setCharacterSize(static_cast<unsigned int>(windowSize.y * 0.022f));
+    wordCounterText.setCharacterSize(windowSize.y * 0.022f);
     wordCounterText.setFillColor(sf::Color::White);
     wordCounterText.setPosition(sf::Vector2f(windowSize.x * 0.03f, windowSize.y * 0.920));
 
-    // Timer (above word counter)
-    timerText.setFont(font);
-    timerText.setCharacterSize(static_cast<unsigned int>(windowSize.y * 0.022f));
+    timerText.setCharacterSize(windowSize.y * 0.022f);
     timerText.setFillColor(sf::Color::White);
     timerText.setPosition(sf::Vector2f(windowSize.x * 0.9f, windowSize.y * 0.920));
 
-    // WPM (left side, above input)
-    wpmText.setFont(font);
-    wpmText.setCharacterSize(static_cast<unsigned int>(windowSize.y * 0.022f));
+    wpmText.setCharacterSize(windowSize.y * 0.022f);
     wpmText.setFillColor(sf::Color::White);
     wpmText.setPosition(sf::Vector2f(windowSize.x * 0.9f, windowSize.y * 0.950));
 
-    // Traffic (bottom-left corner)
-    trafficText.setFont(font);
-    trafficText.setCharacterSize(static_cast<unsigned int>(windowSize.y * 0.022f));
+    trafficText.setCharacterSize(windowSize.y * 0.022f);
     trafficText.setFillColor(sf::Color::White);
     trafficText.setPosition(sf::Vector2f(windowSize.x * 0.15f, windowSize.y * 0.940));
 
-    //Missed words
-    missedWordsText.setFont(font);
-    missedWordsText.setCharacterSize(static_cast<unsigned int>(windowSize.y * 0.022f));
+    missedWordsText.setCharacterSize(windowSize.y * 0.022f);
     missedWordsText.setFillColor(sf::Color::White);
     missedWordsText.setPosition(sf::Vector2f(windowSize.x * 0.03f, windowSize.y * 0.950));
 }

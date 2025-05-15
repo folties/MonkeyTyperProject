@@ -6,6 +6,8 @@
 #include <map>
 #include <string>
 
+#pragma once
+
 class Resources {
 public:
     Resources();

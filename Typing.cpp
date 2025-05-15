@@ -1,25 +1,24 @@
 #include "Typing.h"
 
 auto Typing::processInput(char typedChar) -> void {
-    // Support backspace
     if (typedChar == 8 && !currentInput.empty()) {
         currentInput.pop_back();
     } else if (typedChar >= 32 && typedChar <= 126) {
-        // printable ASCII
         if (currentInput.size() < 15) {
             currentInput += typedChar;
         }
     }
 }
 auto Typing::trySubmit(Word& word) -> void {
-    auto& activeWords = word.getActiveWords(); // make sure you expose this in Word
+    auto& activeWords = word.getActiveWords();
 
-    for (auto it = activeWords.begin(); it != activeWords.end(); ++it) {
-        if (it->getString() == currentInput) {
-            activeWords.erase(it);
-            wordCounter++;
-            break;
-        }
+    auto it = std::find_if(activeWords.begin(), activeWords.end(), [&](const auto& word) {
+        return word.getString() == currentInput;
+    });
+
+    if (it != activeWords.end()) {
+        activeWords.erase(it);
+        wordCounter++;
     }
     currentInput.clear();
 }

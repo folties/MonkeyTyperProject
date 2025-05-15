@@ -1,8 +1,11 @@
 
 #ifndef INSTRUCTION_H
 #define INSTRUCTION_H
+
 #include "SFML/Graphics/Text.hpp"
 #include "Resources.h"
+
+#pragma once
 
 
 class Instruction {

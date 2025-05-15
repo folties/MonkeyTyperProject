@@ -8,7 +8,7 @@ Logic::Logic()
     : window(sf::VideoMode::getDesktopMode(), "MonkeyTyper", sf::Style::Close, sf::State::Windowed),
       background(window.getSize()),
       word(pixelFont),
-      gameEnd(bloxFont),
+      gameEnd(bloxFont, window.getSize()),
       panel(pixelFont, window.getSize()),
       countdownText(bloxFont, "", 80),
       totalTime(0.f),
@@ -79,7 +79,7 @@ auto Logic::render() -> void {
         gameEnd.setTime(totalTime);
         gameEnd.setMissedWords(missed);
         gameEnd.setTypedText(typing.getCurrentInput());
-        gameEnd.show(window);
+        gameEnd.render(window);
         resources.backgroundMusic.stop();
     }
 
@@ -215,7 +215,7 @@ auto Logic::startCountdown(float deltaTime) -> void {
         countdownText.setString(std::to_string(displayNumber));
 
         window.clear(sf::Color(0, 0, 50));
-        background.updateStars(deltaTime);
+        background.updateStars(deltaTime, window.getSize());
         background.drawStars(window);
         window.draw(countdownText);
         window.display();
@@ -234,7 +234,7 @@ auto Logic::update(float deltaTime) -> void {
         panel.setTimer(totalTime);
         panel.setTraffic(countVisibleWords(), word.getTotalWords());
         word.updateWords(deltaTime, window.getSize());
-        background.updateStars(deltaTime);
+        background.updateStars(deltaTime, window.getSize());
         panel.setMissedWords(word.getMissedWords());
         missed = word.getMissedWords();
     }

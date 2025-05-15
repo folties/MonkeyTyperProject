@@ -9,7 +9,6 @@ Word::Word(const sf::Font& font) {
     initWords();
 }
 
-//words initialization
 auto Word::initWords() -> void {
     wordsList.clear();
 

@@ -31,6 +31,7 @@ struct Words : sf::Text {
 class Word {
 public:
     Word(const sf::Font &font);
+
     auto updateWords(float deltaTime, sf::Vector2u windowSize) -> void;
     auto drawWord(sf::RenderWindow &window) -> void;
     auto isGameOver() -> bool;

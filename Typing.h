@@ -2,7 +2,7 @@
 #define TYPING_H
 #include "Word.h"
 
-
+#pragma once
 
 class Typing {
 public:

@@ -70,7 +70,9 @@ auto Instruction::setupElements(const sf::Vector2u &windowSize) -> void {
 }
 
 auto Instruction::render(sf::RenderWindow& window) -> void{
-    if (!instructionVisible) return;
+    if (!instructionVisible) {
+        return;
+    }
     window.draw(instructionPanel);
     window.draw(instructionText);
     window.draw(closeButton);

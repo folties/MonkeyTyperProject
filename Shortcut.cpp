@@ -27,7 +27,7 @@ auto Shortcut::handleKeyEvent(const sf::Event::KeyPressed& event, Typing& typing
             }
         }
         else if (event.scancode == sf::Keyboard::Scancode::Up) {
-            typeSoundEnabled = !typeSoundEnabled;  // Toggle type sound state
+            typeSoundEnabled = !typeSoundEnabled;
         }
     }
 }

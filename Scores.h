@@ -5,6 +5,8 @@
 #include <string>
 #include <vector>
 
+#pragma once
+
 struct ScoreEntry {
     std::string note;
     std::string difficulty;
@@ -17,6 +19,9 @@ struct ScoreEntry {
 class Scores {
 public:
     Scores(const sf::Font& font, const sf::Vector2u& windowSize);
+
+    auto setupElements(const sf::Vector2u &windowSize) -> void;
+
     auto isVisible() -> bool;
 
     auto loadFromFile() -> void;
