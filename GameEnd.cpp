@@ -49,23 +49,17 @@ GameEnd::GameEnd(const sf::Font& font)
 
 void GameEnd::setMissedWords(int count) {
     missedWords = count;
-    std::ostringstream oss;
-    oss << "missed " << missedWords;
-    missedText.setString(oss.str());
+    missedText.setString("missed " + std::to_string(missedWords));
 }
 
 void GameEnd::setWPM(float wpmValue) {
     wpm = wpmValue;
-    std::ostringstream oss;
-    oss << "wpm " << static_cast<int>(wpm);
-    wpmText.setString(oss.str());
+    wpmText.setString("wpm " + std::to_string(wpm));
 }
 
 void GameEnd::setTime(float timeValue) {
     time = timeValue;
-    std::ostringstream oss;
-    oss << "time " << static_cast<int>(time) << "s";
-    timeText.setString(oss.str());
+    timeText.setString("time " + std::to_string(time) + "s");
 }
 
 void GameEnd::setTypedText(const std::string& text) {
@@ -73,15 +67,12 @@ void GameEnd::setTypedText(const std::string& text) {
 }
 
 void GameEnd::handleLabelInput(uint32_t unicode) {
-    if (unicode == 8) { // Backspace
+    if (unicode == 8) {
         if (!labelInput.empty()) labelInput.pop_back();
     } else if (unicode >= 32 && unicode <= 126) {
-        // Create a temporary string to test if the new character would fit
         std::string testInput = labelInput + static_cast<char>(unicode);
         labelText.setString(testInput);
-        
-        // Check if the text width exceeds the box width (with some padding)
-        float boxWidth = labelBox.getSize().x - 40.f; // 40 pixels padding (20px on each side)
+        float boxWidth = labelBox.getSize().x - 40.f;
         sf::FloatRect bounds = labelText.getLocalBounds();
         if (bounds.size.x <= boxWidth) {
             labelInput = testInput;

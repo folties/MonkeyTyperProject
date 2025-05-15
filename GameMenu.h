@@ -6,7 +6,7 @@
 
 class GameMenu {
 public:
-    GameMenu(const sf::Font& font, float width, float height);
+    GameMenu(const sf::Font& font, const sf::Vector2u& windowSize);
     auto render(sf::RenderWindow& window) -> void;
     auto isResumeClicked(const sf::Vector2f& mousePos) -> bool;
     auto isLeaveClicked(const sf::Vector2f& mousePos) -> bool;
@@ -18,7 +18,6 @@ private:
     sf::Text resumeText;
     sf::RectangleShape leaveButton;
     sf::Text leaveText;
-    float width, height;
 };
 
 #endif // GAME_MENU_H 

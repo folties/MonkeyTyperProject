@@ -4,29 +4,27 @@
 #include <algorithm>
 #include <iostream>
 
-Scores::Scores(const sf::Font& font, float width, float height)
-    : width(width), height(height),
+Scores::Scores(const sf::Font& font, const sf::Vector2u& windowSize)
+    :
       titleText(font),
       closeButton(font)
 {
-    panel.setSize(sf::Vector2f(width * 0.7f, height * 0.7f));
+    panel.setSize(sf::Vector2f(windowSize.x * 0.7f, windowSize.y * 0.7f));
     panel.setFillColor(sf::Color(40, 40, 60, 250));
     panel.setOutlineColor(sf::Color::White);
     panel.setOutlineThickness(3.f);
     panel.setOrigin(panel.getSize() / 2.f);
-    panel.setPosition(sf::Vector2f(width / 2.f, height / 2.f));
+    panel.setPosition(sf::Vector2f(windowSize.x / 2.f, windowSize.y / 2.f));
 
     titleText.setString("Best Results");
-    titleText.setCharacterSize(static_cast<unsigned>(height * 0.04f));
+    titleText.setCharacterSize(windowSize.y * 0.04f);
     titleText.setFillColor(sf::Color(120,190,255));
-    titleText.setPosition(sf::Vector2f(panel.getPosition().x - panel.getSize().x / 2.f + 30, 
-                                     panel.getPosition().y - panel.getSize().y / 2.f + 10));
+    titleText.setPosition(sf::Vector2f(panel.getPosition().x * 0.88f,  panel.getPosition().y * 0.3f));
 
     closeButton.setString("[X]");
-    closeButton.setCharacterSize(static_cast<unsigned>(height * 0.03f));
+    closeButton.setCharacterSize(windowSize.y * 0.03f);
     closeButton.setFillColor(sf::Color::Red);
-    closeButton.setPosition(sf::Vector2f(panel.getPosition().x + panel.getSize().x / 2.f - 50, 
-                                       panel.getPosition().y - panel.getSize().y / 2.f + 10));
+    closeButton.setPosition(sf::Vector2f(panel.getPosition().x * 1.65f,  panel.getPosition().y * 0.3f));
 
     updateTexts();
 }
@@ -96,18 +94,18 @@ auto Scores::setCurrentDifficulty(const std::string& diff) -> void {
 
 auto Scores::updateTexts() -> void {
     scoreTexts.clear();
-    float y = panel.getPosition().y - panel.getSize().y / 2.f + 60;
+    float y = panel.getPosition().y * 0.4f;
     size_t shown = 0;
     for (size_t i = 0; i < bestScores.size(); ++i) {
         const auto& entry = bestScores[i];
         if (entry.difficulty != currentDifficulty) continue;
         sf::Text text(titleText.getFont());
-        text.setCharacterSize(static_cast<unsigned>(height * 0.03f));
+        text.setCharacterSize(panel.getSize().x * 0.02f);
         text.setFillColor(sf::Color::White);
         std::ostringstream oss;
         oss << shown+1 << ". [" << entry.topic << "] " << entry.note << "  WPM: " << entry.wpm << "  Missed: " << entry.missedWords << "  Time: " << static_cast<int>(entry.time) << "s";
         text.setString(oss.str());
-        text.setPosition(sf::Vector2f(panel.getPosition().x - panel.getSize().x / 2.f + 30, y));
+        text.setPosition(sf::Vector2f(panel.getPosition().x * 0.35f, y));
         y += 40;
         scoreTexts.push_back(text);
         ++shown;

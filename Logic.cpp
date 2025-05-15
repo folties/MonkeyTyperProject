@@ -15,11 +15,11 @@ Logic::Logic()
       wpm(0.f),
       missed(0.f),
       gameStarted(false),
-      countdownTime(3.0f),
+      countdownTime(0.0f),
       previewScreen(window.getSize()),
-      scores(pixelFont, window.getSize().x, window.getSize().y),
+      scores(pixelFont, window.getSize()),
       instruction(pixelFont, window.getSize()),
-      gameMenu(bloxFont, window.getSize().x, window.getSize().y)
+      gameMenu(bloxFont, window.getSize())
 {
     window.setMouseCursorGrabbed(false);
 
@@ -138,6 +138,7 @@ auto Logic::processEvents() -> void {
                         }
                     } else if (currentState == GameState::PLAYING) {
                         if (shortcut.getMenuGameState()) {
+                            resources.backgroundMusic.stop();
                             if (gameMenu.isResumeClicked(mousePos)) {
                                 shortcut.setMenuGameState(false);  // Hide the menu
                                 resources.backgroundMusic.play();  // Resume music

@@ -16,7 +16,7 @@ struct ScoreEntry {
 
 class Scores {
 public:
-    Scores(const sf::Font& font, float width, float height);
+    Scores(const sf::Font& font, const sf::Vector2u& windowSize);
     auto isVisible() -> bool;
 
     auto loadFromFile() -> void;
@@ -35,8 +35,6 @@ private:
     std::vector<sf::Text> scoreTexts;
     sf::Text closeButton;
     bool visible = false;
-    double width;
-    double height;
     std::string currentDifficulty;
 };
 

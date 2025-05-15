@@ -27,54 +27,46 @@ auto Instruction::setupElements(const sf::Vector2u &windowSize) -> void {
     instructionPanel.setPosition(sf::Vector2f(windowSize.x / 2.f, windowSize.y / 2.f));
 
     closeButton.setString("[X]");
-    closeButton.setCharacterSize(static_cast<unsigned>(windowSize.y * 0.03f));
+    closeButton.setCharacterSize(windowSize.y * 0.03f);
     closeButton.setFillColor(sf::Color::Red);
-    closeButton.setPosition(sf::Vector2f(instructionPanel.getPosition().x + instructionPanel.getSize().x / 2.f - 50,
-                                       instructionPanel.getPosition().y - instructionPanel.getSize().y / 2.f + 10));
+    closeButton.setPosition(sf::Vector2f(instructionPanel.getPosition().x * 1.65f, instructionPanel.getPosition().y * 0.3f));
 
     instructionText.setString("Instruction");
-    instructionText.setCharacterSize(static_cast<unsigned>(windowSize.y * 0.04f));
+    instructionText.setCharacterSize(windowSize.y * 0.04f);
     instructionText.setFillColor(sf::Color(120,190,255));
-    instructionText.setPosition(sf::Vector2f(instructionPanel.getPosition().x - instructionPanel.getSize().x / 2.f + 420,
-                                     instructionPanel.getPosition().y - instructionPanel.getSize().y / 2.f + 10));
+    instructionText.setPosition(sf::Vector2f(instructionPanel.getPosition().x * 0.88f, instructionPanel.getPosition().y * 0.3f));
 
     informationText.setString(">>Type the words moving left to right before they disappear!  "
                               "\n\n>>Improve your Words Per Minute (WPM) and avoid missing words to achieve \na high score."
                               "\n\n>>Use the X symbols next to each option to switch between different \nfonts, topics, and difficulties.");
-    informationText.setCharacterSize(static_cast<unsigned>(windowSize.y * 0.03f));
+    informationText.setCharacterSize(windowSize.y * 0.03f);
     informationText.setFillColor(sf::Color::White);
-    informationText.setPosition(sf::Vector2f(instructionPanel.getPosition().x - instructionPanel.getSize().x / 2.f + 30,
-                                     instructionPanel.getPosition().y - instructionPanel.getSize().y / 2.f + 50));
+    informationText.setPosition(sf::Vector2f(instructionPanel.getPosition().x * 0.4f, instructionPanel.getPosition().y * 0.5f));
 
     pauseShortcutText.setString("ESCAPE >> Open Menu Screen");
-    pauseShortcutText.setCharacterSize(static_cast<unsigned>(windowSize.y * 0.035f));
+    pauseShortcutText.setCharacterSize(windowSize.y * 0.035f);
     pauseShortcutText.setFillColor(sf::Color::White);
-    pauseShortcutText.setPosition(sf::Vector2f(instructionPanel.getPosition().x - instructionPanel.getSize().x / 2.f + 30,
-                                     instructionPanel.getPosition().y - instructionPanel.getSize().y / 2.f + 300));
+    pauseShortcutText.setPosition(sf::Vector2f(instructionPanel.getPosition().x * 0.4f, instructionPanel.getPosition().y * 1.1f));
 
-    movementShortcutText.setString("Right Shift >> Change Word Movement");
-    movementShortcutText.setCharacterSize(static_cast<unsigned>(windowSize.y * 0.035f));
+    movementShortcutText.setString("Right Shift >> Change Movement");
+    movementShortcutText.setCharacterSize(windowSize.y * 0.035f);
     movementShortcutText.setFillColor(sf::Color::White);
-    movementShortcutText.setPosition(sf::Vector2f(instructionPanel.getPosition().x - instructionPanel.getSize().x / 2.f + 30,
-                                     instructionPanel.getPosition().y - instructionPanel.getSize().y / 2.f + 350));
+    movementShortcutText.setPosition(sf::Vector2f(instructionPanel.getPosition().x * 0.4f, instructionPanel.getPosition().y * 1.3f));
 
     musicShortcutText.setString("Down Arrow >> Toggle Music ");
-    musicShortcutText.setCharacterSize(static_cast<unsigned>(windowSize.y * 0.035f));
+    musicShortcutText.setCharacterSize(windowSize.y * 0.035f);
     musicShortcutText.setFillColor(sf::Color::White);
-    musicShortcutText.setPosition(sf::Vector2f(instructionPanel.getPosition().x - instructionPanel.getSize().x / 2.f + 600,
-                                     instructionPanel.getPosition().y - instructionPanel.getSize().y / 2.f + 300));
+    musicShortcutText.setPosition(sf::Vector2f(instructionPanel.getPosition().x * 1.1f,instructionPanel.getPosition().y * 1.1f));
 
     soundShortcutText.setString("Up Arrow >> Toggle Sound ");
-    soundShortcutText.setCharacterSize(static_cast<unsigned>(windowSize.y * 0.035f));
+    soundShortcutText.setCharacterSize(windowSize.y * 0.035f);
     soundShortcutText.setFillColor(sf::Color::White);
-    soundShortcutText.setPosition(sf::Vector2f(instructionPanel.getPosition().x - instructionPanel.getSize().x / 2.f + 600,
-                                     instructionPanel.getPosition().y - instructionPanel.getSize().y / 2.f + 350));
+    soundShortcutText.setPosition(sf::Vector2f(instructionPanel.getPosition().x * 1.1f,instructionPanel.getPosition().y * 1.3f));
 
     wishesText.setString("HAVE A GOOD GAME!");
-    wishesText.setCharacterSize(static_cast<unsigned>(windowSize.y * 0.035f));
+    wishesText.setCharacterSize(windowSize.y * 0.035f);
     wishesText.setFillColor(sf::Color(120, 190, 255));
-    wishesText.setPosition(sf::Vector2f(instructionPanel.getPosition().x - instructionPanel.getSize().x / 2.f + 350,
-                                     instructionPanel.getPosition().y - instructionPanel.getSize().y / 2.f + 450));
+    wishesText.setPosition(sf::Vector2f(instructionPanel.getPosition().x * 0.8f,instructionPanel.getPosition().y * 1.5f));
 }
 
 auto Instruction::render(sf::RenderWindow& window) -> void{

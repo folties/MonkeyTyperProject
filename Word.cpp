@@ -71,7 +71,7 @@ auto Word::updateWords(float deltaTime, sf::Vector2u windowSize) -> void {
             it->setFillColor(sf::Color::Cyan);
         }
 
-        if (position.x > static_cast<float>(windowSize.x)) {
+        if (position.x > windowSize.x) {
             missedWords++;
             it = objectsWords.erase(it);
         } else {
