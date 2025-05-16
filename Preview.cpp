@@ -3,6 +3,7 @@
 Preview::Preview(const sf::Vector2u& windowSize) :
     previewFont(resource.getFont("BloxFont")),
     startText(previewFont),
+    continueText(previewFont),
     scoresText(previewFont),
     instructionText(previewFont),
     fontText(previewFont),
@@ -34,7 +35,14 @@ auto Preview::setupElements(const sf::Vector2u& windowSize) -> void {
     startButton.setOutlineColor(sf::Color::White);
     startButton.setOutlineThickness(3.f);
     startButton.setOrigin(startButton.getSize() / 2.f);
-    startButton.setPosition(sf::Vector2f(previewPanel.getPosition().x , previewPanel.getPosition().y * 1.1f));
+    startButton.setPosition(sf::Vector2f(previewPanel.getPosition().x , previewPanel.getPosition().y * 0.9f));
+
+    continueButton.setSize(sf::Vector2f(windowSize.x * 0.15f, windowSize.y * 0.06f));
+    continueButton.setFillColor(sf::Color(0, 0, 90));
+    continueButton.setOutlineColor(sf::Color::White);
+    continueButton.setOutlineThickness(3.f);
+    continueButton.setOrigin(startButton.getSize() / 2.f);
+    continueButton.setPosition(sf::Vector2f(previewPanel.getPosition().x , previewPanel.getPosition().y * 1.1f));
 
     scoresButton.setSize(sf::Vector2f(windowSize.x * 0.15f, windowSize.y * 0.06f));
     scoresButton.setFillColor(sf::Color(0, 0, 60));
@@ -57,7 +65,8 @@ auto Preview::setupElements(const sf::Vector2u& windowSize) -> void {
         text.setPosition(position);
     };
 
-    setupText(startText, "New Game", sf::Vector2f(previewPanel.getPosition().x * 0.945f, previewPanel.getPosition().y * 1.07f));
+    setupText(startText, "New Game", sf::Vector2f(previewPanel.getPosition().x * 0.945f, previewPanel.getPosition().y * 0.875f));
+    setupText(continueText, "Continue", sf::Vector2f(previewPanel.getPosition().x * 0.945f, previewPanel.getPosition().y * 1.075f));
     setupText(scoresText, "Best Results", sf::Vector2f(previewPanel.getPosition().x * 0.925f, previewPanel.getPosition().y * 1.27f));
     setupText(instructionText, "Instruction", sf::Vector2f(previewPanel.getPosition().x * 0.925f, previewPanel.getPosition().y * 1.47f));
 
@@ -134,6 +143,8 @@ auto Preview::render(sf::RenderWindow& window) -> void {
     window.draw(previewPanel);
     window.draw(startButton);
     window.draw(startText);
+    window.draw(continueButton);
+    window.draw(continueText);
     window.draw(scoresButton);
     window.draw(scoresText);
     window.draw(instructionButton);

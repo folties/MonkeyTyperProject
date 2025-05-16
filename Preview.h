@@ -50,6 +50,9 @@ private:
     sf::RectangleShape startButton;
     sf::Text startText;
 
+    sf::RectangleShape continueButton;
+    sf::Text continueText;
+
     sf::RectangleShape scoresButton;
     sf::Text scoresText;
 
