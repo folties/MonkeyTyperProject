@@ -17,9 +17,13 @@ public:
 
     struct GameState {
         float totalTime = 0.0f;
-        int totalWords = 0;
+        int wordsClaimed = 0;
         int score = 0;
         int missedWords = 0;
+
+        std::string topic;
+        std::string fontName;
+        std::string difficultyLevel;
 
         std::vector<WordState> words;
     };
@@ -27,7 +31,6 @@ public:
     static void saveGame(const GameState& state);
     static GameState loadGame();
     static bool isSaveAvailable();
-    static void deleteSave();
 
 private:
     static const std::string saveFile;

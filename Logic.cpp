@@ -5,7 +5,7 @@
 
 
 Logic::Logic()
-    : window(sf::VideoMode::getDesktopMode(), "MonkeyTyper", sf::Style::Close, sf::State::Windowed),
+    : window(sf::VideoMode::getDesktopMode(), "MonkeyTyper", sf::Style::Default, sf::State::Windowed),
       background(window.getSize()),
       word(pixelFont),
       gameEnd(bloxFont, window.getSize()),
@@ -21,12 +21,9 @@ Logic::Logic()
       instruction(pixelFont, window.getSize()),
       gameMenu(bloxFont, window.getSize())
 {
-    window.setMouseCursorGrabbed(false);
-
     pixelFont = resources.getFont("PixelFont");
     bloxFont = resources.getFont("BloxFont");
     window.setIcon(resources.icon);
-    window.setMouseCursorVisible(true);
 
     // --- UI Setup ---
     countdownText.setFillColor(sf::Color::White);
@@ -43,7 +40,6 @@ auto Logic::run() -> void {
     while (window.isOpen()) {
         processEvents();
         float deltaTime = clock.restart().asSeconds();
-
         if (currentState == GameState::PREVIEW) {
             renderPreview();
         }
@@ -119,12 +115,25 @@ auto Logic::processEvents() -> void {
                             if (GameSave::isSaveAvailable()) {
                                 try {
                                     auto state = GameSave::loadGame();
-                                    std::cout << "Game Loaded Successfully!" << std::endl;
 
                                     // 🌟 Восстанавливаем game state
+                                    const sf::Font& newFont = resources.getFont(state.fontName + "Font"); // <-- careful with the name
+                                    word.setFont(newFont);
+
+                                    word.setFont(newFont);
+
+                                    std::string selectedDifficulty = state.difficultyLevel;
+                                    word.setDifficulty(word.stringToDifficulty(selectedDifficulty));
+                                    gameEnd.setDifficulty(selectedDifficulty);
+                                    scores.setCurrentDifficulty(selectedDifficulty);
+
+                                    std::string selectedTopic = state.topic;
+                                    word.setTopic(selectedTopic); // <- Add this function
+
+
                                     totalTime = state.totalTime;
-                                    panel.setWordCounter(state.totalWords); // ✅ Добавил это
-                                    typing.setWordCount(state.totalWords);
+                                    panel.setWordCounter(state.wordsClaimed); // ✅ Добавил это
+                                    typing.setWordCount(state.wordsClaimed);
                                     wpm = state.score;
 
                                     // 1) Clear old words (also clears missedWords internally)
@@ -179,8 +188,13 @@ auto Logic::processEvents() -> void {
 
                                 // 🌟 Save the Game State before exiting
                                 GameSave::GameState state;
+
+                                state.topic = word.getTopic();
+                                state.fontName = previewScreen.getSelectedFontName();
+                                state.difficultyLevel = previewScreen.getSelectedDifficulty();
+
                                 state.totalTime = totalTime;
-                                state.totalWords = typing.getWordCount();
+                                state.wordsClaimed = typing.getWordCount();
                                 state.score = wpm;
                                 state.missedWords = word.getMissedWords();
 
@@ -211,10 +225,6 @@ auto Logic::processEvents() -> void {
                                 resetGame();
                                 scores.loadFromFile();
                                 scores.setCurrentDifficulty(previewScreen.getSelectedDifficulty());
-
-                                // 🌟 Delete save after finishing the game
-                                GameSave::deleteSave();
-                                std::cout << "Save file deleted after game end!" << std::endl;
 
                             } else if (gameEnd.isSaveButtonClicked(mousePos)) {
                                 gameEnd.setTopic(word.getTopic());  // Set the topic before saving

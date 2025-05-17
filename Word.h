@@ -39,6 +39,9 @@ public:
     auto getTotalWords() -> int;
     auto getMissedWords() -> int;
     auto setFont(const sf::Font& font) -> void;
+
+    auto getFont() -> sf::Font &;
+
     auto setDifficulty(Difficulty difficulty) -> void;
     void setText(const std::string& text);
     void setPosition(const sf::Vector2f& position);

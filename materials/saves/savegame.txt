@@ -1,0 +1,52 @@
+Technology
+Pixel
+Hard
+20.4829
+7
+20
+0
+22
+password
+898.4 648 96
+mouse
+860 604.8 96
+server
+821.6 864 96
+blockchain
+764 561.6 96
+GPU
+725.6 259.2 96
+call
+629.6 0 96
+text
+591.2 691.2 96
+application
+552.8 734.4 96
+program
+495.2 648 96
+antenna
+456.8 302.4 96
+firmware
+418.4 259.2 96
+graphics
+360.8 907.2 96
+laptop
+322.4 432 96
+update
+284 691.2 96
+chip
+226.4 648 96
+webcam
+188 518.4 96
+bluetooth
+149.6 259.2 96
+drone
+92 302.4 96
+machine
+53.6 820.8 96
+HDD
+15.2 907.2 96
+transistor
+-42.4 864 96
+neural
+-80.8 691.2 96

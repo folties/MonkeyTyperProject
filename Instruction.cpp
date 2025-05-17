@@ -37,7 +37,7 @@ auto Instruction::setupElements(const sf::Vector2u &windowSize) -> void {
     instructionText.setPosition(sf::Vector2f(instructionPanel.getPosition().x * 0.88f, instructionPanel.getPosition().y * 0.3f));
 
     informationText.setString(">>Type the words moving left to right before they disappear!  "
-                              "\n\n>>Improve your Words Per Minute (WPM) and avoid missing words to achieve \na high score."
+                              "\n\n>>Improve your Words Per Minute (WPM) and avoid missing words to \nachieve a high score."
                               "\n\n>>Use the X symbols next to each option to switch between different \nfonts, topics, and difficulties.");
     informationText.setCharacterSize(windowSize.y * 0.03f);
     informationText.setFillColor(sf::Color::White);

@@ -154,6 +154,10 @@ auto Word::setFont(const sf::Font& newFont) -> void {
     font = newFont;
 }
 
+auto Word::getFont() -> sf::Font& {
+    return font;
+}
+
 auto Word::stringToDifficulty(const std::string& str) -> Difficulty {
     if (str == "Easy") return Difficulty::EASY;
     if (str == "Medium") return Difficulty::MEDIUM;
