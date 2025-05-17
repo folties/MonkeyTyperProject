@@ -10,6 +10,7 @@ public:
     auto trySubmit(Word& word) -> void;
     auto getCurrentInput() -> std::string;
     auto getWordCount() -> int;
+    void setWordCount(int count);
     auto reset() -> void;
 
 private:

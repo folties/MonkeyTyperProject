@@ -1,5 +1,7 @@
 #include "Preview.h"
 
+#include "GameSave.h"
+
 Preview::Preview(const sf::Vector2u& windowSize) :
     previewFont(resource.getFont("BloxFont")),
     startText(previewFont),
@@ -30,33 +32,19 @@ auto Preview::setupElements(const sf::Vector2u& windowSize) -> void {
     previewPanel.setOrigin(previewPanel.getSize() / 2.f);
     previewPanel.setPosition(sf::Vector2f(windowSize.x / 2.f, windowSize.y / 2.f));
 
-    startButton.setSize(sf::Vector2f(windowSize.x * 0.15f, windowSize.y * 0.06f));
-    startButton.setFillColor(sf::Color(0, 0, 90));
-    startButton.setOutlineColor(sf::Color::White);
-    startButton.setOutlineThickness(3.f);
-    startButton.setOrigin(startButton.getSize() / 2.f);
-    startButton.setPosition(sf::Vector2f(previewPanel.getPosition().x , previewPanel.getPosition().y * 0.9f));
+    auto setupButtons = [&](sf::RectangleShape &button, sf::Vector2f position) -> void {
+        button.setSize(sf::Vector2f(windowSize.x * 0.15f, windowSize.y * 0.06f));
+        button.setFillColor(sf::Color(0, 0, 90));
+        button.setOutlineColor(sf::Color::White);
+        button.setOutlineThickness(3.f);
+        button.setOrigin(button.getSize() / 2.f);
+        button.setPosition(position);
+    };
 
-    continueButton.setSize(sf::Vector2f(windowSize.x * 0.15f, windowSize.y * 0.06f));
-    continueButton.setFillColor(sf::Color(0, 0, 90));
-    continueButton.setOutlineColor(sf::Color::White);
-    continueButton.setOutlineThickness(3.f);
-    continueButton.setOrigin(startButton.getSize() / 2.f);
-    continueButton.setPosition(sf::Vector2f(previewPanel.getPosition().x , previewPanel.getPosition().y * 1.1f));
-
-    scoresButton.setSize(sf::Vector2f(windowSize.x * 0.15f, windowSize.y * 0.06f));
-    scoresButton.setFillColor(sf::Color(0, 0, 60));
-    scoresButton.setOutlineColor(sf::Color::White);
-    scoresButton.setOutlineThickness(3.f);
-    scoresButton.setOrigin(scoresButton.getSize() / 2.f);
-    scoresButton.setPosition(sf::Vector2f(previewPanel.getPosition().x, previewPanel.getPosition().y * 1.3f));
-
-    instructionButton.setSize(sf::Vector2f(windowSize.x * 0.15f, windowSize.y * 0.06f));
-    instructionButton.setFillColor(sf::Color(0, 0, 60));
-    instructionButton.setOutlineColor(sf::Color::White);
-    instructionButton.setOutlineThickness(3.f);
-    instructionButton.setOrigin(instructionButton.getSize() / 2.f);
-    instructionButton.setPosition(sf::Vector2f(previewPanel.getPosition().x, previewPanel.getPosition().y * 1.5f));
+    setupButtons(startButton, sf::Vector2f(previewPanel.getPosition().x , previewPanel.getPosition().y * 0.9f));
+    setupButtons(continueButton, sf::Vector2f(previewPanel.getPosition().x , previewPanel.getPosition().y * 1.1f));
+    setupButtons(scoresButton, sf::Vector2f(previewPanel.getPosition().x, previewPanel.getPosition().y * 1.3f));
+    setupButtons(instructionButton, sf::Vector2f(previewPanel.getPosition().x, previewPanel.getPosition().y * 1.5f));
 
     auto setupText = [&](sf::Text &text, const std::string& string, sf::Vector2f position) -> void {
         text.setString(string);
@@ -140,6 +128,8 @@ void Preview::centerText(sf::Text& text, sf::Vector2f center) {
 }
 
 auto Preview::render(sf::RenderWindow& window) -> void {
+    updateButtons(); // ensure color matches availability
+
     window.draw(previewPanel);
     window.draw(startButton);
     window.draw(startText);
@@ -163,6 +153,21 @@ auto Preview::render(sf::RenderWindow& window) -> void {
     window.draw(topicRightArrow);
 }
 
+void Preview::updateButtons() {
+    // Call before drawing to reflect current save state
+    if (GameSave::isSaveAvailable()) {
+        continueButton.setFillColor({0, 0, 90});
+        continueText.setFillColor(sf::Color::White);
+    } else {
+        continueButton.setFillColor({100, 100, 100});
+        continueText.setFillColor({150, 150, 150});
+    }
+}
+
+bool Preview::isContinueButtonClicked(const sf::Vector2f& mousePos) const {
+    return continueButton.getGlobalBounds().contains(mousePos);
+}
+
 auto Preview::isStartButtonClicked(const sf::Vector2f& mousePos) -> bool  {
     return startButton.getGlobalBounds().contains(mousePos);
 }
@@ -184,3 +189,5 @@ auto Preview::getSelectedDifficulty() -> std::string {
 auto Preview::getSelectedTopicName() -> std::string {
     return topicOptions[topicIndex];
 }
+
+

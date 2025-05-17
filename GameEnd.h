@@ -26,6 +26,10 @@ public:
     auto setDifficulty(const std::string& diff) -> void;
     auto setTopic(const std::string& topic) -> void;
     auto isResultSaved() -> bool;
+
+    void updateButtons(const sf::Vector2u &windowSize);
+
+
     auto isReturnButtonClicked(const sf::Vector2f& mousePos) -> bool ;
     auto isSaveButtonClicked(const sf::Vector2f& mousePos) -> bool;
 

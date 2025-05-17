@@ -40,12 +40,20 @@ public:
     auto getMissedWords() -> int;
     auto setFont(const sf::Font& font) -> void;
     auto setDifficulty(Difficulty difficulty) -> void;
+    void setText(const std::string& text);
+    void setPosition(const sf::Vector2f& position);
+    void setSpeed(float speed);
+    void setMissedWords(int missed);
+    int getMissedWords() const;
     auto stringToDifficulty(const std::string &str) -> Difficulty;
     auto setTopic(const std::string &topic) -> void;
     auto getTopic() -> std::string;
+    std::string getText() const;
+    float getSpeed() const;
     auto reset() -> void;
     auto initWords() -> void;
     auto getActiveWords() -> std::vector<Words>&;
+
 
 private:
 
@@ -63,6 +71,9 @@ private:
     const float stepSize = 15.f;     // how far each jump is
     std::string selectedTopic = "Animals"; // default
     Difficulty selectedDifficulty = Difficulty::EASY; // default
+    sf::Text wordText;  // Add this line
+    float speed;        // Also add this line, it is missing
+
 
 };
 

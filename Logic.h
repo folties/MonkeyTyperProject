@@ -13,6 +13,7 @@
 #include "Scores.h"
 #include "Instruction.h"
 #include "GameMenu.h"
+#include "GameSave.h"
 
 enum class GameState {
     PREVIEW,

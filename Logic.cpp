@@ -115,6 +115,37 @@ auto Logic::processEvents() -> void {
                         } else if (previewScreen.isInstructionButtonClicked(mousePos)) {
                             instruction.setVisible(true);
                         }
+                        if (previewScreen.isContinueButtonClicked(mousePos)) {
+                            if (GameSave::isSaveAvailable()) {
+                                try {
+                                    auto state = GameSave::loadGame();
+                                    std::cout << "Game Loaded Successfully!" << std::endl;
+
+                                    // 🌟 Восстанавливаем game state
+                                    totalTime = state.totalTime;
+                                    panel.setWordCounter(state.totalWords); // ✅ Добавил это
+                                    typing.setWordCount(state.totalWords);
+                                    wpm = state.score;
+
+                                    // 1) Clear old words (also clears missedWords internally)
+                                    word.reset();
+
+                                    // 2) Put back every saved word
+                                    for (auto& ws : state.words) {
+                                        Words restored(ws.text, pixelFont, 25, sf::Color::White, {ws.posX, ws.posY});
+                                        restored.speed = ws.speed;
+                                        word.getActiveWords().push_back(restored);
+                                    }
+                                    // 3) Now restore the missed‐words count
+                                    word.setMissedWords(state.missedWords);
+                                    panel.setMissedWords(state.missedWords);
+
+                                    currentState = GameState::PLAYING;
+                                } catch (const std::exception& e) {
+                                    std::cerr << "Failed to load game: " << e.what() << std::endl;
+                                }
+                            }
+                        }
                         if (previewScreen.isStartButtonClicked(mousePos)) {
                             // 1. Get selected font name from PreviewScreen
                             std::string selectedFont = previewScreen.getSelectedFontName();
@@ -145,6 +176,28 @@ auto Logic::processEvents() -> void {
                             }
                             if (gameMenu.isLeaveClicked(mousePos)) {
                                 shortcut.setMenuGameState(false);
+
+                                // 🌟 Save the Game State before exiting
+                                GameSave::GameState state;
+                                state.totalTime = totalTime;
+                                state.totalWords = typing.getWordCount();
+                                state.score = wpm;
+                                state.missedWords = word.getMissedWords();
+
+
+
+                                for (const auto& w : word.getActiveWords()) {
+                                    GameSave::WordState ws;
+                                    ws.text = w.getString();
+                                    ws.posX = w.getPosition().x;
+                                    ws.posY = w.getPosition().y;
+                                    ws.speed = w.speed;
+                                    state.words.push_back(ws);
+                                }
+
+                                GameSave::saveGame(state); // Save the game state
+                                std::cout << "Game saved successfully!" << std::endl;
+
                                 currentState = GameState::PREVIEW;
                                 resetGame();
 
@@ -158,6 +211,11 @@ auto Logic::processEvents() -> void {
                                 resetGame();
                                 scores.loadFromFile();
                                 scores.setCurrentDifficulty(previewScreen.getSelectedDifficulty());
+
+                                // 🌟 Delete save after finishing the game
+                                GameSave::deleteSave();
+                                std::cout << "Save file deleted after game end!" << std::endl;
+
                             } else if (gameEnd.isSaveButtonClicked(mousePos)) {
                                 gameEnd.setTopic(word.getTopic());  // Set the topic before saving
                                 bool success = gameEnd.saveResultToFile();

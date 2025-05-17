@@ -49,6 +49,8 @@ add_executable(MonkeyTyperProject
         Typing.cpp
         Typing.h
         Word.cpp
-        Word.h)
+        Word.h
+        GameSave.cpp
+        GameSave.h)
 
 target_link_libraries(MonkeyTyperProject PRIVATE SFML::Graphics SFML::Audio fmt)

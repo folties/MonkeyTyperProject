@@ -4,10 +4,14 @@
 #include <iostream>
 #include <unordered_set>
 
-Word::Word(const sf::Font& font) {
+Word::Word(const sf::Font& font): wordText(font) {
     this->font = font;
+    wordText.setFont(font); // Initialize the font
+    wordText.setCharacterSize(25); // Example size
+    wordText.setFillColor(sf::Color::White);
     initWords();
 }
+
 
 auto Word::initWords() -> void {
     wordsList.clear();
@@ -169,6 +173,34 @@ auto Word::setDifficulty(Difficulty difficulty) -> void {
     } else if (difficulty == Difficulty::INSANE) {
         wordSpawnInterval = 0.5f;
     }
+}
+
+void Word::setMissedWords(int missed) {
+    missedWords = missed;
+}
+
+int Word::getMissedWords() const {
+    return missedWords;
+}
+
+void Word::setText(const std::string& text) {
+    wordText.setString(text); // Assuming `wordText` is the SFML Text object
+}
+
+void Word::setPosition(const sf::Vector2f& position) {
+    wordText.setPosition(position); // Assuming `wordText` is the SFML Text object
+}
+
+void Word::setSpeed(float speed) {
+    this->speed = speed;
+}
+
+std::string Word::getText() const {
+    return wordText.getString(); // Assuming wordText is the SFML text object
+}
+
+float Word::getSpeed() const {
+    return speed;
 }
 
 auto Word::setTopic(const std::string& topic) -> void {

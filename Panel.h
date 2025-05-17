@@ -19,6 +19,8 @@ public:
     auto setWPM(float wpm) -> void;
     auto setTraffic(int activeWords, int totalWords) -> void;
     auto setMissedWords(int missedWords) -> void;
+    void setCurrentScore(int score);
+    int getCurrentScore() const;
     auto reset() -> void;
 
 private:
@@ -29,6 +31,7 @@ private:
     sf::Text wpmText;
     sf::Text trafficText;
     sf::Text missedWordsText;
+    int currentScore = 0;
 };
 
 #endif // PANEL_H

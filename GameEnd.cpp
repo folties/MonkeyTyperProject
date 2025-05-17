@@ -64,14 +64,6 @@ auto GameEnd::setupElements(const sf::Vector2u &windowSize) -> void {
 
     labelText.setPosition(sf::Vector2f(windowSize.x * 0.405f, windowSize.y * 0.605f));
     labelText.setFillColor(sf::Color::Black);
-
-    if (resultSaved) {
-        saveButton.setFillColor(sf::Color(100, 100, 100));
-        saveButtonText.setString("saved");
-    } else {
-        saveButton.setFillColor(sf::Color(90, 120, 180));
-        saveButtonText.setString("save result");
-    }
     confirmationText.setFillColor(sf::Color::Yellow);
 }
 
@@ -143,9 +135,22 @@ void GameEnd::showConfirmation(bool success) {
     else confirmationText.setString("failed to save result");
 }
 
+void GameEnd::updateButtons(const sf::Vector2u &windowSize) {
+    if (!resultSaved) {
+        saveButton.setFillColor(sf::Color(90, 120, 180));
+        saveButtonText.setString("save result");
+        saveButtonText.setPosition(sf::Vector2f(windowSize.x * 0.455f, windowSize.y * 0.685));
+    } else {
+        saveButton.setFillColor(sf::Color(100, 100, 100));
+        saveButtonText.setString("saved");
+        saveButtonText.setPosition(sf::Vector2f(windowSize.x * 0.48f, windowSize.y * 0.685));
 
+    }
+}
 
 void GameEnd::render(sf::RenderWindow& window) {
+    updateButtons(window.getSize());
+
     window.clear(sf::Color::Black);
     window.draw(gameOverText);
     window.draw(wpmText);
@@ -180,3 +185,4 @@ auto GameEnd::setTopic(const std::string& top) -> void {
 auto GameEnd::isResultSaved() -> bool {
     return resultSaved;
 }
+

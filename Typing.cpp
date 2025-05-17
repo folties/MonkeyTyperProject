@@ -31,6 +31,11 @@ auto Typing::getWordCount() -> int{
     return wordCounter;
 }
 
+void Typing::setWordCount(int count) {
+    wordCounter = count;
+}
+
+
 auto Typing::reset() -> void {
     currentInput.clear();
     wordCounter = 0;

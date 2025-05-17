@@ -31,13 +31,15 @@ public:
     auto isStartButtonClicked(const sf::Vector2f &mousePos) -> bool;
     auto isScoresButtonClicked(const sf::Vector2f &mousePos) -> bool;
     auto isInstructionButtonClicked(const sf::Vector2f &mousePos) -> bool;
+    bool isContinueButtonClicked(const sf::Vector2f& mousePos) const;
+
 
 
     auto getSelectedFontName() -> std::string;
     auto getSelectedDifficulty() -> std::string;
     auto getSelectedTopicName() -> std::string;
 
-
+    void updateButtons();
 
 private:
     void centerText(sf::Text &text, sf::Vector2f center);
