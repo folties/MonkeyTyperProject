@@ -31,7 +31,7 @@ auto Typing::getWordCount() -> int{
     return wordCounter;
 }
 
-void Typing::setWordCount(int count) {
+auto Typing::setWordCount(int count) -> void {
     wordCounter = count;
 }
 

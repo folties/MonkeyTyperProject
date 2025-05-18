@@ -1,7 +1,5 @@
 #include "Resources.h"
 #include <iostream>
-#include <SFML/Audio.hpp>
-#include <filesystem>
 
 Resources::Resources(): typeSound(typeBuffer) {
     loadFonts();

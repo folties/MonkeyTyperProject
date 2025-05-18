@@ -26,6 +26,7 @@ public:
      std::string difficultyLevel;
 
      std::vector<WordState> words;
+     size_t nextWordIndex =0;
 };
 
 

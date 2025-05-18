@@ -6,13 +6,14 @@
 #include "Word.h"
 #include "Typing.h"
 #include "Panel.h"
-#include "GameEnd.h"
 #include "Preview.h"
 #include "Shortcut.h"
 #include "Scores.h"
 #include "Instruction.h"
 #include "GameMenu.h"
 #include "GameSave.h"
+#include "GameEnd.h"
+#include "Resources.h"
 
 #pragma once
 
@@ -29,32 +30,38 @@ public:
     auto run() -> void;
 
 private:
+    auto initResources() -> void;
+    auto initUI() -> void;
+
     auto renderPreview() -> void;
-    auto processEvents() -> void;
-    auto handleTextInput(uint32_t unicode) -> void;
-    auto handlePreviewMouse(const sf::Vector2f &mousePos) -> void;
+    auto renderGame() -> void;
+    auto renderGameOver() -> void;
+
     auto onContinue() -> void;
     auto onStart() -> void;
+
+    auto processEvents() -> void;
+    auto update(float deltaTime) -> void;
+
+    auto handleTextInput(uint32_t unicode) -> void;
+    auto handlePreviewMouse(const sf::Vector2f &mousePos) -> void;
     auto handlePlayingMouse(const sf::Vector2f &mousePos) -> void;
     auto handleMenuActions(const sf::Vector2f &mousePos) -> void;
     auto handleGameOverActions(const sf::Vector2f &mousePos) -> void;
-    auto resumeGame() -> void;
-    auto exitToPreview() -> void;
+    auto handleScoresPanel(const sf::Event& event) -> void;
+    auto handleInput(const sf::Event& event) -> void;
+
     auto applyLoadedState(const GameState &s) -> void;
-    auto saveAndExitToPreview() -> void;
     auto applyFont(const std::string &fontName) -> void;
     auto applyDifficulty(const std::string &diff) -> void;
     auto applyTopic(const std::string &topic) -> void;
-    auto update(float deltaTime) -> void;
-    auto renderGame() -> void;
-    auto initResources() -> void;
-    auto initUI() -> void;
-    auto handleInput(const sf::Event& event) -> void;
+
+    auto saveAndExitToPreview() -> void;
+    auto exitToPreview() -> void;
+    auto resetGame() -> void;
+    auto resumeGame() -> void;
     auto startCountdown(float deltaTime) -> void;
     auto updateStats() -> void;
-    auto handleScoresPanel(const sf::Event& event) -> void;
-    auto resetGame() -> void;
-    auto countVisibleWords() -> int;
 
     sf::RenderWindow window;
     sf::Font pixelFont;

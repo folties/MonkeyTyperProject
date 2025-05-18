@@ -10,14 +10,12 @@ public:
     auto trySubmit(Word& word) -> void;
     auto getCurrentInput() -> std::string;
     auto getWordCount() -> int;
-    void setWordCount(int count);
+    auto setWordCount(int count) -> void;
     auto reset() -> void;
 
 private:
     std::string currentInput;
     int wordCounter = 0;
 };
-
-
 
 #endif //TYPING_H

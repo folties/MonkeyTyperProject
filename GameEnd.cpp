@@ -1,10 +1,5 @@
 #include "GameEnd.h"
-
-#include <iostream>
 #include <fstream>
-#include <SFML/Graphics.hpp>
-#include <cstdint>
-#include <algorithm>
 
 GameEnd::GameEnd(const sf::Font& font, const sf::Vector2u& windowSize)
     : gameOverText(font),
@@ -14,8 +9,7 @@ GameEnd::GameEnd(const sf::Font& font, const sf::Vector2u& windowSize)
       returnButtonText(font),
       labelPromptText(font),
       labelText(font),
-      saveButtonText(font),
-      confirmationText(font)
+      saveButtonText(font)
 {
     setupElements(windowSize);
 }
@@ -64,7 +58,6 @@ auto GameEnd::setupElements(const sf::Vector2u &windowSize) -> void {
 
     labelText.setPosition(sf::Vector2f(windowSize.x * 0.405f, windowSize.y * 0.605f));
     labelText.setFillColor(sf::Color::Black);
-    confirmationText.setFillColor(sf::Color::Yellow);
 }
 
 auto GameEnd::setMissedWords(int count) -> void {
@@ -126,15 +119,6 @@ auto GameEnd::saveResultToFile() -> bool {
     return resultSaved;
 }
 
-auto GameEnd::showConfirmation(bool success) -> void {
-    showConfirmationMsg = true;
-    saveSuccess = success;
-    if (success) {
-        confirmationText.setString("result saved");
-    }
-    else confirmationText.setString("failed to save result");
-}
-
 auto GameEnd::updateButtons(const sf::Vector2u &windowSize) -> void {
     if (!resultSaved) {
         saveButton.setFillColor(sf::Color(90, 120, 180));
@@ -163,14 +147,11 @@ auto GameEnd::render(sf::RenderWindow& window) -> void {
     window.draw(saveButtonText);
     window.draw(returnButton);
     window.draw(returnButtonText);
-    if (showConfirmationMsg) window.draw(confirmationText);
 }
 
 auto GameEnd::clearLabelAndConfirmation() -> void {
     labelInput.clear();
     labelText.setString("");
-    showConfirmationMsg = false;
-    confirmationText.setString("");
     resultSaved = false;
 }
 

@@ -1,9 +1,4 @@
-//
-// Created by Nazar Korcheniyk on 08.05.2025.
-//
-
 #include "Instruction.h"
-#include "Resources.h"
 
 Instruction::Instruction(const sf::Font& font, const sf::Vector2u& windowSize):
     instructionText(font),

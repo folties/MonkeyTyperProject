@@ -93,5 +93,3 @@ grape
 berry
 wheat
 corn
-bamboo
-reed

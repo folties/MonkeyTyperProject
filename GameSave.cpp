@@ -26,6 +26,7 @@ auto GameSave::saveGame(const GameState& state) -> void{
         outFile << word.text << "\n";
         outFile << word.posX << " " << word.posY << " " << word.speed << "\n";
     }
+    outFile << state.nextWordIndex << "\n";
 
     outFile.close();
 }
@@ -56,6 +57,8 @@ auto GameSave::loadGame() -> GameState {
         inFile >> word.posX >> word.posY >> word.speed;
         state.words.push_back(word);
     }
+
+    inFile >> state.nextWordIndex;
 
     inFile.close();
     return state;

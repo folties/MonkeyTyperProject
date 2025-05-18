@@ -2,7 +2,7 @@
 #define BACKGROUND_H
 
 #include <SFML/Graphics.hpp>
-#include <vector>
+
 
 #pragma once
 

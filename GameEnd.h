@@ -2,7 +2,6 @@
 #define GAMEEND_H
 
 #include <SFML/Graphics.hpp>
-#include <cstdint>
 
 #pragma once
 
@@ -28,8 +27,6 @@ public:
 private:
 
     auto setupElements(const sf::Vector2u &windowSize) -> void;
-    auto showConfirmation(bool success) -> void;
-
     auto isResultSaved() -> bool;
     auto updateButtons(const sf::Vector2u &windowSize) -> void;
 
@@ -45,15 +42,12 @@ private:
     sf::Text labelPromptText;
     sf::Text labelText;
     sf::Text saveButtonText;
-    sf::Text confirmationText;
 
     std::string typedText;
     std::string difficulty;
     std::string topic;
     std::string labelInput;
 
-    bool showConfirmationMsg = false;
-    bool saveSuccess = false;
     bool resultSaved = false;
     int missedWords = 0;
     float wpm = 0;

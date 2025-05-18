@@ -1,8 +1,5 @@
 #include "Scores.h"
 #include <fstream>
-#include <sstream>
-#include <algorithm>
-#include <iostream>
 
 Scores::Scores(const sf::Font& font, const sf::Vector2u& windowSize) :
       titleText(font),

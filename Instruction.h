@@ -2,11 +2,9 @@
 #ifndef INSTRUCTION_H
 #define INSTRUCTION_H
 
-#include "SFML/Graphics/Text.hpp"
-#include "Resources.h"
+#include "SFML/Graphics.hpp"
 
 #pragma once
-
 
 class Instruction {
 public:

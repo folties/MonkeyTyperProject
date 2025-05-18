@@ -1,8 +1,5 @@
 #include "Background.h"
 #include <random>
-#include <fstream>
-#include <iostream>
-#include <unordered_set>
 
 Background::Background(sf::Vector2u windowSize) {
     initStars(windowSize);

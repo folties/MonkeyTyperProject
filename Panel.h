@@ -18,7 +18,7 @@ public:
     auto setMissedWords(int missedWords) -> void;
     auto setCurrentScore(int score) -> void;
 
-    auto draw(sf::RenderWindow& window) -> void;
+    auto drawPanel(sf::RenderWindow& window) -> void;
     auto reset() -> void;
 
 private:

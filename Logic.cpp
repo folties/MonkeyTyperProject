@@ -1,7 +1,5 @@
 #include "Logic.h"
-
 #include <cmath>
-#include <iostream>
 
 Logic::Logic() :
     window(sf::VideoMode::getDesktopMode(), "MonkeyTyper", sf::Style::Default, sf::State::Windowed),
@@ -43,16 +41,20 @@ auto Logic::run() -> void {
     while (window.isOpen()) {
         processEvents();
         float deltaTime = clock.restart().asSeconds();
+
         if (currentStatus == GameStatus::PREVIEW) {
             renderPreview();
         }
-        else if (currentStatus == GameStatus::PLAYING) {
+        if (currentStatus == GameStatus::PLAYING) {
             if (!gameStarted) {
                 startCountdown(deltaTime);
             } else {
                 update(deltaTime);
                 renderGame();
             }
+        }
+        if (currentStatus == GameStatus::GAME_OVER) {
+            renderGameOver();
         }
     }
 }
@@ -67,27 +69,26 @@ auto Logic::renderPreview() -> void {
 
 auto Logic::renderGame() -> void {
     window.clear(sf::Color(0, 0, 50));
+    background.drawStars(window);
+    word.drawWord(window);
+    panel.drawPanel(window);
 
-    if (!word.isGameOver()) {
-        background.drawStars(window);
-        word.drawWord(window);
-    } else {
-        window.clear(sf::Color::Black);
-        gameEnd.setWPM(wpm);
-        gameEnd.setTime(totalTime);
-        gameEnd.setMissedWords(missed);
-        gameEnd.setTypedText(typing.getCurrentInput());
-        gameEnd.render(window);
-        resources.getMusic().stop();
-    }
-    if (!word.isGameOver()) {
-        panel.draw(window);
-    }
     if (shortcut.getMenuGameState()) {
         gameMenu.render(window);
     }
     window.display();
 }
+
+auto Logic::renderGameOver() -> void {
+    window.clear(sf::Color::Black);
+    gameEnd.setWPM(wpm);
+    gameEnd.setTime(totalTime);
+    gameEnd.setMissedWords(missed);
+    gameEnd.setTypedText(typing.getCurrentInput());
+    gameEnd.render(window);
+    window.display();
+}
+
 
 auto Logic::processEvents() -> void {
     while (auto event = window.pollEvent()) {
@@ -106,6 +107,9 @@ auto Logic::processEvents() -> void {
                 else if (currentStatus == GameStatus::PLAYING) {
                     handlePlayingMouse(pos);
                 }
+                else if (currentStatus == GameStatus::GAME_OVER) {
+                    handleGameOverActions(pos);
+                }
             }
         }
         else if (auto* textEvent = event->getIf<sf::Event::TextEntered>()) {
@@ -118,18 +122,16 @@ auto Logic::processEvents() -> void {
 }
 
 auto Logic::handleTextInput(uint32_t unicode) -> void {
-    if (currentStatus == GameStatus::PLAYING ) {
-        if (word.isGameOver()) {
-            gameEnd.handleLabelInput(unicode);
+    if (currentStatus == GameStatus::PLAYING && gameStarted && !shortcut.getMenuGameState() ) {
+        char typedChar = static_cast<char>(unicode);
+        typing.processInput(typedChar);
+        panel.setTypedText(typing.getCurrentInput());
+        if (shortcut.isTypeSoundEnabled()) {
+            resources.typeSoundPlay();
         }
-        else if (gameStarted && !shortcut.getMenuGameState()) {
-            char typedChar = static_cast<char>(unicode);
-            typing.processInput(typedChar);
-            panel.setTypedText(typing.getCurrentInput());
-            if (shortcut.isTypeSoundEnabled()) {
-                resources.typeSoundPlay();
-            }
-        }
+    }
+    if (currentStatus == GameStatus::GAME_OVER) {
+        gameEnd.handleLabelInput(unicode);
     }
 }
 
@@ -184,9 +186,6 @@ auto Logic::handlePlayingMouse(const sf::Vector2f& mousePos) -> void {
     if (shortcut.getMenuGameState()) {
         handleMenuActions(mousePos);
     }
-    else if (word.isGameOver()) {
-        handleGameOverActions(mousePos);
-    }
 }
 
 auto Logic::handleMenuActions(const sf::Vector2f& mousePos) -> void {
@@ -195,6 +194,7 @@ auto Logic::handleMenuActions(const sf::Vector2f& mousePos) -> void {
     }
     else if (gameMenu.isLeaveClicked(mousePos)) {
         saveAndExitToPreview();
+        shortcut.setMenuGameState(false);
     }
 }
 
@@ -213,7 +213,6 @@ auto Logic::resumeGame() -> void {
 
 auto Logic::exitToPreview() -> void {
     resetGame();
-    saver.clearSave();
     currentStatus = GameStatus::PREVIEW;
     scores.loadFromFile();
     scores.setCurrentDifficulty(previewScreen.getSelectedDifficulty());
@@ -230,12 +229,13 @@ auto Logic::applyLoadedState(const GameState& s) -> void {
     wpm = s.score;
 
     for (auto& ws : s.words) {
-        Words restored(ws.text, pixelFont, 25, sf::Vector2f( ws.posX, ws.posY ));
+        Words restored(ws.text, word.getFont(), 25, sf::Vector2f( ws.posX, ws.posY ));
         restored.speed = ws.speed;
         word.getActiveWords().push_back(restored);
     }
     word.setMissedWords(s.missedWords);
     panel.setMissedWords(s.missedWords);
+    word.setNextWordIndex(s.nextWordIndex);
 }
 
 auto Logic::saveAndExitToPreview() -> void {
@@ -256,6 +256,7 @@ auto Logic::saveAndExitToPreview() -> void {
         ws.speed = w.speed;
         s.words.push_back(ws);
     }
+    s.nextWordIndex = word.getNextWordIndex();
 
     GameSave::saveGame(s);
     resetGame();
@@ -298,8 +299,7 @@ auto Logic::startCountdown(float deltaTime) -> void {
         gameStarted = true;
 
     } else {
-        int displayNumber = static_cast<int>(std::ceil(countdownTime));
-        countdownText.setString(std::to_string(displayNumber));
+        countdownText.setString(std::to_string(static_cast<int>(std::ceil(countdownTime))));
 
         window.clear(sf::Color(0, 0, 50));
         background.updateStars(deltaTime, window.getSize());
@@ -310,7 +310,13 @@ auto Logic::startCountdown(float deltaTime) -> void {
 }
 
 auto Logic::update(float deltaTime) -> void {
-    if (!shortcut.getMenuGameState() && !word.isGameOver()) {
+    if (word.isGameOver()){
+        saver.clearSave();
+        currentStatus = GameStatus::GAME_OVER;
+        return;
+    }
+
+    if (!shortcut.getMenuGameState()) {
         totalTime += deltaTime;
 
         if (totalTime > 0) {
@@ -319,7 +325,7 @@ auto Logic::update(float deltaTime) -> void {
         }
 
         panel.setTimer(totalTime);
-        panel.setTraffic(countVisibleWords(), word.getTotalWords());
+        panel.setTraffic(word.countVisibleWords(), word.getTotalWords());
         word.updateWords(deltaTime, window.getSize());
         background.updateStars(deltaTime, window.getSize());
         panel.setMissedWords(word.getMissedWords());
@@ -327,12 +333,3 @@ auto Logic::update(float deltaTime) -> void {
     }
 }
 
-auto Logic::countVisibleWords() -> int {
-    int visibleWords = 0;
-    for (const auto& w : word.getActiveWords()) {
-        if (w.getPosition().x >= 20) {
-            ++visibleWords;
-        }
-    }
-    return visibleWords;
-}

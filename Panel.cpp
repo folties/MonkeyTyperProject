@@ -85,7 +85,7 @@ auto Panel::reset()-> void {
     setMissedWords(0);
 }
 
-auto Panel::draw(sf::RenderWindow& window) -> void {
+auto Panel::drawPanel(sf::RenderWindow& window) -> void {
     window.draw(panelBackground);
     window.draw(typedDisplay);
     window.draw(wordCounterText);

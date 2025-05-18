@@ -2,7 +2,6 @@
 #define SHORTCUT_H
 
 #include <SFML/Graphics.hpp>
-
 #include "Panel.h"
 #include "Resources.h"
 #include "Typing.h"

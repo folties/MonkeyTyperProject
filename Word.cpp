@@ -8,7 +8,7 @@ Word::Word(const sf::Font& font) : wordText(font)
     initWords();
 }
 
-void Word::initWords() {
+auto Word::initWords() -> void {
     wordsList.clear();
     std::string path = "../materials/listOfWords/" + selectedTopic + ".txt";
     std::ifstream file(path);
@@ -37,7 +37,7 @@ auto Word::updateWords(float deltaTime, sf::Vector2u windowSize) -> void {
         auto position = word.getPosition();
 
         if (step) {
-            position.x = position.x + (windowSize.x * 0.01f);
+            position.x = position.x + (windowSize.x * 0.005f);
         } else {
             position.x = position.x + (speed * deltaTime);
         }
@@ -103,13 +103,25 @@ auto Word::updateWords(float deltaTime, sf::Vector2u windowSize) -> void {
 auto Word::toggleMovementMode() -> void {
         useStepMovement = !useStepMovement;
     }
+
 auto Word::isGameOver() -> bool {
         return (nextWordIndex >= wordsList.size() && objectsWords.empty()) || missedWords >= 10;
     }
+
 auto Word::drawWord(sf::RenderWindow& window) -> void {
-    for (const auto& word : objectsWords) {
+    for (auto& word : objectsWords) {
         window.draw(word);
     }
+}
+
+auto Word::countVisibleWords() -> int {
+    int visibleWords = 0;
+    for (auto& word : objectsWords) {
+        if (word.getPosition().x >= 20) {
+            ++visibleWords;
+        }
+    }
+    return visibleWords;
 }
 
 auto Word::stringToDifficulty(const std::string& str) -> Difficulty {
@@ -123,11 +135,11 @@ auto Word::stringToDifficulty(const std::string& str) -> Difficulty {
 auto Word::setDifficulty(Difficulty difficulty) -> void {
     selectedDifficulty = difficulty;
     if (difficulty == Difficulty::EASY) {
-        wordSpawnInterval = 1.5f;
+        wordSpawnInterval = 2.0f;
     } else if (difficulty == Difficulty::MEDIUM) {
-        wordSpawnInterval = 1.0f;
+        wordSpawnInterval = 1.5f;
     } else if (difficulty == Difficulty::HARD) {
-        wordSpawnInterval = 0.7f;
+        wordSpawnInterval = 1.0f;
     } else if (difficulty == Difficulty::INSANE) {
         wordSpawnInterval = 0.5f;
     }
@@ -146,6 +158,14 @@ auto Word::setTopic(const std::string& topic) -> void {
     initWords();
 }
 
+auto Word::getNextWordIndex() -> size_t {
+    return nextWordIndex;
+}
+
+auto Word::setNextWordIndex(size_t index) -> void {
+    nextWordIndex = index;
+}
+
 auto Word::getActiveWords() -> std::vector<Words>& {
     return objectsWords;
 }
@@ -160,6 +180,10 @@ auto Word::getMissedWords() -> int {
 
 auto Word::getTopic() -> std::string {
     return selectedTopic;
+}
+
+auto Word::getFont() -> sf::Font& {
+    return font;
 }
 
 auto Word::reset() -> void {
