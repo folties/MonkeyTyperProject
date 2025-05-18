@@ -10,27 +10,31 @@ class Panel {
 public:
     Panel(const sf::Font& font, const sf::Vector2u& windowSize);
 
-    auto setupElements(const sf::Vector2u &windowSize) -> void;
-
     auto setTypedText(const std::string& text) -> void;
-    auto draw(sf::RenderWindow& window) -> void;
     auto setWordCounter(int counter) -> void;
     auto setTimer(float seconds) -> void;
     auto setWPM(float wpm) -> void;
     auto setTraffic(int activeWords, int totalWords) -> void;
     auto setMissedWords(int missedWords) -> void;
-    void setCurrentScore(int score);
-    int getCurrentScore() const;
+    auto setCurrentScore(int score) -> void;
+
+    auto draw(sf::RenderWindow& window) -> void;
     auto reset() -> void;
 
 private:
+
+    auto setupElements(const sf::Vector2u &windowSize) -> void;
+    auto getCurrentScore() -> int;
+
     sf::RectangleShape panelBackground;
+
     sf::Text typedDisplay;
     sf::Text wordCounterText;
     sf::Text timerText;
     sf::Text wpmText;
     sf::Text trafficText;
     sf::Text missedWordsText;
+
     int currentScore = 0;
 };
 

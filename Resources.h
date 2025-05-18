@@ -12,23 +12,24 @@ class Resources {
 public:
     Resources();
 
-    auto loadIcon() -> void;
-
     auto getFont(const std::string& name) -> sf::Font&;
     auto getMusic() -> sf::Music&;
     auto getTypeSound() -> sf::Sound&;
 
-    sf::Music backgroundMusic;
+    auto switchMusic() -> void;
+    auto typeSoundPlay() -> void;
+    auto setIcon(sf::RenderWindow& window) -> void;
 
-    sf::SoundBuffer typeBuffer;
-    sf::Sound typeSound;
-
-    sf::Image icon;
 private:
-
+    auto loadIcon() -> void;
     auto loadFonts() -> void;
     auto loadMusic() -> void;
     auto loadTypeSound() -> void;
+
+    sf::Image icon;
+    sf::SoundBuffer typeBuffer;
+    sf::Sound typeSound;
+    sf::Music backgroundMusic;
 
     std::map<std::string, sf::Font> fonts;
 };

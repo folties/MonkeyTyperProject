@@ -9,13 +9,14 @@ class GameMenu {
 public:
     GameMenu(const sf::Font& font, const sf::Vector2u& windowSize);
 
-    auto setupElements(const sf::Vector2u &windowSize) -> void;
-
     auto render(sf::RenderWindow& window) -> void;
+
     auto isResumeClicked(const sf::Vector2f& mousePos) -> bool;
     auto isLeaveClicked(const sf::Vector2f& mousePos) -> bool;
 
 private:
+    auto setupElements(const sf::Vector2u &windowSize) -> void;
+
     sf::RectangleShape panel;
     sf::Text titleText;
     sf::RectangleShape resumeButton;

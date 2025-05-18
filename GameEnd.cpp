@@ -122,7 +122,7 @@ bool GameEnd::saveResultToFile() {
     std::replace(safeLabel.begin(), safeLabel.end(), ' ', '_');
     file << safeLabel << " " << difficulty << " " << topic << " " << static_cast<int>(wpm) << " " << missedWords << " " << static_cast<int>(time) << "\n";
     file.close();
-    resultSaved = true;  // Mark as saved
+    resultSaved = true;
     return resultSaved;
 }
 

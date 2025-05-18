@@ -3,7 +3,6 @@
 
 #include <SFML/Graphics.hpp>
 
-#include "GameMenu.h"
 #include "Panel.h"
 #include "Resources.h"
 #include "Typing.h"
@@ -14,11 +13,9 @@
 
 class Shortcut {
 public:
-
-    auto handleKeyEvent(const sf::Event::KeyPressed& event, Typing& typing, Word& word, Panel& panel, Resources& resources, GameMenu& gameMenu) -> void;
+    auto handleKeyEvent(const sf::Event::KeyPressed& event, Typing& typing, Word& word, Panel& panel, Resources& resources) -> void;
     auto getMenuGameState() -> bool ;
     auto setMenuGameState(bool state) -> void;
-    auto drawMenuGame(sf::RenderWindow& window) -> void;
     auto isTypeSoundEnabled() -> bool;
 
 private:

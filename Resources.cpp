@@ -78,19 +78,13 @@ auto Resources::loadMusic() -> void {
 auto Resources::loadTypeSound() -> void {
     if (!typeBuffer.loadFromFile("../materials/soundEffect/typeSound.ogg")) {
         std::cerr << "Could not load typeSound\n";
-        exit(1);
+        return;
     }
     typeSound.setBuffer(typeBuffer);
 }
 
 auto Resources::getFont(const std::string& name) ->  sf::Font&  {
-    auto it = fonts.find(name);
-    if (it != fonts.end()) {
-        return it->second;
-    } else {
-        std::cerr << "Font not found: " << name << "\n";
-        exit(1);
-    }
+    return fonts[name];
 }
 
 auto Resources::getMusic() -> sf::Music&{
@@ -99,4 +93,22 @@ auto Resources::getMusic() -> sf::Music&{
 
 auto Resources::getTypeSound() -> sf::Sound& {
     return typeSound;
+}
+
+auto Resources::switchMusic() -> void {
+    sf::Music& music = getMusic();
+    if (music.getStatus() == sf::SoundSource::Status::Playing){
+        music.pause();
+    } else {
+        music.play();
+    }
+}
+
+auto Resources::typeSoundPlay() -> void {
+    typeSound.stop();
+    typeSound.play();
+}
+
+auto Resources::setIcon(sf::RenderWindow& window) -> void {
+    window.setIcon(icon);
 }

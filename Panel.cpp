@@ -66,11 +66,11 @@ auto Panel::setMissedWords(int missedWords) -> void {
     missedWordsText.setString("Missed words: " + std::to_string(missedWords));
 }
 
-void Panel::setCurrentScore(int score) {
+auto Panel::setCurrentScore(int score) -> void {
     currentScore = score;
 }
 
-int Panel::getCurrentScore() const {
+auto Panel::getCurrentScore() -> int {
     return currentScore;
 }
 

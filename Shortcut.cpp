@@ -1,12 +1,8 @@
-//
-// Created by MSI on 21.04.2025.
-//
-
 #include "Shortcut.h"
 
-auto Shortcut::handleKeyEvent(const sf::Event::KeyPressed& event, Typing& typing, Word& word, Panel& panel, Resources& resources, GameMenu& gameMenu) -> void{
+auto Shortcut::handleKeyEvent(const sf::Event::KeyPressed& event, Typing& typing, Word& word, Panel& panel, Resources& resources) -> void{
     if (event.scancode == sf::Keyboard::Scancode::Escape) {
-        resources.backgroundMusic.stop();
+        resources.switchMusic();
         isGameMenu = !isGameMenu;
     }
     else if (!isGameMenu) {
@@ -19,12 +15,7 @@ auto Shortcut::handleKeyEvent(const sf::Event::KeyPressed& event, Typing& typing
             word.toggleMovementMode();
         }
         else if (event.scancode == sf::Keyboard::Scancode::Down) {
-            sf::Music& music = resources.getMusic();
-            if (music.getStatus() == sf::SoundSource::Status::Playing){
-                music.pause();
-            } else {
-                music.play();
-            }
+            resources.switchMusic();
         }
         else if (event.scancode == sf::Keyboard::Scancode::Up) {
             typeSoundEnabled = !typeSoundEnabled;

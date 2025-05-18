@@ -11,14 +11,18 @@
 class Instruction {
 public:
     Instruction(const sf::Font& font, const sf::Vector2u& windowSize);
+
+    auto render(sf::RenderWindow &window) -> void;
+    auto handleClick(const sf::Vector2f &mousePos) -> void;
+
     auto setVisible(bool visible) -> void;
     auto isVisible() -> bool;
-    auto handleClick(const sf::Vector2f &mousePos) -> void;
-    auto render(sf::RenderWindow &window) -> void;
 
 private:
+
+    auto setupElements(const sf::Vector2u& windowSize) -> void;
+
     sf::RectangleShape instructionPanel;
-    bool instructionVisible = false;
 
     sf::Text instructionText;
     sf::Text informationText;
@@ -29,7 +33,7 @@ private:
     sf::Text wishesText;
     sf::Text closeButton;
 
-    void setupElements(const sf::Vector2u& windowSize);
+    bool instructionVisible = false;
 };
 
 

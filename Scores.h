@@ -20,27 +20,29 @@ class Scores {
 public:
     Scores(const sf::Font& font, const sf::Vector2u& windowSize);
 
-    auto setupElements(const sf::Vector2u &windowSize) -> void;
+    auto render(sf::RenderWindow& window) -> void;
+    auto handleClick(const sf::Vector2f& mousePos) -> void;
+    auto loadFromFile() -> void;
 
     auto isVisible() -> bool;
-
-    auto loadFromFile() -> void;
-    auto saveToFile(const std::string& filename) -> void;
-    auto tryAddScore(const ScoreEntry& entry) -> void;
-    auto render(sf::RenderWindow& window) -> void;
     auto setVisible(bool visible) -> void;
-    auto handleClick(const sf::Vector2f& mousePos) -> void;
     auto setCurrentDifficulty(const std::string& diff) -> void;
-    auto updateTexts() -> void;
+
 
 private:
-    std::vector<ScoreEntry> bestScores;
+    auto setupElements(const sf::Vector2u &windowSize) -> void;
+    auto saveToFile(const std::string& filename) -> void;
+    auto tryAddScore(const ScoreEntry& entry) -> void;
+    auto updateTexts() -> void;
+
+
     sf::RectangleShape panel;
     sf::Text titleText;
-    std::vector<sf::Text> scoreTexts;
     sf::Text closeButton;
-    bool visible = false;
+    std::vector<sf::Text> scoreTexts;
+    std::vector<ScoreEntry> bestScores;
     std::string currentDifficulty;
+    bool visible = false;
 };
 
 #endif // SCORES_H 

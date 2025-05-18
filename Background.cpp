@@ -8,7 +8,6 @@ Background::Background(sf::Vector2u windowSize) {
     initStars(windowSize);
 }
 
-// Initialize stars with positions based on window size
 auto Background::initStars(sf::Vector2u windowSize) -> void {
     std::mt19937 random(static_cast<unsigned>(time(0)));
 

@@ -1,5 +1,8 @@
 #include "GameSave.h"
 
+#include <fstream>
+#include <iostream>
+
 const std::string GameSave::saveFile = "../materials/saves/savegame.txt";
 
 void GameSave::saveGame(const GameState& state) {
@@ -27,7 +30,7 @@ void GameSave::saveGame(const GameState& state) {
     outFile.close();
 }
 
-GameSave::GameState GameSave::loadGame() {
+GameState GameSave::loadGame() {
     GameState state;
     std::ifstream inFile(saveFile);
 
@@ -60,7 +63,12 @@ GameSave::GameState GameSave::loadGame() {
 
 bool GameSave::isSaveAvailable() {
     std::ifstream inFile(saveFile);
-    return inFile.good();
+    return inFile.is_open() && inFile.peek() != EOF;
 }
+
+void GameSave::clearSave() {
+    std::ofstream outFile(saveFile, std::ofstream::trunc);
+}
+
 
 

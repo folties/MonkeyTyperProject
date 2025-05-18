@@ -1,51 +1,33 @@
 #ifndef PREVIEW_H
 #define PREVIEW_H
 
-#pragma once
 #include "Resources.h"
 #include "SFML/Graphics.hpp"
 
-
-enum class Fonts {
-    PIXEL,
-    ALPHBETA,
-    HEVILLA,
-    STEVE,
-    WARWORK,
-    GROSAC
-};
-
-enum class Topic {
-    ANIMALS,
-    TECHNOLOGY,
-    NATURE
-};
+#pragma once
 
 class Preview {
 public:
     Preview(const sf::Vector2u& windowSize);
 
-    auto processMouseClick(const sf::Vector2f &mousePos) -> void;
     auto render(sf::RenderWindow& window) -> void;
-
-    auto isStartButtonClicked(const sf::Vector2f &mousePos) -> bool;
-    auto isScoresButtonClicked(const sf::Vector2f &mousePos) -> bool;
-    auto isInstructionButtonClicked(const sf::Vector2f &mousePos) -> bool;
-    bool isContinueButtonClicked(const sf::Vector2f& mousePos) const;
-
-
+    auto processMouseClick(const sf::Vector2f &mousePos) -> void;
 
     auto getSelectedFontName() -> std::string;
     auto getSelectedDifficulty() -> std::string;
     auto getSelectedTopicName() -> std::string;
 
-    void updateButtons();
-
+    auto isStartButtonClicked(const sf::Vector2f &mousePos) -> bool;
+    auto isScoresButtonClicked(const sf::Vector2f &mousePos) -> bool;
+    auto isInstructionButtonClicked(const sf::Vector2f &mousePos) -> bool;
+    bool isContinueButtonClicked(const sf::Vector2f& mousePos) const;
 private:
-    void centerText(sf::Text &text, sf::Vector2f center);
+    auto updateButtons() -> void;
+    auto centerText(sf::Text &text, sf::Vector2f center) -> void;
     auto setupElements(const sf::Vector2u& windowSize) -> void;
 
     Resources resource;
+
     sf::Font previewFont;
     sf::RectangleShape previewPanel;
 

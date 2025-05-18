@@ -1,5 +1,4 @@
 #include "Preview.h"
-
 #include "GameSave.h"
 
 Preview::Preview(const sf::Vector2u& windowSize) :
@@ -121,7 +120,7 @@ auto Preview::processMouseClick(const sf::Vector2f& mousePos) -> void {
     }
 }
 
-void Preview::centerText(sf::Text& text, sf::Vector2f center) {
+auto Preview::centerText(sf::Text& text, sf::Vector2f center) -> void {
     auto bounds = text.getLocalBounds();
     text.setOrigin(sf::Vector2f(bounds.size.x / 2.f, bounds.size.y / 2.f));
     text.setPosition(sf::Vector2f(center.x, center.y));
@@ -153,8 +152,7 @@ auto Preview::render(sf::RenderWindow& window) -> void {
     window.draw(topicRightArrow);
 }
 
-void Preview::updateButtons() {
-    // Call before drawing to reflect current save state
+auto Preview::updateButtons() -> void {
     if (GameSave::isSaveAvailable()) {
         continueButton.setFillColor({0, 0, 90});
         continueText.setFillColor(sf::Color::White);

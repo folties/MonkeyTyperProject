@@ -3,58 +3,59 @@
 #include <cmath>
 #include <iostream>
 
-
-Logic::Logic()
-    : window(sf::VideoMode::getDesktopMode(), "MonkeyTyper", sf::Style::Default, sf::State::Windowed),
-      background(window.getSize()),
-      word(pixelFont),
-      gameEnd(bloxFont, window.getSize()),
-      panel(pixelFont, window.getSize()),
-      countdownText(bloxFont, "", 80),
-      totalTime(0.f),
-      wpm(0.f),
-      missed(0.f),
-      gameStarted(false),
-      countdownTime(0.0f),
-      previewScreen(window.getSize()),
-      scores(pixelFont, window.getSize()),
-      instruction(pixelFont, window.getSize()),
-      gameMenu(bloxFont, window.getSize())
+Logic::Logic() :
+    window(sf::VideoMode::getDesktopMode(), "MonkeyTyper", sf::Style::Default, sf::State::Windowed),
+    word(pixelFont),
+    background(window.getSize()),
+    gameEnd(bloxFont, window.getSize()),
+    panel(pixelFont, window.getSize()),
+    previewScreen(window.getSize()),
+    scores(pixelFont, window.getSize()),
+    instruction(pixelFont, window.getSize()),
+    gameMenu(bloxFont, window.getSize()),
+    countdownText(bloxFont, "", 80),
+    totalTime(0.f),
+    wpm(0.f),
+    missed(0.f),
+    countdownTime(0.0f)
 {
-    pixelFont = resources.getFont("PixelFont");
-    bloxFont = resources.getFont("BloxFont");
-    window.setIcon(resources.icon);
-
-    // --- UI Setup ---
-    countdownText.setFillColor(sf::Color::White);
-    countdownText.setPosition(sf::Vector2f(window.getSize().x * 0.47f, window.getSize().y * 0.45f));
-    panel.setWordCounter(typing.getWordCount());
-    panel.setWPM(wpm);
-    panel.setMissedWords(word.getMissedWords());
-    // --- Load Scores ---
+    initResources();
+    initUI();
     scores.loadFromFile();
 }
 
-// ===== Main Loop =====
+auto Logic::initResources() -> void {
+    pixelFont = resources.getFont("PixelFont");
+    bloxFont  = resources.getFont("BloxFont");
+    resources.setIcon(window);
+}
+
+auto Logic::initUI() -> void{
+    countdownText.setFillColor(sf::Color::White);
+    countdownText.setPosition(sf::Vector2f(window.getSize().x * 0.47f, window.getSize().y * 0.45f));
+    panel.setWordCounter(0);
+    panel.setWPM(0.f);
+    panel.setMissedWords(0);
+}
+
 auto Logic::run() -> void {
     while (window.isOpen()) {
         processEvents();
         float deltaTime = clock.restart().asSeconds();
-        if (currentState == GameState::PREVIEW) {
+        if (currentStatus == GameStatus::PREVIEW) {
             renderPreview();
         }
-        else if (currentState == GameState::PLAYING) {
+        else if (currentStatus == GameStatus::PLAYING) {
             if (!gameStarted) {
                 startCountdown(deltaTime);
             } else {
                 update(deltaTime);
-                render();
+                renderGame();
             }
         }
     }
 }
 
-// ===== Rendering =====
 auto Logic::renderPreview() -> void {
     window.clear(sf::Color::Black);
     previewScreen.render(window);
@@ -63,7 +64,7 @@ auto Logic::renderPreview() -> void {
     window.display();
 }
 
-auto Logic::render() -> void {
+auto Logic::renderGame() -> void {
     window.clear(sf::Color(0, 0, 50));
 
     if (!word.isGameOver()) {
@@ -76,187 +77,204 @@ auto Logic::render() -> void {
         gameEnd.setMissedWords(missed);
         gameEnd.setTypedText(typing.getCurrentInput());
         gameEnd.render(window);
-        resources.backgroundMusic.stop();
+        resources.getMusic().stop();
     }
-
     if (!word.isGameOver()) {
         panel.draw(window);
     }
-
     if (shortcut.getMenuGameState()) {
         gameMenu.render(window);
     }
-
     window.display();
 }
 
 auto Logic::processEvents() -> void {
     while (auto event = window.pollEvent()) {
         if (event->is<sf::Event::Closed>()) {
+            if (currentStatus == GameStatus::PLAYING) {
+                saveAndExitToPreview();
+            }
             window.close();
         }
-        if (auto* mouseEvent = event->getIf<sf::Event::MouseButtonPressed>()) {
+        else if (auto* mouseEvent = event->getIf<sf::Event::MouseButtonPressed>()) {
             if (mouseEvent->button == sf::Mouse::Button::Left) {
-                sf::Vector2f mousePos(window.mapPixelToCoords({ mouseEvent->position.x, mouseEvent->position.y }));
-
-                if (currentState == GameState::PREVIEW) {
-                    if (scores.isVisible()) {
-                        scores.handleClick(mousePos);
-                    } else if (previewScreen.isScoresButtonClicked(mousePos)) {
-                        scores.setCurrentDifficulty(previewScreen.getSelectedDifficulty());
-                        scores.setVisible(true);
-                    }
-                        if (instruction.isVisible()) {
-                            instruction.handleClick(mousePos);
-                        } else if (previewScreen.isInstructionButtonClicked(mousePos)) {
-                            instruction.setVisible(true);
-                        }
-                        if (previewScreen.isContinueButtonClicked(mousePos)) {
-                            if (GameSave::isSaveAvailable()) {
-                                try {
-                                    auto state = GameSave::loadGame();
-
-                                    // 🌟 Восстанавливаем game state
-                                    const sf::Font& newFont = resources.getFont(state.fontName + "Font"); // <-- careful with the name
-                                    word.setFont(newFont);
-
-                                    word.setFont(newFont);
-
-                                    std::string selectedDifficulty = state.difficultyLevel;
-                                    word.setDifficulty(word.stringToDifficulty(selectedDifficulty));
-                                    gameEnd.setDifficulty(selectedDifficulty);
-                                    scores.setCurrentDifficulty(selectedDifficulty);
-
-                                    std::string selectedTopic = state.topic;
-                                    word.setTopic(selectedTopic); // <- Add this function
-
-
-                                    totalTime = state.totalTime;
-                                    panel.setWordCounter(state.wordsClaimed); // ✅ Добавил это
-                                    typing.setWordCount(state.wordsClaimed);
-                                    wpm = state.score;
-
-                                    // 1) Clear old words (also clears missedWords internally)
-                                    word.reset();
-
-                                    // 2) Put back every saved word
-                                    for (auto& ws : state.words) {
-                                        Words restored(ws.text, pixelFont, 25, sf::Color::White, {ws.posX, ws.posY});
-                                        restored.speed = ws.speed;
-                                        word.getActiveWords().push_back(restored);
-                                    }
-                                    // 3) Now restore the missed‐words count
-                                    word.setMissedWords(state.missedWords);
-                                    panel.setMissedWords(state.missedWords);
-
-                                    currentState = GameState::PLAYING;
-                                } catch (const std::exception& e) {
-                                    std::cerr << "Failed to load game: " << e.what() << std::endl;
-                                }
-                            }
-                        }
-                        if (previewScreen.isStartButtonClicked(mousePos)) {
-                            // 1. Get selected font name from PreviewScreen
-                            std::string selectedFont = previewScreen.getSelectedFontName();
-
-                            // 2. Update font everywhere (Word, Panel, etc.)
-                            const sf::Font& newFont = resources.getFont(selectedFont + "Font"); // <-- careful with the name
-
-                            word.setFont(newFont);
-
-                            std::string selectedDifficulty = previewScreen.getSelectedDifficulty();
-                            word.setDifficulty(word.stringToDifficulty(selectedDifficulty));
-                            gameEnd.setDifficulty(selectedDifficulty);
-                            scores.setCurrentDifficulty(selectedDifficulty);
-
-                            std::string selectedTopic = previewScreen.getSelectedTopicName();
-                            word.setTopic(selectedTopic); // <- Add this function
-
-                            currentState = GameState::PLAYING;
-                        } else {
-                            previewScreen.processMouseClick(mousePos);
-                        }
-                    } else if (currentState == GameState::PLAYING) {
-                        if (shortcut.getMenuGameState()) {
-                            resources.backgroundMusic.stop();
-                            if (gameMenu.isResumeClicked(mousePos)) {
-                                shortcut.setMenuGameState(false);  // Hide the menu
-                                resources.backgroundMusic.play();  // Resume music
-                            }
-                            if (gameMenu.isLeaveClicked(mousePos)) {
-                                shortcut.setMenuGameState(false);
-
-                                // 🌟 Save the Game State before exiting
-                                GameSave::GameState state;
-
-                                state.topic = word.getTopic();
-                                state.fontName = previewScreen.getSelectedFontName();
-                                state.difficultyLevel = previewScreen.getSelectedDifficulty();
-
-                                state.totalTime = totalTime;
-                                state.wordsClaimed = typing.getWordCount();
-                                state.score = wpm;
-                                state.missedWords = word.getMissedWords();
-
-
-
-                                for (const auto& w : word.getActiveWords()) {
-                                    GameSave::WordState ws;
-                                    ws.text = w.getString();
-                                    ws.posX = w.getPosition().x;
-                                    ws.posY = w.getPosition().y;
-                                    ws.speed = w.speed;
-                                    state.words.push_back(ws);
-                                }
-
-                                GameSave::saveGame(state); // Save the game state
-                                std::cout << "Game saved successfully!" << std::endl;
-
-                                currentState = GameState::PREVIEW;
-                                resetGame();
-
-                            }
-                        }
-
-
-                        if (word.isGameOver()) {
-                            if (gameEnd.isReturnButtonClicked(mousePos)) {
-                                currentState = GameState::PREVIEW;
-                                resetGame();
-                                scores.loadFromFile();
-                                scores.setCurrentDifficulty(previewScreen.getSelectedDifficulty());
-
-                            } else if (gameEnd.isSaveButtonClicked(mousePos)) {
-                                gameEnd.setTopic(word.getTopic());  // Set the topic before saving
-                                bool success = gameEnd.saveResultToFile();
-                                gameEnd.showConfirmation(success);
-                            }
-                        }
-                    }
+                sf::Vector2f pos(window.mapPixelToCoords({ mouseEvent->position.x, mouseEvent->position.y }));
+                if (currentStatus == GameStatus::PREVIEW) {
+                    handlePreviewMouse(pos);
                 }
-            }
-
-            if (auto* textEvent = event->getIf<sf::Event::TextEntered>()) {
-                if (currentState == GameState::PLAYING && word.isGameOver()) {
-                    gameEnd.handleLabelInput(textEvent->unicode);
-                } else if (!shortcut.getMenuGameState()) {
-                    char typedChar = static_cast<char>(textEvent->unicode);
-                    typing.processInput(typedChar);
-                    panel.setTypedText(typing.getCurrentInput());
-
-                    if (shortcut.isTypeSoundEnabled()) {
-                        resources.typeSound.stop(); // (optional, to prevent overlap)
-                        resources.typeSound.play();
-                    }
+                else if (currentStatus == GameStatus::PLAYING) {
+                    handlePlayingMouse(pos);
                 }
-            }
-
-            if (const auto* keyEvent = event->getIf<sf::Event::KeyPressed>()) {
-                shortcut.handleKeyEvent(*keyEvent, typing, word, panel, resources, gameMenu);
             }
         }
+        else if (auto* textEvent = event->getIf<sf::Event::TextEntered>()) {
+            handleTextInput(textEvent->unicode);
+        }
+        else if (auto* keyEvent = event->getIf<sf::Event::KeyPressed>()) {
+            shortcut.handleKeyEvent(*keyEvent, typing, word, panel, resources);
+        }
+    }
+}
+
+auto Logic::handleTextInput(uint32_t unicode) -> void {
+    if (currentStatus == GameStatus::PLAYING && word.isGameOver()) {
+        gameEnd.handleLabelInput(unicode);
+    } else if (!shortcut.getMenuGameState()) {
+        char typedChar = static_cast<char>(unicode);
+        typing.processInput(typedChar);
+        panel.setTypedText(typing.getCurrentInput());
+        if (shortcut.isTypeSoundEnabled()) {
+            resources.typeSoundPlay();
+        }
+    }
+}
+
+
+auto Logic::handlePreviewMouse(const sf::Vector2f& mousePos) -> void {
+    if (scores.isVisible()) {
+        scores.handleClick(mousePos);
+    }
+    else if (previewScreen.isScoresButtonClicked(mousePos)) {
+        scores.setCurrentDifficulty(previewScreen.getSelectedDifficulty());
+        scores.setVisible(true);
+    }
+    if (instruction.isVisible()) {
+        instruction.handleClick(mousePos);
+    }
+    else if (previewScreen.isInstructionButtonClicked(mousePos))
+        instruction.setVisible(true);
+
+    if (previewScreen.isContinueButtonClicked(mousePos)) {
+        onContinue();
+    }
+    else if (previewScreen.isStartButtonClicked(mousePos)) {
+        onStart();
+    }
+    else {
+        previewScreen.processMouseClick(mousePos);
+    }
+}
+
+auto Logic::onContinue() -> void {
+    if (!GameSave::isSaveAvailable()) {
+        return;
+    }
+    auto state = GameSave::loadGame();
+    applyLoadedState(state);
+    gameStarted = false;
+    countdownTime = 3.0f;
+    currentStatus = GameStatus::PLAYING;
+    resumeGame();
+}
+
+auto Logic::onStart() -> void {
+    applyFont(previewScreen.getSelectedFontName());
+    applyDifficulty(previewScreen.getSelectedDifficulty());
+    applyTopic(previewScreen.getSelectedTopicName());
+    gameStarted = false;
+    countdownTime = 3.0f;
+    currentStatus = GameStatus::PLAYING;
+}
+
+auto Logic::handlePlayingMouse(const sf::Vector2f& mousePos) -> void {
+    if (shortcut.getMenuGameState()) {
+        handleMenuActions(mousePos);
+    }
+    else if (word.isGameOver()) {
+        handleGameOverActions(mousePos);
+    }
+}
+
+auto Logic::handleMenuActions(const sf::Vector2f& mousePos) -> void {
+    if (gameMenu.isResumeClicked(mousePos)) {
+        resumeGame();
+    }
+    else if (gameMenu.isLeaveClicked(mousePos)) {
+        saveAndExitToPreview();
+    }
+}
+
+auto Logic::handleGameOverActions(const sf::Vector2f& mousePos) -> void {
+    if (gameEnd.isReturnButtonClicked(mousePos)) {
+        exitToPreview();
+    }
+    else if (gameEnd.isSaveButtonClicked(mousePos)) {
+        gameEnd.saveResultToFile();
+    }
+}
+
+auto Logic::resumeGame() -> void {
+    shortcut.setMenuGameState(false);
+    resources.switchMusic();
+}
+
+auto Logic::exitToPreview() -> void {
+    resetGame();
+    saver.clearSave();
+    currentStatus = GameStatus::PREVIEW;
+    scores.loadFromFile();
+    scores.setCurrentDifficulty(previewScreen.getSelectedDifficulty());
+}
+
+auto Logic::applyLoadedState(const GameState& s) -> void {
+    applyFont(s.fontName);
+    applyDifficulty(s.difficultyLevel);
+    applyTopic(s.topic);
+
+    totalTime = s.totalTime;
+    panel.setWordCounter(s.wordsClaimed);
+    typing.setWordCount(s.wordsClaimed);
+    wpm = s.score;
+
+    for (auto& ws : s.words) {
+        Words restored(ws.text, pixelFont, 25, sf::Vector2f( ws.posX, ws.posY ));
+        restored.speed = ws.speed;
+        word.getActiveWords().push_back(restored);
+    }
+    word.setMissedWords(s.missedWords);
+    panel.setMissedWords(s.missedWords);
+}
+
+auto Logic::saveAndExitToPreview() -> void {
+    GameState s;
+    s.topic           = word.getTopic();
+    s.fontName        = previewScreen.getSelectedFontName();
+    s.difficultyLevel = previewScreen.getSelectedDifficulty();
+
+    s.totalTime       = totalTime;
+    s.wordsClaimed    = typing.getWordCount();
+    s.score           = wpm;
+    s.missedWords     = word.getMissedWords();
+    for (auto& w : word.getActiveWords()) {
+        WordState ws;
+        ws.text  = w.getString();
+        ws.posX  = w.getPosition().x;
+        ws.posY  = w.getPosition().y;
+        ws.speed = w.speed;
+        s.words.push_back(ws);
     }
 
+    GameSave::saveGame(s);
+    resetGame();
+    currentStatus = GameStatus::PREVIEW;
+}
+
+auto Logic::applyFont(const std::string& fontName) -> void {
+    const sf::Font& f = resources.getFont(fontName + "Font");
+    word.setFont(f);
+}
+
+auto Logic::applyDifficulty(const std::string& diff) -> void {
+    Difficulty level = word.stringToDifficulty(diff);
+    word.setDifficulty(level);
+    gameEnd.setDifficulty(diff);
+    scores.setCurrentDifficulty(diff);
+}
+
+auto Logic::applyTopic(const std::string& topic) -> void {
+    word.setTopic(topic);
+    gameEnd.setTopic(topic);
+}
 
 auto Logic::resetGame() -> void {
     totalTime = 0.f;
@@ -267,7 +285,7 @@ auto Logic::resetGame() -> void {
     word.reset();
     typing.reset();
     panel.reset();
-    resources.backgroundMusic.stop();
+    resources.switchMusic();
     gameEnd.clearLabelAndConfirmation();
 }
 
@@ -277,7 +295,6 @@ auto Logic::startCountdown(float deltaTime) -> void {
     if (countdownTime <= 0.f) {
         gameStarted = true;
 
-        resources.backgroundMusic.play();
     } else {
         int displayNumber = static_cast<int>(std::ceil(countdownTime));
         countdownText.setString(std::to_string(displayNumber));
@@ -317,23 +334,3 @@ auto Logic::countVisibleWords() -> int {
     }
     return visibleWords;
 }
-
-//TODO:add stats
-//TODO:add settings
-//TODO:different background and mode(dark, white)
-//TODO:music for 2d games that gives beat each second
-//TODO:add sound effects
-//TODO:add permissions
-//TODO:add restrictions to prevent from writing when paused and writing a lot
-//TODO:what is going on in gameEnd cpp
-//TODO:levels
-//TODO:fonts
-//TODO:music
-//TODO:shortcuts key : paused, words movement
-//TODO:different words topic
-//TODO::Game history
-//TODO:use fmt::format instead ostringstream
-
-//TODO:add game over when missedWords=10
-//TODO:add saving point
-
