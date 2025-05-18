@@ -27,7 +27,7 @@ struct Words : sf::Text  {
 
 class Word {
 public:
-    Word(const sf::Font &font);
+    Word();
 
     auto updateWords(float deltaTime, sf::Vector2u windowSize) -> void;
     auto drawWord(sf::RenderWindow &window) -> void;
@@ -55,7 +55,6 @@ private:
     auto initWords() -> void;
 
     sf::Font font;
-    sf::Text wordText;
     Difficulty selectedDifficulty = Difficulty::EASY;
     std::vector<std::string> wordsList;
     std::vector<Words> objectsWords;

@@ -16,7 +16,6 @@ public:
     auto setWPM(float wpm) -> void;
     auto setTraffic(int activeWords, int totalWords) -> void;
     auto setMissedWords(int missedWords) -> void;
-    auto setCurrentScore(int score) -> void;
 
     auto drawPanel(sf::RenderWindow& window) -> void;
     auto reset() -> void;
@@ -24,7 +23,6 @@ public:
 private:
 
     auto setupElements(const sf::Vector2u &windowSize) -> void;
-    auto getCurrentScore() -> int;
 
     sf::RectangleShape panelBackground;
 
@@ -35,7 +33,6 @@ private:
     sf::Text trafficText;
     sf::Text missedWordsText;
 
-    int currentScore = 0;
 };
 
 #endif // PANEL_H

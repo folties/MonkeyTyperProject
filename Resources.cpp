@@ -10,73 +10,64 @@ Resources::Resources(): typeSound(typeBuffer) {
 
 auto Resources::loadIcon() -> void {
     if (!icon.loadFromFile("../materials/images/MonkeyTyperPicture.png")) {
-        std::cerr << "Failed to load icon.\n";
+        std::cerr << "Couldn't load icon.\n";
     }
 }
 
 auto Resources::loadFonts() -> void {
     sf::Font bloxFont;
     if (!bloxFont.openFromFile("../materials/fonts/Blox.ttf")) {
-        std::cerr << "Could not load bloxFont\n";
-        exit(1);
+        std::cerr << "Couldn't load bloxFont\n";
     }
-    fonts["BloxFont"] = std::move(bloxFont); // Save into map
+    fonts["BloxFont"] = std::move(bloxFont);
 
     sf::Font pixelFont;
     if (!pixelFont.openFromFile("../materials/fonts/Pixel.ttf")) {
-        std::cerr << "Could not load pixelFont\n";
-        exit(1);
+        std::cerr << "Couldn't load pixelFont\n";
     }
-    fonts["PixelFont"] = std::move(pixelFont); // Save into map
+    fonts["PixelFont"] = std::move(pixelFont);
 
     sf::Font alphbetaFont;
     if (!alphbetaFont.openFromFile("../materials/fonts/Alphbeta.ttf")) {
-        std::cerr << "Could not load alphbetaFont\n";
-        exit(1);
+        std::cerr << "Couldn't load alphbetaFont\n";
     }
-    fonts["AlphbetaFont"] = std::move(alphbetaFont); // Save into map
+    fonts["AlphbetaFont"] = std::move(alphbetaFont);
 
     sf::Font hevillaFont;
     if (!hevillaFont.openFromFile("../materials/fonts/Hevilla.ttf")) {
-        std::cerr << "Could not load hefillaFont\n";
-        exit(1);
+        std::cerr << "Couldn't load hefillaFont\n";
     }
-    fonts["HevillaFont"] = std::move(hevillaFont); // Save into map
+    fonts["HevillaFont"] = std::move(hevillaFont);
 
     sf::Font steveFont;
     if (!steveFont.openFromFile("../materials/fonts/Steve.ttf")) {
-        std::cerr << "Could not load steveFont\n";
-        exit(1);
+        std::cerr << "Couldn't load steveFont\n";
     }
-    fonts["SteveFont"] = std::move(steveFont); // Save into map DELETE
+    fonts["SteveFont"] = std::move(steveFont);
 
     sf::Font warworkFont;
     if (!warworkFont.openFromFile("../materials/fonts/Warwork.ttf")) {
-        std::cerr << "Could not load warworkFont\n";
-        exit(1);
+        std::cerr << "Couldn't load warworkFont\n";
     }
-    fonts["WarworkFont"] = std::move(warworkFont); // Save into map DELETE
+    fonts["WarworkFont"] = std::move(warworkFont);
 
     sf::Font grosacFont;
     if (!grosacFont.openFromFile("../materials/fonts/Grosac.ttf")) {
-        std::cerr << "Could not load grosacFont\n";
-        exit(1);
+        std::cerr << "Couldn't load grosacFont\n";
     }
-    fonts["GrosacFont"] = std::move(grosacFont); // Save into map
+    fonts["GrosacFont"] = std::move(grosacFont);
 }
 
 auto Resources::loadMusic() -> void {
     if (!backgroundMusic.openFromFile("../materials/music/musicGame.mp3")) { //
-        std::cerr << "Could not load background music\n";
-        exit(1);
+        std::cerr << "Couldn't load background music\n";
     }
-    backgroundMusic.setLooping(true); // so it repeats automatically
+    backgroundMusic.setLooping(true);
 }
 
 auto Resources::loadTypeSound() -> void {
     if (!typeBuffer.loadFromFile("../materials/soundEffect/typeSound.ogg")) {
-        std::cerr << "Could not load typeSound\n";
-        return;
+        std::cerr << "Couldn't load typeSound\n";
     }
     typeSound.setBuffer(typeBuffer);
 }

@@ -23,5 +23,4 @@ private:
 };
 
 
-
 #endif //SHORTCUT_H

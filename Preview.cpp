@@ -127,7 +127,7 @@ auto Preview::centerText(sf::Text& text, sf::Vector2f center) -> void {
 }
 
 auto Preview::render(sf::RenderWindow& window) -> void {
-    updateButtons(); // ensure color matches availability
+    updateButtons();
 
     window.draw(previewPanel);
     window.draw(startButton);

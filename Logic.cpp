@@ -3,7 +3,6 @@
 
 Logic::Logic() :
     window(sf::VideoMode::getDesktopMode(), "MonkeyTyper", sf::Style::Default, sf::State::Windowed),
-    word(pixelFont),
     background(window.getSize()),
     gameEnd(bloxFont, window.getSize()),
     panel(pixelFont, window.getSize()),

@@ -3,7 +3,7 @@
 #include <fstream>
 #include <iostream>
 
-Word::Word(const sf::Font& font) : wordText(font)
+Word::Word()
 {
     initWords();
 }

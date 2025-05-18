@@ -48,8 +48,6 @@ private:
     auto handlePlayingMouse(const sf::Vector2f &mousePos) -> void;
     auto handleMenuActions(const sf::Vector2f &mousePos) -> void;
     auto handleGameOverActions(const sf::Vector2f &mousePos) -> void;
-    auto handleScoresPanel(const sf::Event& event) -> void;
-    auto handleInput(const sf::Event& event) -> void;
 
     auto applyLoadedState(const GameState &s) -> void;
     auto applyFont(const std::string &fontName) -> void;
@@ -61,13 +59,11 @@ private:
     auto resetGame() -> void;
     auto resumeGame() -> void;
     auto startCountdown(float deltaTime) -> void;
-    auto updateStats() -> void;
 
     sf::RenderWindow window;
     sf::Font pixelFont;
     sf::Font bloxFont;
     sf::Clock clock;
-    sf::Music music;
     sf::Text countdownText;
 
     GameStatus currentStatus;

@@ -1,5 +1,4 @@
 #include "Panel.h"
-#include "fmt/compile.h"
 
 Panel::Panel(const sf::Font& font, const sf::Vector2u& windowSize) :
     typedDisplay(font),
@@ -65,16 +64,6 @@ auto Panel::setTraffic(int activeWords, int totalWords) -> void {
 auto Panel::setMissedWords(int missedWords) -> void {
     missedWordsText.setString("Missed words: " + std::to_string(missedWords));
 }
-
-auto Panel::setCurrentScore(int score) -> void {
-    currentScore = score;
-}
-
-auto Panel::getCurrentScore() -> int {
-    return currentScore;
-}
-
-
 
 auto Panel::reset()-> void {
     setTypedText("");
