@@ -2,7 +2,6 @@
 
 auto Shortcut::handleKeyEvent(const sf::Event::KeyPressed& event, Typing& typing, Word& word, Panel& panel, Resources& resources) -> void{
     if (event.scancode == sf::Keyboard::Scancode::Escape) {
-        resources.switchMusic();
         isGameMenu = !isGameMenu;
     }
     else if (!isGameMenu) {

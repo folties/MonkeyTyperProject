@@ -50,30 +50,14 @@ auto Scores::loadFromFile() -> void {
     updateTexts();
 }
 
-auto Scores::saveToFile(const std::string& filename) -> void {
-    std::ofstream file(filename);
-    for (const auto& entry : bestScores) {
-        file << entry.note << " " << entry.wpm << " " << entry.missedWords << " " << entry.time << "\n";
-    }
-}
-
-auto Scores::tryAddScore(const ScoreEntry& entry) -> void {
-    bestScores.push_back(entry);
-    std::sort(bestScores.begin(), bestScores.end(), [](const ScoreEntry& a, const ScoreEntry& b) {
-        return a.wpm > b.wpm;
-    });
-    updateTexts();
-}
-
 auto Scores::render(sf::RenderWindow& window) -> void {
-    if (!visible) {
-        return;
-    }
-    window.draw(panel);
-    window.draw(titleText);
-    window.draw(closeButton);
-    for (const auto& text : scoreTexts) {
-        window.draw(text);
+    if (visible) {
+        window.draw(panel);
+        window.draw(titleText);
+        window.draw(closeButton);
+        for (const auto& text : scoreTexts) {
+            window.draw(text);
+        }
     }
 }
 
@@ -86,8 +70,7 @@ auto Scores::isVisible()  -> bool {
 }
 
 auto Scores::handleClick(const sf::Vector2f& mousePos) -> void {
-    if (!visible) return;
-    if (closeButton.getGlobalBounds().contains(mousePos)) {
+    if (visible && closeButton.getGlobalBounds().contains(mousePos)) {
         visible = false;
     }
 }
@@ -103,17 +86,17 @@ auto Scores::updateTexts() -> void {
     size_t shown = 0;
     for (size_t i = 0; i < bestScores.size(); ++i) {
         const auto& entry = bestScores[i];
-        if (entry.difficulty != currentDifficulty) continue;
-        sf::Text text(titleText.getFont());
-        text.setCharacterSize(panel.getSize().x * 0.02f);
-        text.setFillColor(sf::Color::White);
-        std::ostringstream oss;
-        oss << shown+1 << ". [" << entry.topic << "] " << entry.note << "  WPM: " << entry.wpm << "  Missed: " << entry.missedWords << "  Time: " << static_cast<int>(entry.time) << "s";
-        text.setString(oss.str());
-        text.setPosition(sf::Vector2f(panel.getPosition().x * 0.35f, y));
-        y += 40;
-        scoreTexts.push_back(text);
-        ++shown;
-        if (shown >= 10) break;
+        if (shown < 15 && entry.difficulty == currentDifficulty){
+            sf::Text text(titleText.getFont());
+            text.setCharacterSize(panel.getSize().x * 0.02f);
+            text.setFillColor(sf::Color::White);
+            std::ostringstream oss;
+            oss << shown+1 << ". [" << entry.topic << "] " << entry.note << "  WPM: " << entry.wpm << "  Missed: " << entry.missedWords << "  Time: " << static_cast<int>(entry.time) << "s";
+            text.setString(oss.str());
+            text.setPosition(sf::Vector2f(panel.getPosition().x * 0.35f, y));
+            y += 40;
+            scoreTexts.push_back(text);
+            ++shown;
+        }
     }
 } 

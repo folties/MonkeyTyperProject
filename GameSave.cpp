@@ -5,7 +5,7 @@
 
 const std::string GameSave::saveFile = "../materials/saves/savegame.txt";
 
-void GameSave::saveGame(const GameState& state) {
+auto GameSave::saveGame(const GameState& state) -> void{
     std::ofstream outFile(saveFile);
     if (!outFile.is_open()) {
         std::cerr << "Failed to open save file for writing.\n";
@@ -30,7 +30,7 @@ void GameSave::saveGame(const GameState& state) {
     outFile.close();
 }
 
-GameState GameSave::loadGame() {
+auto GameSave::loadGame() -> GameState {
     GameState state;
     std::ifstream inFile(saveFile);
 
@@ -61,12 +61,12 @@ GameState GameSave::loadGame() {
     return state;
 }
 
-bool GameSave::isSaveAvailable() {
+auto GameSave::isSaveAvailable() -> bool {
     std::ifstream inFile(saveFile);
     return inFile.is_open() && inFile.peek() != EOF;
 }
 
-void GameSave::clearSave() {
+auto GameSave::clearSave() -> void {
     std::ofstream outFile(saveFile, std::ofstream::trunc);
 }
 

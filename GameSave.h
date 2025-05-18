@@ -32,10 +32,10 @@ public:
 class GameSave {
 public:
 
-     static void saveGame(const GameState& state);
-     static GameState loadGame();
-     static bool isSaveAvailable();
-     void clearSave();
+     static auto saveGame(const GameState& state) -> void;
+     static auto loadGame() -> GameState;
+     static auto isSaveAvailable() -> bool;
+     auto clearSave() -> void;
 
 private:
      static const std::string saveFile;

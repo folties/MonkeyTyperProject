@@ -67,26 +67,26 @@ auto GameEnd::setupElements(const sf::Vector2u &windowSize) -> void {
     confirmationText.setFillColor(sf::Color::Yellow);
 }
 
-void GameEnd::setMissedWords(int count) {
+auto GameEnd::setMissedWords(int count) -> void {
     missedWords = count;
     missedText.setString("missed " + std::to_string(missedWords));
 }
 
-void GameEnd::setWPM(float wpmValue) {
+auto GameEnd::setWPM(float wpmValue) -> void {
     wpm = wpmValue;
     wpmText.setString("wpm " + std::to_string(static_cast<int>(wpm)));
 }
 
-void GameEnd::setTime(float timeValue) {
+auto GameEnd::setTime(float timeValue) -> void {
     time = timeValue;
     timeText.setString("time " + std::to_string(static_cast<int>(time)) + "s");
 }
 
-void GameEnd::setTypedText(const std::string& text) {
+auto GameEnd::setTypedText(const std::string& text) -> void {
     typedText = text;
 }
 
-void GameEnd::handleLabelInput(uint32_t unicode) {
+auto GameEnd::handleLabelInput(uint32_t unicode) -> void{
     if (unicode == 8) {
         if (!labelInput.empty()) labelInput.pop_back();
     } else if (unicode >= 32 && unicode <= 126) {
@@ -101,15 +101,15 @@ void GameEnd::handleLabelInput(uint32_t unicode) {
     labelText.setString(labelInput);
 }
 
-bool GameEnd::isReturnButtonClicked(const sf::Vector2f& mousePos)  {
+auto GameEnd::isReturnButtonClicked(const sf::Vector2f& mousePos) -> bool {
     return returnButton.getGlobalBounds().contains(mousePos);
 }
 
-bool GameEnd::isSaveButtonClicked(const sf::Vector2f& mousePos)  {
+auto GameEnd::isSaveButtonClicked(const sf::Vector2f& mousePos) -> bool  {
     return saveButton.getGlobalBounds().contains(mousePos);
 }
 
-bool GameEnd::saveResultToFile() {
+auto GameEnd::saveResultToFile() -> bool {
     if (resultSaved) {
         return false;
     }
@@ -126,7 +126,7 @@ bool GameEnd::saveResultToFile() {
     return resultSaved;
 }
 
-void GameEnd::showConfirmation(bool success) {
+auto GameEnd::showConfirmation(bool success) -> void {
     showConfirmationMsg = true;
     saveSuccess = success;
     if (success) {
@@ -135,7 +135,7 @@ void GameEnd::showConfirmation(bool success) {
     else confirmationText.setString("failed to save result");
 }
 
-void GameEnd::updateButtons(const sf::Vector2u &windowSize) {
+auto GameEnd::updateButtons(const sf::Vector2u &windowSize) -> void {
     if (!resultSaved) {
         saveButton.setFillColor(sf::Color(90, 120, 180));
         saveButtonText.setString("save result");
@@ -148,7 +148,7 @@ void GameEnd::updateButtons(const sf::Vector2u &windowSize) {
     }
 }
 
-void GameEnd::render(sf::RenderWindow& window) {
+auto GameEnd::render(sf::RenderWindow& window) -> void {
     updateButtons(window.getSize());
 
     window.clear(sf::Color::Black);
@@ -166,7 +166,7 @@ void GameEnd::render(sf::RenderWindow& window) {
     if (showConfirmationMsg) window.draw(confirmationText);
 }
 
-void GameEnd::clearLabelAndConfirmation() {
+auto GameEnd::clearLabelAndConfirmation() -> void {
     labelInput.clear();
     labelText.setString("");
     showConfirmationMsg = false;
@@ -174,7 +174,7 @@ void GameEnd::clearLabelAndConfirmation() {
     resultSaved = false;
 }
 
-void GameEnd::setDifficulty(const std::string& diff) {
+auto GameEnd::setDifficulty(const std::string& diff) -> void {
     difficulty = diff;
 }
 

@@ -27,3 +27,8 @@ lox Easy Animals 0 0 2
 lox Easy Animals 0 0 3
 lox Medium Animals 0 0 2
 lox Insane Nature 32 10 43
+idf Insane Animals 0 0 2
+sorry Insane Animals 0 0 2
+yeah Insane Animals 0 0 2
+tresh Medium Technology 23 10 62
+loxsssssssssssssssssssss Easy Animals 0 0 8

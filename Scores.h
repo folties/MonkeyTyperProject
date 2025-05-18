@@ -31,8 +31,6 @@ public:
 
 private:
     auto setupElements(const sf::Vector2u &windowSize) -> void;
-    auto saveToFile(const std::string& filename) -> void;
-    auto tryAddScore(const ScoreEntry& entry) -> void;
     auto updateTexts() -> void;
 
 

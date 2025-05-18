@@ -22,6 +22,7 @@ Logic::Logic() :
     initResources();
     initUI();
     scores.loadFromFile();
+    resources.getMusic().play();
 }
 
 auto Logic::initResources() -> void {
@@ -117,14 +118,17 @@ auto Logic::processEvents() -> void {
 }
 
 auto Logic::handleTextInput(uint32_t unicode) -> void {
-    if (currentStatus == GameStatus::PLAYING && word.isGameOver()) {
-        gameEnd.handleLabelInput(unicode);
-    } else if (!shortcut.getMenuGameState()) {
-        char typedChar = static_cast<char>(unicode);
-        typing.processInput(typedChar);
-        panel.setTypedText(typing.getCurrentInput());
-        if (shortcut.isTypeSoundEnabled()) {
-            resources.typeSoundPlay();
+    if (currentStatus == GameStatus::PLAYING ) {
+        if (word.isGameOver()) {
+            gameEnd.handleLabelInput(unicode);
+        }
+        else if (gameStarted && !shortcut.getMenuGameState()) {
+            char typedChar = static_cast<char>(unicode);
+            typing.processInput(typedChar);
+            panel.setTypedText(typing.getCurrentInput());
+            if (shortcut.isTypeSoundEnabled()) {
+                resources.typeSoundPlay();
+            }
         }
     }
 }
@@ -205,7 +209,6 @@ auto Logic::handleGameOverActions(const sf::Vector2f& mousePos) -> void {
 
 auto Logic::resumeGame() -> void {
     shortcut.setMenuGameState(false);
-    resources.switchMusic();
 }
 
 auto Logic::exitToPreview() -> void {
@@ -285,7 +288,6 @@ auto Logic::resetGame() -> void {
     word.reset();
     typing.reset();
     panel.reset();
-    resources.switchMusic();
     gameEnd.clearLabelAndConfirmation();
 }
 
